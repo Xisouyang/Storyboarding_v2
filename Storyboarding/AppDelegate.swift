@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         /*
-         initialize navigation controller and add initial view
+         create main view and nav controller
          */
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let nav1 = UINavigationController()

@@ -23,6 +23,12 @@ class IdeaView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func tableViewSeperators() {
+        ideaTableView.separatorColor = .black
+        ideaTableView.separatorInset.left = 10
+        ideaTableView.separatorInset.right = 10
+    }
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

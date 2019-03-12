@@ -20,6 +20,8 @@ class IdeaViewController: UIViewController {
         setupNav()
     }
     
+    //MARK: view setup functionality
+    
     func setupView() {
         let mainViewFrame = UIScreen.main.bounds
         let ideaView = IdeaView()
@@ -32,8 +34,27 @@ class IdeaViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationItem.rightBarButtonItem = addButtonItem
         navigationItem.rightBarButtonItem?.tintColor = .white
+    }
+    
+    //MARK: scrollView functionality
+    
+    /* maintains color of title when scrolling */
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        navigationItem.rightBarButtonItem = nil
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        navigationItem.rightBarButtonItem = addButtonItem
     }
 }
 
@@ -48,6 +69,7 @@ extension IdeaView: UITableViewDataSource {
         ideaTableView.dataSource = self
         addSubview(ideaTableView)
         ideaTableViewConstraints()
+        tableViewSeperators()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

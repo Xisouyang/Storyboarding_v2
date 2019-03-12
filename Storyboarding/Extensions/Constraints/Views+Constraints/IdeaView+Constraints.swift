@@ -9,6 +9,7 @@
 import UIKit
 
 extension IdeaView {
+    
     func ideaTableViewConstraints() {
         ideaTableView.translatesAutoresizingMaskIntoConstraints = false
         ideaTableView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
