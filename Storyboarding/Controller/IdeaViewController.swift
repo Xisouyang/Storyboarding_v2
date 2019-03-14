@@ -31,12 +31,21 @@ class IdeaViewController: UIViewController {
     
     func setupNav() {
         navigationItem.title = "Storyboarding"
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+        addButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addButtonItem
-        navigationItem.rightBarButtonItem?.tintColor = .white
+        navigationController?.navigationBar.tintColor = .white
+    }
+    
+    //MARK: button functionality
+    
+    @objc func addTapped() {
+        print("tapped")
+        let newController = GenreViewController()
+        self.navigationController?.pushViewController(newController, animated: true)
     }
     
     //MARK: scrollView functionality
@@ -49,7 +58,7 @@ class IdeaViewController: UIViewController {
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
-        navigationItem.rightBarButtonItem = nil
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {

@@ -14,6 +14,12 @@
 		5DC629D12237317200074B30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC629CF2237317200074B30 /* LaunchScreen.storyboard */; };
 		5DC629DC2237333600074B30 /* IdeaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC629DB2237333600074B30 /* IdeaView.swift */; };
 		5DC629E422373C9A00074B30 /* IdeaView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC629E322373C9A00074B30 /* IdeaView+Constraints.swift */; };
+		5DD7BFF62239ACFB00D1A9E6 /* GenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7BFF52239ACFB00D1A9E6 /* GenreViewController.swift */; };
+		5DD7BFF82239AF0200D1A9E6 /* GenreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7BFF72239AF0200D1A9E6 /* GenreView.swift */; };
+		5DD7BFFA2239B59000D1A9E6 /* GenreView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD7BFF92239B59000D1A9E6 /* GenreView+Constraints.swift */; };
+		5DF43099223A19E0008483D3 /* GenreView+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */; };
+		5DF4309C223A1AD4008483D3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309B223A1AD4008483D3 /* GenreCell.swift */; };
+		5DF4309E223A1C23008483D3 /* GenreCell+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		5DC629D22237317200074B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5DC629DB2237333600074B30 /* IdeaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaView.swift; sourceTree = "<group>"; };
 		5DC629E322373C9A00074B30 /* IdeaView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdeaView+Constraints.swift"; sourceTree = "<group>"; };
+		5DD7BFF52239ACFB00D1A9E6 /* GenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreViewController.swift; sourceTree = "<group>"; };
+		5DD7BFF72239AF0200D1A9E6 /* GenreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreView.swift; sourceTree = "<group>"; };
+		5DD7BFF92239B59000D1A9E6 /* GenreView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreView+Constraints.swift"; sourceTree = "<group>"; };
+		5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreView+DS&Delegate.swift"; sourceTree = "<group>"; };
+		5DF4309B223A1AD4008483D3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
+		5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreCell+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				5DC629DB2237333600074B30 /* IdeaView.swift */,
+				5DD7BFF72239AF0200D1A9E6 /* GenreView.swift */,
+				5DF4309B223A1AD4008483D3 /* GenreCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -90,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				5DC629C82237317000074B30 /* IdeaViewController.swift */,
+				5DD7BFF52239ACFB00D1A9E6 /* GenreViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -97,6 +112,7 @@
 		5DC629DD22373A3300074B30 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */,
 				5DC629E022373C6400074B30 /* Constraints */,
 			);
 			path = Extensions;
@@ -115,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				5DC629E322373C9A00074B30 /* IdeaView+Constraints.swift */,
+				5DD7BFF92239B59000D1A9E6 /* GenreView+Constraints.swift */,
+				5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */,
 			);
 			path = "Views+Constraints";
 			sourceTree = "<group>";
@@ -197,7 +215,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DF43099223A19E0008483D3 /* GenreView+DS&Delegate.swift in Sources */,
+				5DD7BFF82239AF0200D1A9E6 /* GenreView.swift in Sources */,
+				5DD7BFFA2239B59000D1A9E6 /* GenreView+Constraints.swift in Sources */,
 				5DC629C92237317000074B30 /* IdeaViewController.swift in Sources */,
+				5DD7BFF62239ACFB00D1A9E6 /* GenreViewController.swift in Sources */,
+				5DF4309C223A1AD4008483D3 /* GenreCell.swift in Sources */,
+				5DF4309E223A1C23008483D3 /* GenreCell+Constraints.swift in Sources */,
 				5DC629DC2237333600074B30 /* IdeaView.swift in Sources */,
 				5DC629E422373C9A00074B30 /* IdeaView+Constraints.swift in Sources */,
 				5DC629C72237317000074B30 /* AppDelegate.swift in Sources */,
