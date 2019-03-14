@@ -33,6 +33,7 @@ class GenreCell: UICollectionViewCell {
     
     func setTextView() {
         genreDescription = UITextView()
+        genreDescription.font = UIFont.init(name: "Times New Roman", size: 18)
         contentView.addSubview(genreDescription)
         textViewConstraints()
     }

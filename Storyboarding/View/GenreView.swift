@@ -7,8 +7,9 @@
 //
 
 /* TODO:
-- Fix sizing of the collection view cells
-- Create custom cell that has uilabel and uitextview as subviews
+- Fix sizing of the collection view cells - in progress
+- Create custom cell that has uilabel and uitextview as subviews - done
+- make cell clickable
  */
 
 import UIKit
@@ -24,7 +25,6 @@ class GenreView: UIView {
         self.collectionHeight = collectionHeight
         setupCollectionView()
         collectionConstraints()
-        print(collectionHeight)
     }
     
     required init?(coder aDecoder: NSCoder) {

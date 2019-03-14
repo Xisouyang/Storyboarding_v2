@@ -9,7 +9,19 @@
 import UIKit
 
 extension GenreView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
+            cell.genreDescription.backgroundColor = UIColor.lightGray
+            cell.genreLabel.backgroundColor = UIColor.lightGray
+        }
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
+            cell.genreDescription.backgroundColor = .white
+            cell.genreLabel.backgroundColor = .white
+        }
+    }
 }
 
 extension GenreView: UICollectionViewDataSource {
