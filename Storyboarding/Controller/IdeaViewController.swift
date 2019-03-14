@@ -43,7 +43,7 @@ class IdeaViewController: UIViewController {
     //MARK: button functionality
     
     @objc func addTapped() {
-        print("tapped")
+        print("ideaVC add button tapped")
         let newController = GenreViewController()
         self.navigationController?.pushViewController(newController, animated: true)
     }

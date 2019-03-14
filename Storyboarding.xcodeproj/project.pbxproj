@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D01E744223B000E00C25254 /* ElementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D01E743223B000E00C25254 /* ElementsViewController.swift */; };
+		5D01E746223B002E00C25254 /* ElementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D01E745223B002E00C25254 /* ElementsView.swift */; };
 		5DC629C72237317000074B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC629C62237317000074B30 /* AppDelegate.swift */; };
 		5DC629C92237317000074B30 /* IdeaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC629C82237317000074B30 /* IdeaViewController.swift */; };
 		5DC629CC2237317000074B30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DC629CA2237317000074B30 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D01E743223B000E00C25254 /* ElementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsViewController.swift; sourceTree = "<group>"; };
+		5D01E745223B002E00C25254 /* ElementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsView.swift; sourceTree = "<group>"; };
 		5DC629C32237317000074B30 /* Storyboarding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Storyboarding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC629C62237317000074B30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DC629C82237317000074B30 /* IdeaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 			children = (
 				5DC629DB2237333600074B30 /* IdeaView.swift */,
 				5DD7BFF72239AF0200D1A9E6 /* GenreView.swift */,
+				5D01E745223B002E00C25254 /* ElementsView.swift */,
 				5DF4309B223A1AD4008483D3 /* GenreCell.swift */,
 			);
 			path = View;
@@ -105,6 +110,7 @@
 			children = (
 				5DC629C82237317000074B30 /* IdeaViewController.swift */,
 				5DD7BFF52239ACFB00D1A9E6 /* GenreViewController.swift */,
+				5D01E743223B000E00C25254 /* ElementsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,12 +222,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF43099223A19E0008483D3 /* GenreView+DS&Delegate.swift in Sources */,
+				5D01E746223B002E00C25254 /* ElementsView.swift in Sources */,
 				5DD7BFF82239AF0200D1A9E6 /* GenreView.swift in Sources */,
 				5DD7BFFA2239B59000D1A9E6 /* GenreView+Constraints.swift in Sources */,
 				5DC629C92237317000074B30 /* IdeaViewController.swift in Sources */,
 				5DD7BFF62239ACFB00D1A9E6 /* GenreViewController.swift in Sources */,
 				5DF4309C223A1AD4008483D3 /* GenreCell.swift in Sources */,
 				5DF4309E223A1C23008483D3 /* GenreCell+Constraints.swift in Sources */,
+				5D01E744223B000E00C25254 /* ElementsViewController.swift in Sources */,
 				5DC629DC2237333600074B30 /* IdeaView.swift in Sources */,
 				5DC629E422373C9A00074B30 /* IdeaView+Constraints.swift in Sources */,
 				5DC629C72237317000074B30 /* AppDelegate.swift in Sources */,

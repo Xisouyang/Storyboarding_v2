@@ -6,6 +6,12 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+/*
+ TODO: give proper title and description to subviews
+        - create arrays to hold those strings
+       create button on nav bar to save and go to next screen
+ */
+
 import UIKit
 
 extension GenreView: UICollectionViewDelegate {
@@ -27,7 +33,7 @@ extension GenreView: UICollectionViewDelegate {
 extension GenreView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return genreArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,8 +42,8 @@ extension GenreView: UICollectionViewDataSource {
         
         let cell = collection.dequeueReusableCell(withReuseIdentifier: GenreCell.identifier, for: indexPath) as! GenreCell
         cell.backgroundColor = .white
-        cell.genreLabel.text = "test"
-        cell.genreDescription.text = "this is a test"
+        cell.genreLabel.text = genreArray[indexPath.row]
+        cell.genreDescription.text = genreDescription[indexPath.row]
         return cell
     }
 }
@@ -48,7 +54,7 @@ extension GenreView: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width, height:
-            collectionHeight / 5)
+            collectionHeight / CGFloat(genreArray.count))
     }
     
     func collectionView(_ collectionView: UICollectionView,

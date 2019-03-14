@@ -1,51 +1,47 @@
 //
-//  GenreViewController.swift
+//  ElementsViewController.swift
 //  Storyboarding
 //
-//  Created by Stephen Ouyang on 3/13/19.
+//  Created by Stephen Ouyang on 3/14/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
 import UIKit
 
-class GenreViewController: UIViewController {
+class ElementsViewController: UIViewController {
     
-    var genreView: UIView!
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-    var addButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
         setupView()
+
         // Do any additional setup after loading the view.
     }
     
     func setupView() {
-        
-        let collectionHeight = view.frame.height
-        - navigationController!.navigationBar.frame.height
-        genreView = GenreView(frame: self.view.frame, collectionHeight: collectionHeight)
-        view.addSubview(genreView)
+        let elementView = ElementsView(frame: self.view.frame)
+        view.addSubview(elementView)
     }
     
     func setupNav() {
-        navigationItem.title = "Genres"
+        navigationItem.title = "Story Elements"
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
-        addButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = addButtonItem
+//        addButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+//        navigationItem.rightBarButtonItem = addButtonItem
     }
     
-    @objc func addTapped() {
-        print("genreVC add button tapped")
-        let newController = ElementsViewController()
-        self.navigationController?.pushViewController(newController, animated: true)
-    }
+//    @objc func addTapped() {
+//        print("genreVC add button tapped")
+//        let newController = GenreViewController()
+//        self.navigationController?.pushViewController(newController, animated: true)
+//    }
     
-
+    
 
     /*
     // MARK: - Navigation
