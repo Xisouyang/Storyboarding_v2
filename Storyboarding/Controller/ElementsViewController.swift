@@ -32,16 +32,7 @@ class ElementsViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
-//        addButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
-//        navigationItem.rightBarButtonItem = addButtonItem
     }
-    
-//    @objc func addTapped() {
-//        print("genreVC add button tapped")
-//        let newController = GenreViewController()
-//        self.navigationController?.pushViewController(newController, animated: true)
-//    }
-    
     
 
     /*

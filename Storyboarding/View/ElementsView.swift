@@ -10,13 +10,25 @@ import UIKit
 
 class ElementsView: UIView {
     
+    var elementsTableView: UITableView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
+        setupTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupTableView() {
+        elementsTableView = UITableView(frame: .zero)
+        elementsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "elementCell")
+        elementsTableView.delegate = self
+        elementsTableView.dataSource = self
+        addSubview(elementsTableView)
+        elementsTVConstraints()
     }
     
     /*
