@@ -27,6 +27,7 @@ class GenreCell: UICollectionViewCell {
     func setLabel() {
         genreLabel = UILabel(frame: .zero)
         genreLabel.textAlignment = .center
+        genreLabel.font = UIFont.boldSystemFont(ofSize: 18)
         contentView.addSubview(genreLabel)
         labelConstraints()
     }
@@ -37,5 +38,4 @@ class GenreCell: UICollectionViewCell {
         contentView.addSubview(genreDescription)
         textViewConstraints()
     }
-    
 }

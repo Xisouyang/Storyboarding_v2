@@ -14,12 +14,21 @@
 
 import UIKit
 
-class GenreView: UIView {
+protocol GenreViewDelegate {
+    func returnGenreTitle() -> String
+}
+
+class GenreView: UIView, GenreViewDelegate {
     
     var collection: UICollectionView!
     var collectionHeight: CGFloat!
     var genreArray: [String]!
     var genreDescription: [String]!
+    var selectedGenre: String! {
+        didSet {
+            print(returnGenreTitle())
+        }
+    }
     
     init(frame: CGRect, collectionHeight: CGFloat) {
         
@@ -49,6 +58,13 @@ class GenreView: UIView {
         self.collection.alwaysBounceVertical = true
         self.collection.backgroundColor = .black
     }
+    
+    func returnGenreTitle() -> String {
+        
+        return selectedGenre
+    }
+    
+    
     
     /*
     // Only override draw() if you perform custom drawing.

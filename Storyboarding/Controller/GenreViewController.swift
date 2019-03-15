@@ -10,6 +10,8 @@ import UIKit
 
 class GenreViewController: UIViewController {
     
+    var delegate: GenreViewDelegate?
+    
     var genreView: UIView!
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var addButtonItem: UIBarButtonItem!
@@ -26,6 +28,7 @@ class GenreViewController: UIViewController {
         let collectionHeight = view.frame.height
         - navigationController!.navigationBar.frame.height
         genreView = GenreView(frame: self.view.frame, collectionHeight: collectionHeight)
+        self.delegate = genreView as? GenreViewDelegate
         view.addSubview(genreView)
     }
     
@@ -42,6 +45,7 @@ class GenreViewController: UIViewController {
     @objc func addTapped() {
         print("genreVC add button tapped")
         let newController = ElementsViewController()
+        newController.genreTitle = self.delegate?.returnGenreTitle()
         self.navigationController?.pushViewController(newController, animated: true)
     }
     

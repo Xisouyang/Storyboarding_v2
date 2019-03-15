@@ -11,6 +11,7 @@ import UIKit
 class ElementsViewController: UIViewController {
     
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+    var genreTitle: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class ElementsViewController: UIViewController {
     }
     
     func setupNav() {
-        navigationItem.title = "Story Elements"
+        navigationItem.title = genreTitle
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true

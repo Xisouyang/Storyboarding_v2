@@ -67,28 +67,4 @@ class IdeaViewController: UIViewController {
     }
 }
 
-/*
- Placed here because this block has to do with functionality 
- */
-extension IdeaView: UITableViewDataSource {
-    
-    func setupTableView() {
-        ideaTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        ideaTableView.delegate = self
-        ideaTableView.dataSource = self
-        addSubview(ideaTableView)
-        ideaTableViewConstraints()
-        tableViewSeperators()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ideaTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
-    }
-}
-
 

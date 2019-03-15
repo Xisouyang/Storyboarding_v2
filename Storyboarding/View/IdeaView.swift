@@ -38,6 +38,4 @@ class IdeaView: UIView {
     */
 }
 
-extension IdeaView: UITableViewDelegate {
-    
-}
+
