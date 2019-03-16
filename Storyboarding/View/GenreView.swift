@@ -26,7 +26,7 @@ class GenreView: UIView, GenreViewDelegate {
     var genreTitles: [String]!
     var genreDescription: [String]!
     
-    var selectedGenre: String! {
+    var selectedGenre: String? {
         
         didSet {
             print(returnGenreTitle())
@@ -64,8 +64,9 @@ class GenreView: UIView, GenreViewDelegate {
     
     func returnGenreTitle() -> String {
         
-        return selectedGenre
+        return selectedGenre ?? "NIL"
     }
+    
     
     
     

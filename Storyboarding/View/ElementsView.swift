@@ -16,10 +16,7 @@ class ElementsView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         setupTableView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        tableViewSeperators()
     }
     
     func setupTableView() {
@@ -29,6 +26,16 @@ class ElementsView: UIView {
         elementsTableView.dataSource = self
         addSubview(elementsTableView)
         elementsTVConstraints()
+    }
+    
+    func tableViewSeperators() {
+        elementsTableView.separatorColor = .black
+        elementsTableView.separatorInset.left = 10
+        elementsTableView.separatorInset.right = 10
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     /*

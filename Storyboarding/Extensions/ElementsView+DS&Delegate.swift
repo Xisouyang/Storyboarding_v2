@@ -9,7 +9,7 @@
 import UIKit
 
 extension ElementsView: UITableViewDelegate {
-    
+
 }
 
 extension ElementsView: UITableViewDataSource {

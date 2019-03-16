@@ -23,6 +23,15 @@ class IdeaView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupTableView() {
+        ideaTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        ideaTableView.delegate = self
+        ideaTableView.dataSource = self
+        addSubview(ideaTableView)
+        ideaTableViewConstraints()
+        tableViewSeperators()
+    }
+    
     func tableViewSeperators() {
         ideaTableView.separatorColor = .black
         ideaTableView.separatorInset.left = 10

@@ -45,8 +45,18 @@ class GenreViewController: UIViewController {
     @objc func addTapped() {
         print("genreVC add button tapped")
         let newController = ElementsViewController()
-        newController.genreTitle = self.delegate?.returnGenreTitle()
-        self.navigationController?.pushViewController(newController, animated: true)
+        if self.delegate?.returnGenreTitle() == "NIL" {
+            noGenreSelected()
+        } else {
+            newController.genreTitle = self.delegate?.returnGenreTitle()
+            self.navigationController?.pushViewController(newController, animated: true)
+        }
+    }
+    
+    func noGenreSelected() {
+        let alert = UIAlertController(title: "Please select a genre", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
 

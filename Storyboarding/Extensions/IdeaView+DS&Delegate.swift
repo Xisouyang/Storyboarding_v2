@@ -10,15 +10,6 @@ import UIKit
 
 extension IdeaView: UITableViewDataSource {
     
-    func setupTableView() {
-        ideaTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        ideaTableView.delegate = self
-        ideaTableView.dataSource = self
-        addSubview(ideaTableView)
-        ideaTableViewConstraints()
-        tableViewSeperators()
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
