@@ -47,6 +47,7 @@ class ElementsTableViewCell: UITableViewCell {
     func createCellTextField() {
         cellTextView = UITextView()
         cellTextView.layer.cornerRadius = 6
+        cellTextView.font = UIFont.init(name: "Times New Roman", size: 18)
         cellView.addSubview(cellTextView)
         cellTextViewConstraints()
     }

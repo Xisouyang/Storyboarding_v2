@@ -20,7 +20,6 @@ extension GenreView: UICollectionViewDelegate {
             cell.genreDescription.backgroundColor = UIColor.lightGray
             cell.genreLabel.backgroundColor = UIColor.lightGray
             selectedGenre = cell.genreLabel.text
-            print(selectedGenre)
         }
     }
     
