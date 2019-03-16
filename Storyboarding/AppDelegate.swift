@@ -6,6 +6,21 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+/*
+ TODO:
+    Element Table View
+        - Create sections for element table view
+        - make sections expandable/collapsable
+        - be able to delete rows from sections
+    Create model for receiving JSON data from API
+    Implement Networking layer (GET route)
+    Figure out how to handle data
+        - figure out what structure to create to hold data
+        - figure out how to distribute data in application and display it
+            - randomize
+    Persistence
+*/
+
 import UIKit
 
 @UIApplicationMain
