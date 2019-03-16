@@ -9,7 +9,10 @@
 import UIKit
 
 extension ElementsView: UITableViewDelegate {
-
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
 }
 
 extension ElementsView: UITableViewDataSource {
@@ -19,10 +22,8 @@ extension ElementsView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = elementsTableView.dequeueReusableCell(withIdentifier: "elementCell", for: indexPath)
+        let cell = elementsTableView.dequeueReusableCell(withIdentifier: ElementsTableViewCell.identifier, for: indexPath) as! ElementsTableViewCell
         return cell
     }
-    
-    
 }
 

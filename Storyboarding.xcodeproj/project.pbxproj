@@ -25,6 +25,8 @@
 		5DFFF75F223C286D007C9035 /* IdeaView+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF75E223C286D007C9035 /* IdeaView+DS&Delegate.swift */; };
 		5DFFF761223C650D007C9035 /* ElementsView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF760223C650D007C9035 /* ElementsView+Constraints.swift */; };
 		5DFFF763223C660C007C9035 /* ElementsView+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF762223C660C007C9035 /* ElementsView+DS&Delegate.swift */; };
+		5DFFF765223C8BAE007C9035 /* ElementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF764223C8BAE007C9035 /* ElementsTableViewCell.swift */; };
+		5DFFF767223C8C79007C9035 /* ElementsTVCell+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF766223C8C79007C9035 /* ElementsTVCell+Constraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		5DFFF75E223C286D007C9035 /* IdeaView+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdeaView+DS&Delegate.swift"; sourceTree = "<group>"; };
 		5DFFF760223C650D007C9035 /* ElementsView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsView+Constraints.swift"; sourceTree = "<group>"; };
 		5DFFF762223C660C007C9035 /* ElementsView+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsView+DS&Delegate.swift"; sourceTree = "<group>"; };
+		5DFFF764223C8BAE007C9035 /* ElementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsTableViewCell.swift; sourceTree = "<group>"; };
+		5DFFF766223C8C79007C9035 /* ElementsTVCell+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsTVCell+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 				5DD7BFF72239AF0200D1A9E6 /* GenreView.swift */,
 				5D01E745223B002E00C25254 /* ElementsView.swift */,
 				5DF4309B223A1AD4008483D3 /* GenreCell.swift */,
+				5DFFF764223C8BAE007C9035 /* ElementsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 				5DD7BFF92239B59000D1A9E6 /* GenreView+Constraints.swift */,
 				5DFFF760223C650D007C9035 /* ElementsView+Constraints.swift */,
 				5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */,
+				5DFFF766223C8C79007C9035 /* ElementsTVCell+Constraints.swift */,
 			);
 			path = "Views+Constraints";
 			sourceTree = "<group>";
@@ -231,11 +237,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DF43099223A19E0008483D3 /* GenreView+DS&Delegate.swift in Sources */,
+				5DFFF767223C8C79007C9035 /* ElementsTVCell+Constraints.swift in Sources */,
 				5D01E746223B002E00C25254 /* ElementsView.swift in Sources */,
 				5DFFF761223C650D007C9035 /* ElementsView+Constraints.swift in Sources */,
 				5DD7BFF82239AF0200D1A9E6 /* GenreView.swift in Sources */,
 				5DD7BFFA2239B59000D1A9E6 /* GenreView+Constraints.swift in Sources */,
 				5DC629C92237317000074B30 /* IdeaViewController.swift in Sources */,
+				5DFFF765223C8BAE007C9035 /* ElementsTableViewCell.swift in Sources */,
 				5DFFF763223C660C007C9035 /* ElementsView+DS&Delegate.swift in Sources */,
 				5DD7BFF62239ACFB00D1A9E6 /* GenreViewController.swift in Sources */,
 				5DF4309C223A1AD4008483D3 /* GenreCell.swift in Sources */,

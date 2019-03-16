@@ -14,24 +14,18 @@ class ElementsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
         setupTableView()
-        tableViewSeperators()
     }
     
     func setupTableView() {
         elementsTableView = UITableView(frame: .zero)
-        elementsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "elementCell")
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsTableViewCell.identifier)
         elementsTableView.delegate = self
         elementsTableView.dataSource = self
+        elementsTableView.backgroundColor = .black
+        elementsTableView.separatorColor = .clear
         addSubview(elementsTableView)
         elementsTVConstraints()
-    }
-    
-    func tableViewSeperators() {
-        elementsTableView.separatorColor = .black
-        elementsTableView.separatorInset.left = 10
-        elementsTableView.separatorInset.right = 10
     }
     
     required init?(coder aDecoder: NSCoder) {

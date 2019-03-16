@@ -9,7 +9,9 @@
 import UIKit
 
 extension ElementsView {
+    
     func elementsTVConstraints() {
+        
         elementsTableView.translatesAutoresizingMaskIntoConstraints = false
         elementsTableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         elementsTableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
