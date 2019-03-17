@@ -9,7 +9,7 @@
 /*
  TODO: give proper title and description to subviews
         - create arrays to hold those strings
-       create button on nav bar to save and go to next screen
+        - create button on nav bar to save and go to next screen
  */
 
 import UIKit

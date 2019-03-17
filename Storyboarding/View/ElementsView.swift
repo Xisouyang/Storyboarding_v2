@@ -46,8 +46,8 @@ class ElementsView: UIView {
     func createSectionButton() {
         sectionButton = UIButton()
         sectionButton.backgroundColor = .clear
-        sectionButton.setTitle("+", for: .normal)
-        sectionButton.titleLabel?.font = UIFont.init(name: "Times New Roman", size: 40)
+        sectionButton.setTitle("Collapse", for: .normal)
+        sectionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         sectionButton.tintColor = .white
         sectionButton.sizeToFit()
     }

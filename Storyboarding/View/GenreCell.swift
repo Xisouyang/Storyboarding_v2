@@ -12,7 +12,7 @@ class GenreCell: UICollectionViewCell {
     
     static var identifier: String = "cell"
     var genreLabel: UILabel!
-    var genreDescription: UITextView!
+    var genreDescription: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,10 +33,11 @@ class GenreCell: UICollectionViewCell {
     }
     
     func setTextView() {
-        genreDescription = UITextView()
+        genreDescription = UILabel(frame: .zero)
         genreDescription.font = UIFont.init(name: "Times New Roman", size: 18)
-        genreDescription.isEditable = false
         contentView.addSubview(genreDescription)
+        genreDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
+        genreDescription.numberOfLines = 0
         textViewConstraints()
     }
 }
