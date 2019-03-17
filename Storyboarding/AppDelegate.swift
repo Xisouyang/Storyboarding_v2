@@ -19,6 +19,11 @@
         - figure out how to distribute data in application and display it
             - randomize
     Persistence
+ 
+ IMPROVEMENTS/FIX:
+    Fix genre view screen size
+    make design consistent throughout screens
+        - Make Idea View tableview match other screens
 */
 
 import UIKit
@@ -66,7 +71,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

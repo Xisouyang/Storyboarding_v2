@@ -11,6 +11,10 @@ import UIKit
 class ElementsView: UIView {
     
     var elementsTableView: UITableView!
+    var tableViewHeader: UIView!
+    var headerLabel: UILabel!
+    
+    let elements = ["Plot", "Conflict", "Resolution", "Characters", "Settings"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +30,14 @@ class ElementsView: UIView {
         elementsTableView.separatorColor = .clear
         addSubview(elementsTableView)
         elementsTVConstraints()
+    }
+    
+    func createHeaderLabel() {
+        headerLabel = UILabel()
+        headerLabel.textColor = .white
+        headerLabel.font = UIFont.init(name: "Baskerville", size: 36)
+        headerLabel.backgroundColor = .black
+        headerLabel.textAlignment = .center
     }
     
     required init?(coder aDecoder: NSCoder) {

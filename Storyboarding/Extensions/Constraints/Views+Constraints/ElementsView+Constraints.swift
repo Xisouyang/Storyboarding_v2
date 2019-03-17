@@ -17,5 +17,14 @@ extension ElementsView {
         elementsTableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         elementsTableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         elementsTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+    }
+    
+    func elementsHeaderLabelConstraints() {
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.leftAnchor.constraint(equalTo: tableViewHeader.leftAnchor).isActive = true
+        headerLabel.topAnchor.constraint(equalTo: tableViewHeader.topAnchor).isActive = true
+        headerLabel.rightAnchor.constraint(equalTo: tableViewHeader.rightAnchor).isActive = true
+        headerLabel.bottomAnchor.constraint(equalTo: tableViewHeader.bottomAnchor).isActive = true
     }
 }
