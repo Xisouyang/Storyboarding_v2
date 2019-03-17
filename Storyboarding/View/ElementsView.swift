@@ -13,6 +13,7 @@ class ElementsView: UIView {
     var elementsTableView: UITableView!
     var tableViewHeader: UIView!
     var headerLabel: UILabel!
+    var sectionButton: UIButton!
     
     let elements = ["Plot", "Conflict", "Resolution", "Characters", "Settings"]
     
@@ -32,12 +33,23 @@ class ElementsView: UIView {
         elementsTVConstraints()
     }
     
+    // MARK: Header UI
+    
     func createHeaderLabel() {
         headerLabel = UILabel()
         headerLabel.textColor = .white
         headerLabel.font = UIFont.init(name: "Baskerville", size: 36)
         headerLabel.backgroundColor = .black
         headerLabel.textAlignment = .center
+    }
+    
+    func createSectionButton() {
+        sectionButton = UIButton()
+        sectionButton.backgroundColor = .clear
+        sectionButton.setTitle("+", for: .normal)
+        sectionButton.titleLabel?.font = UIFont.init(name: "Times New Roman", size: 40)
+        sectionButton.tintColor = .white
+        sectionButton.sizeToFit()
     }
     
     required init?(coder aDecoder: NSCoder) {

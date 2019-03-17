@@ -26,6 +26,11 @@ extension ElementsView: UITableViewDelegate {
         headerLabel.text = elements[section]
         tableViewHeader.addSubview(headerLabel)
         elementsHeaderLabelConstraints()
+        
+        createSectionButton()
+        tableViewHeader.addSubview(sectionButton)
+        sectionButtonConstraints()
+        
         return tableViewHeader
     }
     

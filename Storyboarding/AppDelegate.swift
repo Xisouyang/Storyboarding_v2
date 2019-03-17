@@ -9,8 +9,13 @@
 /*
  TODO:
     Element Table View
-        - Create sections for element table view
+        - Create sections for element table view - done
         - make sections expandable/collapsable
+            -create button for expanding/collapsing
+                -create button in the view
+                -create button functionality in the controller
+                -connect using delegates and protocols
+ 
         - be able to delete rows from sections
     Create model for receiving JSON data from API
     Implement Networking layer (GET route)
