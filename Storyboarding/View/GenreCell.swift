@@ -11,11 +11,13 @@ import UIKit
 class GenreCell: UICollectionViewCell {
     
     static var identifier: String = "cell"
+    var genreView: UIView!
     var genreLabel: UILabel!
     var genreDescription: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setGenreView()
         setLabel()
         setTextView()
     }
@@ -24,18 +26,29 @@ class GenreCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setGenreView() {
+        genreView = UIView(frame: .zero)
+        genreView.layer.cornerRadius = 6
+        genreView.layer.masksToBounds = true
+        genreView.backgroundColor = .white
+        contentView.addSubview(genreView)
+        genreViewConstraints()
+    }
+    
     func setLabel() {
         genreLabel = UILabel(frame: .zero)
         genreLabel.textAlignment = .center
         genreLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        contentView.addSubview(genreLabel)
+        genreLabel.layer.backgroundColor = UIColor.clear.cgColor
+        genreView.addSubview(genreLabel)
         labelConstraints()
     }
     
     func setTextView() {
         genreDescription = UILabel(frame: .zero)
         genreDescription.font = UIFont.init(name: "Times New Roman", size: 18)
-        contentView.addSubview(genreDescription)
+        genreDescription.layer.backgroundColor = UIColor.clear.cgColor
+        genreView.addSubview(genreDescription)
         genreDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
         genreDescription.numberOfLines = 0
         textViewConstraints()

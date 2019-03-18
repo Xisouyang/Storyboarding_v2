@@ -8,7 +8,10 @@
 
 import UIKit
 
+
+
 class ElementsViewController: UIViewController {
+    
     
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var genreTitle: String!
@@ -34,7 +37,16 @@ class ElementsViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
     }
     
-
+    @objc func isExpandedButtonTapped(sender: UIButton!) {
+        
+        print("isExpanded tapped")
+        if sender.titleLabel?.text == "Collapse" {
+            sender.setTitle("Expand", for: .normal)
+        } else {
+            sender.setTitle("Collapse", for: .normal)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

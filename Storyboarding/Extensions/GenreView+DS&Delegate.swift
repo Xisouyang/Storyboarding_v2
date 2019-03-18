@@ -43,7 +43,6 @@ extension GenreView: UICollectionViewDataSource {
         print("we in \(indexPath.row)")
         
         let cell = collection.dequeueReusableCell(withReuseIdentifier: GenreCell.identifier, for: indexPath) as! GenreCell
-        cell.backgroundColor = .white
         cell.genreLabel.text = genreTitles[indexPath.row]
         cell.genreDescription.text = genreDescription[indexPath.row]
         return cell
@@ -55,14 +54,14 @@ extension GenreView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height:
+        return CGSize(width: collectionView.bounds.width * 0.9, height:
             collectionHeight / CGFloat(genreTitles.count))
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) //.zero
+        return UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -74,7 +73,7 @@ extension GenreView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 20
     }
 }
 

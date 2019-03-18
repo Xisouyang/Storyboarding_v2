@@ -10,6 +10,8 @@ import UIKit
 
 class ElementsView: UIView {
     
+    var elementVC = ElementsViewController()
+    
     var elementsTableView: UITableView!
     var tableViewHeader: UIView!
     var headerLabel: UILabel!
@@ -19,6 +21,7 @@ class ElementsView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupTableView()
     }
     
@@ -47,9 +50,10 @@ class ElementsView: UIView {
         sectionButton = UIButton()
         sectionButton.backgroundColor = .clear
         sectionButton.setTitle("Collapse", for: .normal)
-        sectionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        sectionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         sectionButton.tintColor = .white
         sectionButton.sizeToFit()
+        sectionButton.addTarget(elementVC, action: #selector(elementVC.isExpandedButtonTapped), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {

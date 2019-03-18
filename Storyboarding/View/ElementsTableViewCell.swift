@@ -40,13 +40,14 @@ class ElementsTableViewCell: UITableViewCell {
         cellView = UIView(frame: .zero)
         cellView.backgroundColor = .white
         cellView.layer.cornerRadius = 6
+        cellView.layer.masksToBounds = true
         contentView.addSubview(cellView)
         cellViewConstraints()
     }
     
     func createCellTextField() {
         cellTextView = UITextView()
-        cellTextView.layer.cornerRadius = 6
+//        cellTextView.layer.backgroundColor = UIColor.clear.cgColor
         cellTextView.font = UIFont.init(name: "Times New Roman", size: 18)
         cellView.addSubview(cellTextView)
         cellTextViewConstraints()
