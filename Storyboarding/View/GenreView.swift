@@ -39,7 +39,12 @@ class GenreView: UIView, GenreViewDelegate {
         
         
         genreTitles = ["Adventure", "Horror", "Mystery", "Romance"]
-        genreDescription = ["Fiction that usually presents danger, or gives the reader a sense of excitement", "Genre of speculative fiction which is intended to frighten, scare, disgust, or startle its readers by inducing feelings of horror and terror", "Type of fiction in which a detective, or other professional, solves a crime or series of crimes", "Centers around two people developing feelings for one another, usually with optimistic ending"]
+        genreDescription = [
+            "Fiction that usually presents danger, or gives the reader a sense of excitement",
+            "Genre of speculative fiction which is intended to frighten, scare, disgust, or startle its readers by inducing feelings of horror and terror",
+            "Type of fiction in which a detective, or other professional, solves a crime or series of crimes",
+            "Centers around two people developing feelings for one another, usually with optimistic ending"
+        ]
         
         self.collectionHeight = collectionHeight
         setupCollectionView()

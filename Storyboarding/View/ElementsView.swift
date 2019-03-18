@@ -27,7 +27,11 @@ class ElementsView: UIView {
     
     func setupTableView() {
         elementsTableView = UITableView(frame: .zero)
-        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsTableViewCell.identifier)
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[0])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[1])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[2])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[3])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[4])
         elementsTableView.delegate = self
         elementsTableView.dataSource = self
         elementsTableView.backgroundColor = .black

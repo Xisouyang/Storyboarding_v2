@@ -12,9 +12,9 @@
         - Create sections for element table view - done
         - make sections expandable/collapsable
             -create button for expanding/collapsing
-                -create button in the view
+                -create button in the view - done
                 -create button functionality in the controller
-                -connect using delegates and protocols
+                -connect using delegates and protocols or class instance - done
  
         - be able to delete rows from sections
     Create model for receiving JSON data from API
@@ -26,8 +26,19 @@
     Persistence
  
  IMPROVEMENTS/FIX:
+    **Fix bug where if I write on 1st cell of one section, it writes it for all other 1st cells
+      of other sections
+        - Figure out what textview delegate method to use, do proof of concept to see how it works - done
+        - Create section property on cell - done
+        - Write logic to check where user input should be accepted onto the textview
+            - Check what section we're on, decide what to do based on that section
+                - What should I compare that section to?
+                - Do I even need to compare that section?
+                - Maybe set a boolean to disable or enable textview
     Fix genre view screen size
+    Fix padding for genre view text
     make design consistent throughout screens
+        - Make Genre View tableview match other screens - done
         - Make Idea View tableview match other screens
 */
 

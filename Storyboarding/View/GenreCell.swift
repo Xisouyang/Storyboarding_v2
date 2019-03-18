@@ -39,7 +39,6 @@ class GenreCell: UICollectionViewCell {
         genreLabel = UILabel(frame: .zero)
         genreLabel.textAlignment = .center
         genreLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        genreLabel.layer.backgroundColor = UIColor.clear.cgColor
         genreView.addSubview(genreLabel)
         labelConstraints()
     }
@@ -47,7 +46,6 @@ class GenreCell: UICollectionViewCell {
     func setTextView() {
         genreDescription = UILabel(frame: .zero)
         genreDescription.font = UIFont.init(name: "Times New Roman", size: 18)
-        genreDescription.layer.backgroundColor = UIColor.clear.cgColor
         genreView.addSubview(genreDescription)
         genreDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
         genreDescription.numberOfLines = 0

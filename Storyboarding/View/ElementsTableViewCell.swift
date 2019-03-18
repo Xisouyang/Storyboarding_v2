@@ -10,9 +10,12 @@ import UIKit
 
 class ElementsTableViewCell: UITableViewCell {
     
-    static var identifier: String = "elementCell"
+//    static var identifier: String = "plotCell"
     var cellView: UIView!
     var cellTextView: UITextView!
+    
+    var currentSection: Int!
+    var currentRow: Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +26,8 @@ class ElementsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.backgroundColor = .black
         createCellView()
-        createCellTextField()
+        createCellTextView()
+        cellTextView.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,11 +49,12 @@ class ElementsTableViewCell: UITableViewCell {
         cellViewConstraints()
     }
     
-    func createCellTextField() {
+    func createCellTextView() {
         cellTextView = UITextView()
-//        cellTextView.layer.backgroundColor = UIColor.clear.cgColor
         cellTextView.font = UIFont.init(name: "Times New Roman", size: 18)
         cellView.addSubview(cellTextView)
         cellTextViewConstraints()
     }
 }
+
+
