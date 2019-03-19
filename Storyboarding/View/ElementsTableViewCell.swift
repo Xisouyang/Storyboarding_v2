@@ -14,7 +14,7 @@ class ElementsTableViewCell: UITableViewCell {
     var cellView: UIView!
     var cellTextView: UITextView!
     
-    var currentSection: Int!
+    var currentSection: Int = 0
     var currentRow: Int!
     
     override func awakeFromNib() {

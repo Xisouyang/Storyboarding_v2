@@ -47,11 +47,22 @@ extension ElementsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        /*
-            Need switch statement to keep cells from different sections seperate from each other
-         */
+        cellID = selectCellID(indexPath: indexPath)
+        let cell = elementsTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ElementsTableViewCell
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
-        var cellID = ""
+        cell.currentSection = indexPath.section
+        cell.currentRow = indexPath.row
+    
+        return cell
+    }
+    
+    
+    func selectCellID(indexPath: IndexPath) -> String {
+        
+        /*
+         Need switch statement to keep cells from different sections seperate from each other
+         */
         
         switch indexPath.section {
         case 0:
@@ -67,13 +78,7 @@ extension ElementsView: UITableViewDataSource {
         default:
             cellID = "cellID"
         }
-        let cell = elementsTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ElementsTableViewCell
-        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
-        cell.currentSection = indexPath.section
-        cell.currentRow = indexPath.row
-    
-        return cell
+        return cellID
     }
     
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

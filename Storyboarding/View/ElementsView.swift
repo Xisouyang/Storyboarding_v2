@@ -16,8 +16,10 @@ class ElementsView: UIView {
     var tableViewHeader: UIView!
     var headerLabel: UILabel!
     var sectionButton: UIButton!
+    var cellID = ""
     
     let elements = ["Plot", "Conflict", "Resolution", "Characters", "Settings"]
+    let elementsCellInstance = ElementsTableViewCell()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

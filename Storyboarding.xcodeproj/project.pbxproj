@@ -22,6 +22,8 @@
 		5DF4309C223A1AD4008483D3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309B223A1AD4008483D3 /* GenreCell.swift */; };
 		5DF4309E223A1C23008483D3 /* GenreCell+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */; };
 		5DF9A8D92240212200F6AD52 /* ElemntsTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8D82240212200F6AD52 /* ElemntsTVC+Delegate.swift */; };
+		5DF9A8E12240750500F6AD52 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8E02240750500F6AD52 /* Routes.swift */; };
+		5DF9A8E32240798200F6AD52 /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8E22240798200F6AD52 /* Methods.swift */; };
 		5DFFF75F223C286D007C9035 /* IdeaView+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF75E223C286D007C9035 /* IdeaView+DS&Delegate.swift */; };
 		5DFFF761223C650D007C9035 /* ElementsView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF760223C650D007C9035 /* ElementsView+Constraints.swift */; };
 		5DFFF763223C660C007C9035 /* ElementsView+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF762223C660C007C9035 /* ElementsView+DS&Delegate.swift */; };
@@ -47,6 +49,8 @@
 		5DF4309B223A1AD4008483D3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreCell+Constraints.swift"; sourceTree = "<group>"; };
 		5DF9A8D82240212200F6AD52 /* ElemntsTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElemntsTVC+Delegate.swift"; sourceTree = "<group>"; };
+		5DF9A8E02240750500F6AD52 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
+		5DF9A8E22240798200F6AD52 /* Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
 		5DFFF75E223C286D007C9035 /* IdeaView+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdeaView+DS&Delegate.swift"; sourceTree = "<group>"; };
 		5DFFF760223C650D007C9035 /* ElementsView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsView+Constraints.swift"; sourceTree = "<group>"; };
 		5DFFF762223C660C007C9035 /* ElementsView+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsView+DS&Delegate.swift"; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 		5DC629D82237325B00074B30 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5DF9A8DC2240722E00F6AD52 /* Networking */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,6 +168,39 @@
 			children = (
 			);
 			path = "VC+Constraints";
+			sourceTree = "<group>";
+		};
+		5DF9A8DC2240722E00F6AD52 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5DF9A8DD2240723800F6AD52 /* HTTP */,
+				5DF9A8DE2240724500F6AD52 /* Encoding */,
+				5DF9A8DF2240725100F6AD52 /* Service */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5DF9A8DD2240723800F6AD52 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				5DF9A8E02240750500F6AD52 /* Routes.swift */,
+				5DF9A8E22240798200F6AD52 /* Methods.swift */,
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		5DF9A8DE2240724500F6AD52 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		5DF9A8DF2240725100F6AD52 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,12 +273,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DF9A8E32240798200F6AD52 /* Methods.swift in Sources */,
 				5DF43099223A19E0008483D3 /* GenreView+DS&Delegate.swift in Sources */,
 				5DFFF767223C8C79007C9035 /* ElementsTVCell+Constraints.swift in Sources */,
 				5D01E746223B002E00C25254 /* ElementsView.swift in Sources */,
 				5DFFF761223C650D007C9035 /* ElementsView+Constraints.swift in Sources */,
 				5DD7BFF82239AF0200D1A9E6 /* GenreView.swift in Sources */,
 				5DD7BFFA2239B59000D1A9E6 /* GenreView+Constraints.swift in Sources */,
+				5DF9A8E12240750500F6AD52 /* Routes.swift in Sources */,
 				5DC629C92237317000074B30 /* IdeaViewController.swift in Sources */,
 				5DFFF765223C8BAE007C9035 /* ElementsTableViewCell.swift in Sources */,
 				5DFFF763223C660C007C9035 /* ElementsView+DS&Delegate.swift in Sources */,
