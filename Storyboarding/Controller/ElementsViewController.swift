@@ -13,23 +13,17 @@ class ElementsViewController: UIViewController {
     let getService = GetServices()
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var genreTitle: String!
-    var storyDict = [StoryModel]()
     
+    
+    var storyArr = [StoryModel]()
+    var parsedStoryDict = [String: [String]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
         setupView()
-        getService.getStories() { result in
-            switch result {
-            case let .success(result):
-                self.storyDict = result
-                print(self.storyDict)
-            case let .failure(error):
-                print(error)
-            }
-        }
-
+        handleStoryData()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -54,6 +48,59 @@ class ElementsViewController: UIViewController {
         } else {
             sender.setTitle("Collapse", for: .normal)
         }
+    }
+    
+    func handleStoryData() {
+        getService.getStories() { result in
+            self.setStories(result: result)
+            self.parseStories(stories: self.storyArr)
+        }
+    }
+    
+    func setStories(result: Result<[StoryModel]>) {
+        
+        switch result {
+        case let .success(result):
+            self.storyArr = result
+            print(self.storyArr)
+            print()
+        case let .failure(error):
+            print(error)
+        }
+    }
+    
+    func parseStories(stories: [StoryModel]) {
+        
+        parsedStoryDict["Plot"] = []
+        parsedStoryDict["Conflict"] = []
+        parsedStoryDict["Resolution"] = []
+        parsedStoryDict["Character"] = []
+        parsedStoryDict["Setting"] = []
+        
+        for story in stories {
+            if story.genre != genreTitle {
+                continue
+            } else {
+                parsedStoryDict["Plot"]?.append(story.plot!)
+                parsedStoryDict["Conflict"]?.append(story.conflict!)
+                parsedStoryDict["Resolution"]?.append(story.resolution!)
+                parsedStoryDict["Character"]?.append(story.character!)
+                parsedStoryDict["Setting"]?.append(story.setting!)
+            }
+        }
+        
+        print(parsedStoryDict)
+        
+//        parsedStoryDict[""]
+//        var plotIdeas = parsedStoryDict["Plot"]
+//        for story in stories {
+//            plotIdeas?.append(story.plot!)
+//        }
+//        parsedStoryDict["Plot"] = plotIdeas
+    }
+    
+    func selectGenre() {
+        
     }
     
     /*

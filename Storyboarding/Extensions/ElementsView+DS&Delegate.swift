@@ -53,6 +53,7 @@ extension ElementsView: UITableViewDataSource {
         
         cell.currentSection = indexPath.section
         cell.currentRow = indexPath.row
+//        cell.cellTextView.text = "text"
     
         return cell
     }

@@ -9,18 +9,18 @@
 /*
  TODO:
     Element Table View
-        - Create sections for element table view - done
+        - Create sections for element table view - DONE
         - make sections expandable/collapsable
             -create button for expanding/collapsing
-                -create button in the view - done
+                -create button in the view - DONE
                 -create button functionality in the controller
-                -connect using delegates and protocols or class instance - done
+                -connect using delegates and protocols or class instance - DONE
  
         - be able to delete rows from sections
-    Create model for receiving JSON data from API - done
-    Implement Networking layer (GET route) - partially done
+    Create model for receiving JSON data from API - DONE
+    Implement Networking layer (GET route) - partially DONE
         - create model for data - done
-        - change implementation of API to not require auth for getAllStories route - done
+        - change implementation of API to not require auth for getAllStories route - DONE
         Figure out how to handle data
             - figure out what structure to create to hold data 
             - figure out how to distribute data in application and display it
@@ -29,18 +29,19 @@
  
  IMPROVEMENTS/FIX:
     **Fix bug where if I write on 1st cell of one section, it writes it for all other 1st cells
-      of other sections
-        - Figure out what textview delegate method to use, do proof of concept to see how it works - done
-        - Create section property on cell - done
-        - Write logic to check where user input should be accepted onto the textview -done
+      of other sections - DONE
+        - Figure out what textview delegate method to use, do proof of concept to see how it works - DONE
+        - Create section property on cell - DONE
+        - Write logic to check where user input should be accepted onto the textview - DONE
             - Check what section we're on, decide what to do based on that section
                 - What should I compare that section to?
                 - Do I even need to compare that section?
                 - Maybe set a boolean to disable or enable textview
+    **Replace hardcoded url with dynamically generated url
     Fix genre view screen size
     Fix padding for genre view text
     make design consistent throughout screens
-        - Make Genre View tableview match other screens - done
+        - Make Genre View tableview match other screens - DONE
         - Make Idea View tableview match other screens
 */
 

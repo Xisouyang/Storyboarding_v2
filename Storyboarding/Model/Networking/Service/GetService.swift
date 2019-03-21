@@ -12,10 +12,6 @@ struct GetServices {
     
     let getSession = URLSession(configuration: .default)
     
-//    func getStories(completion: @escaping ()->()) -> Void {
-//        print("here")
-//        completion()
-//    }
     let request = URLRequest(url: URL(string: "https://storyboarding-api.herokuapp.com/api/users/stories")!)
     
     func getStories(completion: @escaping (Result<[StoryModel]>)->()) {
@@ -39,8 +35,9 @@ struct GetServices {
                     }
                 }
             }.resume()
-        } catch {
-            completion(Result.failure(HTTPNetworkError.badRequest))
         }
+//        catch {
+//            completion(Result.failure(HTTPNetworkError.badRequest))
+//        }
     }
 }
