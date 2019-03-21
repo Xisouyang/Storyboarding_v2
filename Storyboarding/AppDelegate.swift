@@ -17,12 +17,14 @@
                 -connect using delegates and protocols or class instance - done
  
         - be able to delete rows from sections
-    Create model for receiving JSON data from API
-    Implement Networking layer (GET route)
-    Figure out how to handle data
-        - figure out what structure to create to hold data
-        - figure out how to distribute data in application and display it
-            - randomize
+    Create model for receiving JSON data from API - done
+    Implement Networking layer (GET route) - partially done
+        - create model for data - done
+        - change implementation of API to not require auth for getAllStories route - done
+        Figure out how to handle data
+            - figure out what structure to create to hold data 
+            - figure out how to distribute data in application and display it
+                - randomize
     Persistence
  
  IMPROVEMENTS/FIX:
@@ -30,7 +32,7 @@
       of other sections
         - Figure out what textview delegate method to use, do proof of concept to see how it works - done
         - Create section property on cell - done
-        - Write logic to check where user input should be accepted onto the textview
+        - Write logic to check where user input should be accepted onto the textview -done
             - Check what section we're on, decide what to do based on that section
                 - What should I compare that section to?
                 - Do I even need to compare that section?

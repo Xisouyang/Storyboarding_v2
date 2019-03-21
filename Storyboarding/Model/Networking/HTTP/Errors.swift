@@ -6,7 +6,7 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 enum HTTPNetworkError: String, Error {
     
@@ -25,4 +25,5 @@ enum HTTPNetworkError: String, Error {
     case pageNotFound = "Error Found : Page/Route rquested not found."
     case failed = "Error Found : Network Request failed"
     case serverSideError = "Error Found : Server error"
+    case headerFailed = "Error Found : Unwrapping header failed"
 }

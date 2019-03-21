@@ -6,7 +6,7 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 enum HTTPNetworkRoute: String {
     case getAllStories = "/api/users/stories"

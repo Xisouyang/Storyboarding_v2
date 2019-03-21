@@ -73,5 +73,4 @@ class ElementsView: UIView {
         // Drawing code
     }
     */
-
 }

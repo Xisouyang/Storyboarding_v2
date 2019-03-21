@@ -25,13 +25,7 @@ class GenreView: UIView, GenreViewDelegate {
     var collectionHeight: CGFloat!
     var genreTitles: [String]!
     var genreDescription: [String]!
-    
-    var selectedGenre: String? {
-        
-        didSet {
-            print(returnGenreTitle())
-        }
-    }
+    var selectedGenre: String?
     
     init(frame: CGRect, collectionHeight: CGFloat) {
         

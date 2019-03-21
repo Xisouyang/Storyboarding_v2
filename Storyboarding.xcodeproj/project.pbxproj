@@ -21,8 +21,13 @@
 		5DF43099223A19E0008483D3 /* GenreView+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */; };
 		5DF4309C223A1AD4008483D3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309B223A1AD4008483D3 /* GenreCell.swift */; };
 		5DF4309E223A1C23008483D3 /* GenreCell+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */; };
+		5DF7442B224168F4005F9745 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7442A224168F4005F9745 /* Requests.swift */; };
+		5DF7442D224173C7005F9745 /* URLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7442C224173C7005F9745 /* URLEncoder.swift */; };
+		5DF7442F22418C2B005F9745 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7442E22418C2B005F9745 /* Response.swift */; };
+		5DF744312241A96F005F9745 /* GetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF744302241A96F005F9745 /* GetService.swift */; };
+		5DF744342241AC5E005F9745 /* StoryObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF744332241AC5E005F9745 /* StoryObjectModel.swift */; };
 		5DF7CFC32240B7D5004BB392 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7CFC22240B7D5004BB392 /* Errors.swift */; };
-		5DF9A8D92240212200F6AD52 /* ElemntsTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8D82240212200F6AD52 /* ElemntsTVC+Delegate.swift */; };
+		5DF9A8D92240212200F6AD52 /* ElementsTVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8D82240212200F6AD52 /* ElementsTVC+Delegate.swift */; };
 		5DF9A8E12240750500F6AD52 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8E02240750500F6AD52 /* Routes.swift */; };
 		5DF9A8E32240798200F6AD52 /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8E22240798200F6AD52 /* Methods.swift */; };
 		5DFFF75F223C286D007C9035 /* IdeaView+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF75E223C286D007C9035 /* IdeaView+DS&Delegate.swift */; };
@@ -49,8 +54,13 @@
 		5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreView+DS&Delegate.swift"; sourceTree = "<group>"; };
 		5DF4309B223A1AD4008483D3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreCell+Constraints.swift"; sourceTree = "<group>"; };
+		5DF7442A224168F4005F9745 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		5DF7442C224173C7005F9745 /* URLEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEncoder.swift; sourceTree = "<group>"; };
+		5DF7442E22418C2B005F9745 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		5DF744302241A96F005F9745 /* GetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetService.swift; sourceTree = "<group>"; };
+		5DF744332241AC5E005F9745 /* StoryObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryObjectModel.swift; sourceTree = "<group>"; };
 		5DF7CFC22240B7D5004BB392 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		5DF9A8D82240212200F6AD52 /* ElemntsTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElemntsTVC+Delegate.swift"; sourceTree = "<group>"; };
+		5DF9A8D82240212200F6AD52 /* ElementsTVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsTVC+Delegate.swift"; sourceTree = "<group>"; };
 		5DF9A8E02240750500F6AD52 /* Routes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routes.swift; sourceTree = "<group>"; };
 		5DF9A8E22240798200F6AD52 /* Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
 		5DFFF75E223C286D007C9035 /* IdeaView+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdeaView+DS&Delegate.swift"; sourceTree = "<group>"; };
@@ -105,6 +115,7 @@
 		5DC629D82237325B00074B30 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5DF744322241AC38005F9745 /* Objects */,
 				5DF9A8DC2240722E00F6AD52 /* Networking */,
 			);
 			path = Model;
@@ -138,7 +149,7 @@
 				5DFFF75E223C286D007C9035 /* IdeaView+DS&Delegate.swift */,
 				5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */,
 				5DFFF762223C660C007C9035 /* ElementsView+DS&Delegate.swift */,
-				5DF9A8D82240212200F6AD52 /* ElemntsTVC+Delegate.swift */,
+				5DF9A8D82240212200F6AD52 /* ElementsTVC+Delegate.swift */,
 				5DC629E022373C6400074B30 /* Constraints */,
 			);
 			path = Extensions;
@@ -172,6 +183,14 @@
 			path = "VC+Constraints";
 			sourceTree = "<group>";
 		};
+		5DF744322241AC38005F9745 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				5DF744332241AC5E005F9745 /* StoryObjectModel.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		5DF9A8DC2240722E00F6AD52 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +207,8 @@
 				5DF9A8E02240750500F6AD52 /* Routes.swift */,
 				5DF9A8E22240798200F6AD52 /* Methods.swift */,
 				5DF7CFC22240B7D5004BB392 /* Errors.swift */,
+				5DF7442A224168F4005F9745 /* Requests.swift */,
+				5DF7442E22418C2B005F9745 /* Response.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -195,6 +216,7 @@
 		5DF9A8DE2240724500F6AD52 /* Encoding */ = {
 			isa = PBXGroup;
 			children = (
+				5DF7442C224173C7005F9745 /* URLEncoder.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -202,6 +224,7 @@
 		5DF9A8DF2240725100F6AD52 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5DF744302241A96F005F9745 /* GetService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -276,10 +299,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DF744312241A96F005F9745 /* GetService.swift in Sources */,
 				5DF9A8E32240798200F6AD52 /* Methods.swift in Sources */,
 				5DF43099223A19E0008483D3 /* GenreView+DS&Delegate.swift in Sources */,
 				5DFFF767223C8C79007C9035 /* ElementsTVCell+Constraints.swift in Sources */,
 				5D01E746223B002E00C25254 /* ElementsView.swift in Sources */,
+				5DF7442D224173C7005F9745 /* URLEncoder.swift in Sources */,
 				5DFFF761223C650D007C9035 /* ElementsView+Constraints.swift in Sources */,
 				5DD7BFF82239AF0200D1A9E6 /* GenreView.swift in Sources */,
 				5DD7BFFA2239B59000D1A9E6 /* GenreView+Constraints.swift in Sources */,
@@ -289,13 +314,16 @@
 				5DFFF763223C660C007C9035 /* ElementsView+DS&Delegate.swift in Sources */,
 				5DD7BFF62239ACFB00D1A9E6 /* GenreViewController.swift in Sources */,
 				5DF4309C223A1AD4008483D3 /* GenreCell.swift in Sources */,
+				5DF7442B224168F4005F9745 /* Requests.swift in Sources */,
 				5DF7CFC32240B7D5004BB392 /* Errors.swift in Sources */,
+				5DF7442F22418C2B005F9745 /* Response.swift in Sources */,
 				5DF4309E223A1C23008483D3 /* GenreCell+Constraints.swift in Sources */,
 				5D01E744223B000E00C25254 /* ElementsViewController.swift in Sources */,
-				5DF9A8D92240212200F6AD52 /* ElemntsTVC+Delegate.swift in Sources */,
+				5DF9A8D92240212200F6AD52 /* ElementsTVC+Delegate.swift in Sources */,
 				5DC629DC2237333600074B30 /* IdeaView.swift in Sources */,
 				5DFFF75F223C286D007C9035 /* IdeaView+DS&Delegate.swift in Sources */,
 				5DC629E422373C9A00074B30 /* IdeaView+Constraints.swift in Sources */,
+				5DF744342241AC5E005F9745 /* StoryObjectModel.swift in Sources */,
 				5DC629C72237317000074B30 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

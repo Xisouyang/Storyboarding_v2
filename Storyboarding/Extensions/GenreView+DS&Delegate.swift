@@ -39,9 +39,7 @@ extension GenreView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        print("we in \(indexPath.row)")
-        
+                
         let cell = collection.dequeueReusableCell(withReuseIdentifier: GenreCell.identifier, for: indexPath) as! GenreCell
         cell.genreLabel.text = genreTitles[indexPath.row]
         cell.genreDescription.text = genreDescription[indexPath.row]

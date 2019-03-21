@@ -8,18 +8,27 @@
 
 import UIKit
 
-
-
 class ElementsViewController: UIViewController {
     
-    
+    let getService = GetServices()
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var genreTitle: String!
+    var storyDict = [StoryModel]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
         setupView()
+        getService.getStories() { result in
+            switch result {
+            case let .success(result):
+                self.storyDict = result
+                print(self.storyDict)
+            case let .failure(error):
+                print(error)
+            }
+        }
 
         // Do any additional setup after loading the view.
     }
