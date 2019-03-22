@@ -18,10 +18,10 @@ class ElementsView: UIView {
     var sectionButton: UIButton!
     var cellID = ""
     
-    let elements = ["Plot", "Conflict", "Resolution", "Characters", "Settings"]
+    let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
     var parsedStories: [String: [String]]? {
         didSet {
-            print("STORY DATA: \(parsedStories)")
+            print("STORY DATA: \(parsedStories!)")
             elementsTableView.reloadData()
         }
     }

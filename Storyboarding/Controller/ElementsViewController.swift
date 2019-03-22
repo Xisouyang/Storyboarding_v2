@@ -92,9 +92,6 @@ class ElementsViewController: UIViewController {
                 parsedStoryDict["Setting"]?.append(story.setting!)
             }
         }
-        
-        print(parsedStoryDict)
-        
 //        parsedStoryDict[""]
 //        var plotIdeas = parsedStoryDict["Plot"]
 //        for story in stories {

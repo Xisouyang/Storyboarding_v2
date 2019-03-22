@@ -42,7 +42,11 @@ extension ElementsView: UITableViewDelegate {
 extension ElementsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if parsedStories == nil {
+            return 5
+        } else {
+            return (parsedStories![elements[section]]?.count)!
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,15 +58,25 @@ extension ElementsView: UITableViewDataSource {
         cell.currentSection = indexPath.section
         cell.currentRow = indexPath.row
         
+        populateRows(cell: cell, path: indexPath)
+        
+        return cell
+    }
+    
+    func populateRows(cell: ElementsTableViewCell, path: IndexPath) {
+        
         if parsedStories == nil {
             cell.cellTextView.text = "loading..."
         } else {
-            cell.cellTextView.text = parsedStories![elements[indexPath.section]]![indexPath.row]
-            print("RELOAD")
+            
+            if parsedStories![elements[path.section]]?.count == 0 {
+                cell.cellTextView.text = ""
+            } else {
+                print(path.section)
+                cell.cellTextView.text = parsedStories![elements[path.section]]![path.row]
+                print("RELOAD")
+            }
         }
-        
-        
-        return cell
     }
     
     
