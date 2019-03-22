@@ -25,7 +25,6 @@ extension GenreView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
-            selectedGenre = cell.genreLabel.text
             cell.genreDescription.backgroundColor = .white
             cell.genreLabel.backgroundColor = .white
         }

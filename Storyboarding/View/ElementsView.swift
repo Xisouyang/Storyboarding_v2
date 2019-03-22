@@ -19,7 +19,12 @@ class ElementsView: UIView {
     var cellID = ""
     
     let elements = ["Plot", "Conflict", "Resolution", "Characters", "Settings"]
-    let elementsCellInstance = ElementsTableViewCell()
+    var parsedStories: [String: [String]]? {
+        didSet {
+            print("STORY DATA: \(parsedStories)")
+            elementsTableView.reloadData()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

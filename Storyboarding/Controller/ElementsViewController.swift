@@ -13,6 +13,7 @@ class ElementsViewController: UIViewController {
     let getService = GetServices()
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var genreTitle: String!
+    var elementView: ElementsView?
     
     
     var storyArr = [StoryModel]()
@@ -28,8 +29,8 @@ class ElementsViewController: UIViewController {
     }
     
     func setupView() {
-        let elementView = ElementsView(frame: self.view.frame)
-        view.addSubview(elementView)
+        elementView = ElementsView(frame: self.view.frame)
+        view.addSubview(elementView!)
     }
     
     func setupNav() {
@@ -54,6 +55,9 @@ class ElementsViewController: UIViewController {
         getService.getStories() { result in
             self.setStories(result: result)
             self.parseStories(stories: self.storyArr)
+            DispatchQueue.main.async {
+                self.elementView!.parsedStories = self.parsedStoryDict
+            }
         }
     }
     
@@ -97,10 +101,6 @@ class ElementsViewController: UIViewController {
 //            plotIdeas?.append(story.plot!)
 //        }
 //        parsedStoryDict["Plot"] = plotIdeas
-    }
-    
-    func selectGenre() {
-        
     }
     
     /*

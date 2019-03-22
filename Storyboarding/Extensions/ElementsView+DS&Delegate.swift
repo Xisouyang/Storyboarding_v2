@@ -53,8 +53,15 @@ extension ElementsView: UITableViewDataSource {
         
         cell.currentSection = indexPath.section
         cell.currentRow = indexPath.row
-//        cell.cellTextView.text = "text"
-    
+        
+        if parsedStories == nil {
+            cell.cellTextView.text = "loading..."
+        } else {
+            cell.cellTextView.text = parsedStories![elements[indexPath.section]]![indexPath.row]
+            print("RELOAD")
+        }
+        
+        
         return cell
     }
     

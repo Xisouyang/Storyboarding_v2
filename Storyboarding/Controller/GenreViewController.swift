@@ -49,6 +49,7 @@ class GenreViewController: UIViewController {
             noGenreSelected()
         } else {
             newController.genreTitle = self.delegate?.returnGenreTitle()
+            print(newController.genreTitle)
             self.navigationController?.pushViewController(newController, animated: true)
         }
     }
