@@ -74,7 +74,6 @@ extension ElementsView: UITableViewDataSource {
             } else {
                 print(path.section)
                 cell.cellTextView.text = parsedStories![elements[path.section]]![path.row]
-                print("RELOAD")
             }
         }
     }
@@ -103,9 +102,11 @@ extension ElementsView: UITableViewDataSource {
         return cellID
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = elementsTableView.dequeueReusableCell(withIdentifier: ElementsTableViewCell.identifier, for: indexPath) as! ElementsTableViewCell
-//        cell.selectionStyle = UITableViewCell.SelectionStyle.none
-//        return cell
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            parsedStories![elements[indexPath.section]]?.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+        }
+    }
 }

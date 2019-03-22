@@ -21,7 +21,7 @@ class ElementsView: UIView {
     let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
     var parsedStories: [String: [String]]? {
         didSet {
-            print("STORY DATA: \(parsedStories!)")
+            print("=====RELOAD=====")
             elementsTableView.reloadData()
         }
     }

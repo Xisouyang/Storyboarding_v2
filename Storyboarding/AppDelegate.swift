@@ -22,8 +22,8 @@
         - create model for data - done
         - change implementation of API to not require auth for getAllStories route - DONE
         Figure out how to handle data
-            - figure out what structure to create to hold data 
-            - figure out how to distribute data in application and display it
+            - figure out what structure to create to hold data -DONE
+            - figure out how to distribute data in application and display it - DONE
                 - randomize
     Persistence
  
@@ -33,7 +33,7 @@
         - Figure out what textview delegate method to use, do proof of concept to see how it works - DONE
         - Create section property on cell - DONE
         - Write logic to check where user input should be accepted onto the textview - DONE
-            - Check what section we're on, decide what to do based on that section
+            - Check what section we're on, decide what to do based on that section - DONE
                 - What should I compare that section to?
                 - Do I even need to compare that section?
                 - Maybe set a boolean to disable or enable textview
@@ -51,6 +51,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -61,11 +62,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let nav1 = UINavigationController()
+//        UINavigationBar.appearance().prefersLargeTitles = true
+//        UINavigationBar.appearance().largeTitleTextAttributes =
+//            [NSAttributedString.Key.foregroundColor: textAttributes,
+//             NSAttributedString.Key.font: UIFont(name: "Times New Roman", size: 18)!]
         let mainView = IdeaViewController(nibName: nil, bundle: nil)
         nav1.viewControllers = [mainView]
         self.window!.rootViewController = nav1
         self.window?.makeKeyAndVisible()
-
+        
         return true
     }
 
