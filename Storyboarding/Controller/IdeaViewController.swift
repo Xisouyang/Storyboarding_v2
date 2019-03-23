@@ -12,6 +12,16 @@ class IdeaViewController: UIViewController {
     
     var addButtonItem: UIBarButtonItem!
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+    
+    var passedStories: [String: [String]]? {
+        didSet {
+            if let unwrappedStories = passedStories {
+                print("IdeaViewController => \(unwrappedStories)")
+            } else {
+                print("error: stories not passed => \(passedStories)")
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

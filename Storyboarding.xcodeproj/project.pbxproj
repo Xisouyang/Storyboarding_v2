@@ -21,6 +21,7 @@
 		5DF43099223A19E0008483D3 /* GenreView+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */; };
 		5DF4309C223A1AD4008483D3 /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309B223A1AD4008483D3 /* GenreCell.swift */; };
 		5DF4309E223A1C23008483D3 /* GenreCell+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */; };
+		5DF4B68D2246B4C900C5C66E /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4B68C2246B4C900C5C66E /* UINavigationController.swift */; };
 		5DF7442B224168F4005F9745 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7442A224168F4005F9745 /* Requests.swift */; };
 		5DF7442D224173C7005F9745 /* URLEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7442C224173C7005F9745 /* URLEncoder.swift */; };
 		5DF7442F22418C2B005F9745 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF7442E22418C2B005F9745 /* Response.swift */; };
@@ -54,6 +55,7 @@
 		5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreView+DS&Delegate.swift"; sourceTree = "<group>"; };
 		5DF4309B223A1AD4008483D3 /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreCell+Constraints.swift"; sourceTree = "<group>"; };
+		5DF4B68C2246B4C900C5C66E /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		5DF7442A224168F4005F9745 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		5DF7442C224173C7005F9745 /* URLEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEncoder.swift; sourceTree = "<group>"; };
 		5DF7442E22418C2B005F9745 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				5DF43098223A19E0008483D3 /* GenreView+DS&Delegate.swift */,
 				5DFFF762223C660C007C9035 /* ElementsView+DS&Delegate.swift */,
 				5DF9A8D82240212200F6AD52 /* ElementsTVC+Delegate.swift */,
+				5DF4B68C2246B4C900C5C66E /* UINavigationController.swift */,
 				5DC629E022373C6400074B30 /* Constraints */,
 			);
 			path = Extensions;
@@ -297,6 +300,7 @@
 				5DFFF767223C8C79007C9035 /* ElementsTVCell+Constraints.swift in Sources */,
 				5D01E746223B002E00C25254 /* ElementsView.swift in Sources */,
 				5DF7442D224173C7005F9745 /* URLEncoder.swift in Sources */,
+				5DF4B68D2246B4C900C5C66E /* UINavigationController.swift in Sources */,
 				5DFFF761223C650D007C9035 /* ElementsView+Constraints.swift in Sources */,
 				5DD7BFF82239AF0200D1A9E6 /* GenreView.swift in Sources */,
 				5DD7BFFA2239B59000D1A9E6 /* GenreView+Constraints.swift in Sources */,

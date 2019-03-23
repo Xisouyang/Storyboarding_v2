@@ -30,6 +30,7 @@ class ElementsViewController: UIViewController {
     }
     
     func setupView() {
+        parsedStoryDict = [:]
         elementView = ElementsView(frame: self.view.frame)
         view.addSubview(elementView!)
     }
@@ -57,8 +58,19 @@ class ElementsViewController: UIViewController {
 //    }
     
     @objc func saveTapped() {
-        print("save tapped")
+        print("ELEMENTVC: save tapped")
+        let ideaVC = IdeaViewController()
+        ideaVC.passedStories = self.parsedStoryDict
+        self.navigationController?.initRootViewController(vc: ideaVC)
     }
+    
+//    func returnStories() -> [String : [String]] {
+//        guard let passedStories = self.elementView?.parsedStories else {
+//            print("error: no stories to pass => \(String(describing: self.elementView?.parsedStories))")
+//            return ["No Stories": ["sorry"]]
+//        }
+//        return passedStories
+//    }
     
     func handleStoryData() {
         getService.getStories() { result in
@@ -75,8 +87,6 @@ class ElementsViewController: UIViewController {
         switch result {
         case let .success(result):
             self.storyArr = result
-            print(self.storyArr)
-            print()
         case let .failure(error):
             print(error)
         }
