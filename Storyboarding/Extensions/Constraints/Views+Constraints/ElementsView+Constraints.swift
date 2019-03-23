@@ -28,10 +28,10 @@ extension ElementsView {
         headerLabel.bottomAnchor.constraint(equalTo: tableViewHeader.bottomAnchor).isActive = true
     }
     
-    func sectionButtonConstraints() {
-        sectionButton.translatesAutoresizingMaskIntoConstraints = false
-        sectionButton.widthAnchor.constraint(equalTo: tableViewHeader.widthAnchor, multiplier: 0.25).isActive = true
-        sectionButton.heightAnchor.constraint(equalTo: tableViewHeader.heightAnchor, multiplier: 0.9).isActive = true
-        sectionButton.rightAnchor.constraint(equalTo: tableViewHeader.rightAnchor).isActive = true
-    }
+//    func sectionButtonConstraints() {
+//        sectionButton.translatesAutoresizingMaskIntoConstraints = false
+//        sectionButton.widthAnchor.constraint(equalTo: tableViewHeader.widthAnchor, multiplier: 0.25).isActive = true
+//        sectionButton.heightAnchor.constraint(equalTo: tableViewHeader.heightAnchor, multiplier: 0.9).isActive = true
+//        sectionButton.rightAnchor.constraint(equalTo: tableViewHeader.rightAnchor).isActive = true
+//    }
 }

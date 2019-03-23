@@ -27,10 +27,9 @@ extension ElementsView: UITableViewDelegate {
         tableViewHeader.addSubview(headerLabel)
         elementsHeaderLabelConstraints()
         
-        createSectionButton()
-        tableViewHeader.addSubview(sectionButton)
-        sectionButtonConstraints()
-        
+//        createSectionButton()
+//        tableViewHeader.addSubview(sectionButton)
+//        sectionButtonConstraints()
         return tableViewHeader
     }
     

@@ -15,7 +15,7 @@ class ElementsView: UIView {
     var elementsTableView: UITableView!
     var tableViewHeader: UIView!
     var headerLabel: UILabel!
-    var sectionButton: UIButton!
+//    var sectionButton: UIButton!
     var cellID = ""
     
     let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
@@ -57,15 +57,15 @@ class ElementsView: UIView {
         headerLabel.textAlignment = .center
     }
     
-    func createSectionButton() {
-        sectionButton = UIButton()
-        sectionButton.backgroundColor = .clear
-        sectionButton.setTitle("Collapse", for: .normal)
-        sectionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-        sectionButton.tintColor = .white
-        sectionButton.sizeToFit()
-        sectionButton.addTarget(elementVC, action: #selector(elementVC.isExpandedButtonTapped), for: .touchUpInside)
-    }
+//    func createSectionButton() {
+//        sectionButton = UIButton()
+//        sectionButton.backgroundColor = .clear
+//        sectionButton.setTitle("Collapse", for: .normal)
+//        sectionButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+//        sectionButton.tintColor = .white
+//        sectionButton.sizeToFit()
+//        sectionButton.addTarget(elementVC, action: #selector(elementVC.isExpandedButtonTapped), for: .touchUpInside)
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

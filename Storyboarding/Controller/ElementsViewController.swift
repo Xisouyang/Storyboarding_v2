@@ -10,11 +10,12 @@ import UIKit
 
 class ElementsViewController: UIViewController {
     
+    var elementView: ElementsView?
     let getService = GetServices()
+    
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var genreTitle: String!
-    var elementView: ElementsView?
-    
+    var saveButton: UIBarButtonItem?
     
     var storyArr = [StoryModel]()
     var parsedStoryDict = [String: [String]]()
@@ -39,16 +40,24 @@ class ElementsViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
+        
+        
+        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+        navigationItem.rightBarButtonItem = saveButton
     }
     
-    @objc func isExpandedButtonTapped(sender: UIButton!) {
-        
-        print("isExpanded tapped")
-        if sender.titleLabel?.text == "Collapse" {
-            sender.setTitle("Expand", for: .normal)
-        } else {
-            sender.setTitle("Collapse", for: .normal)
-        }
+//    @objc func isExpandedButtonTapped(sender: UIButton!) {
+//        
+//        print("isExpanded tapped")
+//        if sender.titleLabel?.text == "Collapse" {
+//            sender.setTitle("Expand", for: .normal)
+//        } else {
+//            sender.setTitle("Collapse", for: .normal)
+//        }
+//    }
+    
+    @objc func saveTapped() {
+        print("save tapped")
     }
     
     func handleStoryData() {
@@ -92,12 +101,6 @@ class ElementsViewController: UIViewController {
                 parsedStoryDict["Setting"]?.append(story.setting!)
             }
         }
-//        parsedStoryDict[""]
-//        var plotIdeas = parsedStoryDict["Plot"]
-//        for story in stories {
-//            plotIdeas?.append(story.plot!)
-//        }
-//        parsedStoryDict["Plot"] = plotIdeas
     }
     
     /*
@@ -109,5 +112,4 @@ class ElementsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

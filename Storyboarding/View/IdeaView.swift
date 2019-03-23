@@ -11,6 +11,7 @@ import UIKit
 class IdeaView: UIView {
     
     let ideaTableView = UITableView()
+    var passedStories: [String: [String]]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
