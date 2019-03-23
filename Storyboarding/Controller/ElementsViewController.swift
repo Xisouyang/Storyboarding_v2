@@ -61,16 +61,25 @@ class ElementsViewController: UIViewController {
         print("ELEMENTVC: save tapped")
         let ideaVC = IdeaViewController()
         ideaVC.passedStories = self.parsedStoryDict
-        self.navigationController?.initRootViewController(vc: ideaVC)
+        passStoryTitle(controller: ideaVC)
     }
     
-//    func returnStories() -> [String : [String]] {
-//        guard let passedStories = self.elementView?.parsedStories else {
-//            print("error: no stories to pass => \(String(describing: self.elementView?.parsedStories))")
-//            return ["No Stories": ["sorry"]]
-//        }
-//        return passedStories
-//    }
+    func passStoryTitle(controller: IdeaViewController) {
+        
+        let alert = UIAlertController(title: "Add Title", message: nil, preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Title Name"
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            if let titleName = alert.textFields?.first?.text {
+                controller.passedTitle = titleName
+                self.navigationController?.initRootViewController(vc: controller)
+            }
+        }))
+
+        self.present(alert, animated: true)
+    }
     
     func handleStoryData() {
         getService.getStories() { result in

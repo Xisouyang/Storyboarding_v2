@@ -11,7 +11,16 @@ import UIKit
 class IdeaView: UIView {
     
     let ideaTableView = UITableView()
-    var passedStories: [String: [String]]?
+    var passedStories: [String: [String]]? {
+        didSet {
+            if let unwrappedStories = passedStories {
+                print()
+                print("Idea View => \(unwrappedStories)")
+            } else {
+                print("IdeaView: stories not passed => \(String(describing: passedStories))")
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

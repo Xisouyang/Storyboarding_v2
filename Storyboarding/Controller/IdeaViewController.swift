@@ -16,9 +16,21 @@ class IdeaViewController: UIViewController {
     var passedStories: [String: [String]]? {
         didSet {
             if let unwrappedStories = passedStories {
-                print("IdeaViewController => \(unwrappedStories)")
+                print()
+                print("IdeaViewController stories => \(unwrappedStories)")
             } else {
-                print("error: stories not passed => \(passedStories)")
+                print("IdeaViewController: stories not passed => \(String(describing: passedStories))")
+            }
+        }
+    }
+    
+    var passedTitle: String? {
+        didSet {
+            if let unwrappedTitle = passedTitle {
+                print()
+                print("IdeaViewController passed title => \(unwrappedTitle)")
+            } else {
+                print("IdeaViewController: title not passed => \(String(describing: passedTitle))")
             }
         }
     }
@@ -35,6 +47,7 @@ class IdeaViewController: UIViewController {
     func setupView() {
         let mainViewFrame = UIScreen.main.bounds
         let ideaView = IdeaView()
+        ideaView.passedStories = passedStories
         ideaView.frame = mainViewFrame
         view.addSubview(ideaView)
     }
