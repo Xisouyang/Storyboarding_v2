@@ -17,9 +17,10 @@ class IdeaViewController: UIViewController {
         didSet {
             if let unwrappedStories = passedStories {
                 print()
-                print("IdeaViewController stories => \(unwrappedStories)")
+                print("IdeaViewController passed story => \(unwrappedStories)")
+                IdeaView.storiesArr.append(unwrappedStories)
             } else {
-                print("IdeaViewController: stories not passed => \(String(describing: passedStories))")
+                print("IdeaViewController: story not passed => \(String(describing: passedStories))")
             }
         }
     }
@@ -29,6 +30,7 @@ class IdeaViewController: UIViewController {
             if let unwrappedTitle = passedTitle {
                 print()
                 print("IdeaViewController passed title => \(unwrappedTitle)")
+                IdeaView.titleArr.append(unwrappedTitle)
             } else {
                 print("IdeaViewController: title not passed => \(String(describing: passedTitle))")
             }

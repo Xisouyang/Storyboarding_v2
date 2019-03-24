@@ -15,10 +15,20 @@ class IdeaView: UIView {
         didSet {
             if let unwrappedStories = passedStories {
                 print()
-                print("Idea View => \(unwrappedStories)")
+                print("Idea View passed Story => \(unwrappedStories)")
             } else {
                 print("IdeaView: stories not passed => \(String(describing: passedStories))")
             }
+        }
+    }
+    static var storiesArr: [[String: [String]]] = [] {
+        didSet {
+            print("Idea View stories array => \(storiesArr)")
+        }
+    }
+    static var titleArr: [String] = [] {
+        didSet {
+           print("Idea View titleArr => \(titleArr)")
         }
     }
     
