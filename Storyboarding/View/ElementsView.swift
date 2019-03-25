@@ -25,7 +25,7 @@ class ElementsView: UIView {
             elementsTableView.reloadData()
         }
     }
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         

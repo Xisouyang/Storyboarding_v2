@@ -31,6 +31,7 @@ class IdeaView: UIView {
            print("Idea View titleArr => \(titleArr)")
         }
     }
+    var delegate: IdeaVCDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,5 +67,6 @@ class IdeaView: UIView {
     }
     */
 }
+
 
 

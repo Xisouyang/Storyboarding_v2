@@ -8,7 +8,11 @@
 
 import UIKit
 
-class IdeaViewController: UIViewController {
+protocol IdeaVCDelegate {
+    func goToElementVC()
+}
+
+class IdeaViewController: UIViewController, IdeaVCDelegate {
     
     var addButtonItem: UIBarButtonItem!
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
@@ -49,6 +53,7 @@ class IdeaViewController: UIViewController {
     func setupView() {
         let mainViewFrame = UIScreen.main.bounds
         let ideaView = IdeaView()
+        ideaView.delegate = self
         ideaView.passedStories = passedStories
         ideaView.frame = mainViewFrame
         view.addSubview(ideaView)
@@ -89,6 +94,12 @@ class IdeaViewController: UIViewController {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
         navigationItem.rightBarButtonItem = addButtonItem
+    }
+    
+    func goToElementVC() {
+        let elementVC = ElementsViewController()
+        elementVC.parse = false
+        navigationController?.pushViewController(elementVC, animated: true)
     }
 }
 

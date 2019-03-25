@@ -50,6 +50,7 @@ class GenreViewController: UIViewController {
         } else {
             newController.genreTitle = self.delegate?.returnGenreTitle()
             print(newController.genreTitle)
+            newController.parse = true
             self.navigationController?.pushViewController(newController, animated: true)
         }
     }

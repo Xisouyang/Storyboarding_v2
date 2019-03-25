@@ -19,6 +19,8 @@ class ElementsViewController: UIViewController {
     
     var storyArr = [StoryModel]()
     var parsedStoryDict = [String: [String]]()
+    
+    var parse: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +62,11 @@ class ElementsViewController: UIViewController {
     @objc func saveTapped() {
         print("ELEMENTVC: save tapped")
         let ideaVC = IdeaViewController()
-        ideaVC.passedStories = self.parsedStoryDict
+        if parse {
+            ideaVC.passedStories = self.parsedStoryDict
+        } else {
+            print("no stories passed")
+        }
         passStoryTitle(controller: ideaVC)
     }
     
@@ -84,9 +90,13 @@ class ElementsViewController: UIViewController {
     func handleStoryData() {
         getService.getStories() { result in
             self.setStories(result: result)
-            self.parseStories(stories: self.storyArr)
-            DispatchQueue.main.async {
-                self.elementView!.parsedStories = self.parsedStoryDict
+            if self.parse {
+                self.parseStories(stories: self.storyArr)
+                DispatchQueue.main.async {
+                    self.elementView!.parsedStories = self.parsedStoryDict
+                }
+            } else {
+               print("no stories parsed")
             }
         }
     }
