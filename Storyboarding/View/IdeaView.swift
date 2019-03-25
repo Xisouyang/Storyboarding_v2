@@ -59,6 +59,8 @@ class IdeaView: UIView {
         ideaTableView.separatorInset.right = 10
     }
     
+    
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

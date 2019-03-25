@@ -22,7 +22,12 @@ extension IdeaView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-        self.delegate?.goToElementVC()
+        var passStory = passStories(path: indexPath)
+        self.delegate?.goToElementVC(passedStory: passStory)
+    }
+    
+    func passStories(path: IndexPath) -> [String : [String]] {
+        return IdeaView.storiesArr[path.row]
     }
 }
 

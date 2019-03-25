@@ -9,7 +9,7 @@
 import UIKit
 
 protocol IdeaVCDelegate {
-    func goToElementVC()
+    func goToElementVC(passedStory: [String:[String]])
 }
 
 class IdeaViewController: UIViewController, IdeaVCDelegate {
@@ -96,9 +96,10 @@ class IdeaViewController: UIViewController, IdeaVCDelegate {
         navigationItem.rightBarButtonItem = addButtonItem
     }
     
-    func goToElementVC() {
+    func goToElementVC(passedStory: [String:[String]]) {
         let elementVC = ElementsViewController()
         elementVC.parse = false
+        elementVC.parsedStoryDict = passedStory
         navigationController?.pushViewController(elementVC, animated: true)
     }
 }

@@ -18,7 +18,11 @@ class ElementsViewController: UIViewController {
     var saveButton: UIBarButtonItem?
     
     var storyArr = [StoryModel]()
-    var parsedStoryDict = [String: [String]]()
+    var parsedStoryDict = [String: [String]]() {
+        didSet {
+            print("parsed Story Dict => \(parsedStoryDict)")
+        }
+    }
     
     var parse: Bool = true
 
@@ -32,7 +36,7 @@ class ElementsViewController: UIViewController {
     }
     
     func setupView() {
-        parsedStoryDict = [:]
+//        parsedStoryDict = [:]
         elementView = ElementsView(frame: self.view.frame)
         view.addSubview(elementView!)
     }
@@ -62,11 +66,8 @@ class ElementsViewController: UIViewController {
     @objc func saveTapped() {
         print("ELEMENTVC: save tapped")
         let ideaVC = IdeaViewController()
-        if parse {
-            ideaVC.passedStories = self.parsedStoryDict
-        } else {
-            print("no stories passed")
-        }
+        self.parsedStoryDict = (self.elementView?.parsedStories)!
+        ideaVC.passedStories = self.parsedStoryDict
         passStoryTitle(controller: ideaVC)
     }
     
@@ -96,7 +97,9 @@ class ElementsViewController: UIViewController {
                     self.elementView!.parsedStories = self.parsedStoryDict
                 }
             } else {
-               print("no stories parsed")
+                DispatchQueue.main.async {
+                    self.elementView?.parsedStories = self.parsedStoryDict
+                }
             }
         }
     }
