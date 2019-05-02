@@ -8,10 +8,10 @@
 
 import UIKit
 
-extension ElementsView: UITableViewDelegate {
+extension ElementsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.frame.height / 4
+        return view.frame.height / 4
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -26,26 +26,18 @@ extension ElementsView: UITableViewDelegate {
         headerLabel.text = elements[section]
         tableViewHeader.addSubview(headerLabel)
         elementsHeaderLabelConstraints()
-        
-//        createSectionButton()
-//        tableViewHeader.addSubview(sectionButton)
-//        sectionButtonConstraints()
         return tableViewHeader
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.frame.height / 16
+        return view.frame.height / 16
     }
 }
 
-extension ElementsView: UITableViewDataSource {
+extension ElementsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if parsedStories == nil {
-            return 5
-        } else {
-            return (parsedStories![elements[section]]?.count)!
-        }
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,26 +54,17 @@ extension ElementsView: UITableViewDataSource {
         return cell
     }
     
+    /* Populate each cell with the parsed stories or loading text if fetching */
     func populateRows(cell: ElementsTableViewCell, path: IndexPath) {
         
-        if parsedStories == nil {
-            cell.cellTextView.text = "loading..."
-        } else {
-            
-            if parsedStories![elements[path.section]]?.count == 0 {
-                cell.cellTextView.text = ""
-            } else {
-                print(path.section)
-                cell.cellTextView.text = parsedStories![elements[path.section]]![path.row]
-            }
-        }
+        cell.cellTextView.text = "loading..."
     }
     
     
     func selectCellID(indexPath: IndexPath) -> String {
         
         /*
-         Need switch statement to keep cells from different sections seperate from each other
+         Need switch statement to keep cells from different sections separate from each other
          */
         
         switch indexPath.section {
@@ -103,9 +86,25 @@ extension ElementsView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            parsedStories![elements[indexPath.section]]?.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
+            
         }
+    }
+    
+    func elementsTVConstraints() {
+        
+        elementsTableView.translatesAutoresizingMaskIntoConstraints = false
+        elementsTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        elementsTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        elementsTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        elementsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+    }
+    
+    func elementsHeaderLabelConstraints() {
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.leftAnchor.constraint(equalTo: tableViewHeader.leftAnchor).isActive = true
+        headerLabel.topAnchor.constraint(equalTo: tableViewHeader.topAnchor).isActive = true
+        headerLabel.rightAnchor.constraint(equalTo: tableViewHeader.rightAnchor).isActive = true
+        headerLabel.bottomAnchor.constraint(equalTo: tableViewHeader.bottomAnchor).isActive = true
     }
 }

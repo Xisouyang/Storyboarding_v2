@@ -14,12 +14,7 @@
 
 import UIKit
 
-protocol GenreViewDelegate {
-    
-    func returnGenreTitle() -> String
-}
-
-class GenreView: UIView, GenreViewDelegate {
+class GenreView: UIView {
     
     var collection: UICollectionView!
     var collectionHeight: CGFloat!
@@ -42,7 +37,6 @@ class GenreView: UIView, GenreViewDelegate {
         
         self.collectionHeight = collectionHeight
         setupCollectionView()
-        collectionConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -54,20 +48,10 @@ class GenreView: UIView, GenreViewDelegate {
         collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         addSubview(collection)
 
-        self.collection.dataSource = self
-        self.collection.delegate = self
         self.collection.register(GenreCell.self, forCellWithReuseIdentifier: GenreCell.identifier)
         self.collection.alwaysBounceVertical = true
         self.collection.backgroundColor = .black
     }
-    
-    func returnGenreTitle() -> String {
-        
-        return selectedGenre ?? "NIL"
-    }
-    
-    
-    
     
     /*
     // Only override draw() if you perform custom drawing.

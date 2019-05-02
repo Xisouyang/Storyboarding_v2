@@ -22,7 +22,7 @@ enum HTTPNetworkError: String, Error {
     case success = "Successful Network Request"
     case authenticationError = "Error Found : You must be Authenticated"
     case badRequest = "Error Found : Bad Request"
-    case pageNotFound = "Error Found : Page/Route rquested not found."
+    case pageNotFound = "Error Found : Page/Route requested not found."
     case failed = "Error Found : Network Request failed"
     case serverSideError = "Error Found : Server error"
     case headerFailed = "Error Found : Unwrapping header failed"

@@ -8,56 +8,21 @@
 
 import UIKit
 
-protocol IdeaVCDelegate {
-    func goToElementVC(passedStory: [String:[String]])
-}
-
-class IdeaViewController: UIViewController, IdeaVCDelegate {
+class IdeaViewController: UIViewController {
     
+    let ideaTableView = UITableView()
     var addButtonItem: UIBarButtonItem!
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-    
-    var passedStories: [String: [String]]? {
-        didSet {
-            if let unwrappedStories = passedStories {
-                print()
-                print("IdeaViewController passed story => \(unwrappedStories)")
-                IdeaView.storiesArr.append(unwrappedStories)
-            } else {
-                print("IdeaViewController: story not passed => \(String(describing: passedStories))")
-            }
-        }
-    }
-    
-    var passedTitle: String? {
-        didSet {
-            if let unwrappedTitle = passedTitle {
-                print()
-                print("IdeaViewController passed title => \(unwrappedTitle)")
-                IdeaView.titleArr.append(unwrappedTitle)
-            } else {
-                print("IdeaViewController: title not passed => \(String(describing: passedTitle))")
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        setupView()
+        view.addSubview(ideaTableView)
         setupNav()
+        setupTableView()
     }
     
     //MARK: view setup functionality
-    
-    func setupView() {
-        let mainViewFrame = UIScreen.main.bounds
-        let ideaView = IdeaView()
-        ideaView.delegate = self
-        ideaView.passedStories = passedStories
-        ideaView.frame = mainViewFrame
-        view.addSubview(ideaView)
-    }
     
     func setupNav() {
         navigationItem.title = "Storyboarding"
@@ -68,6 +33,24 @@ class IdeaViewController: UIViewController, IdeaVCDelegate {
         addButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItem = addButtonItem
         navigationController?.navigationBar.tintColor = .white
+    }
+    
+    func setupTableView() {
+        ideaTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        ideaTableViewConstraints()
+        tableViewSeperators()
+    }
+    
+    func tableViewSeperators() {
+        ideaTableView.separatorColor = .black
+        ideaTableView.separatorInset.left = 10
+        ideaTableView.separatorInset.right = 10
+    }
+    
+    func ideaTableViewConstraints() {
+        ideaTableView.translatesAutoresizingMaskIntoConstraints = false
+        ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        ideaTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
     
     //MARK: button functionality
@@ -94,13 +77,6 @@ class IdeaViewController: UIViewController, IdeaVCDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
         navigationItem.rightBarButtonItem = addButtonItem
-    }
-    
-    func goToElementVC(passedStory: [String:[String]]) {
-        let elementVC = ElementsViewController()
-        elementVC.parse = false
-        elementVC.parsedStoryDict = passedStory
-        navigationController?.pushViewController(elementVC, animated: true)
     }
 }
 

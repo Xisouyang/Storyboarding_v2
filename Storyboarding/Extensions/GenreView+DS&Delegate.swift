@@ -6,15 +6,9 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-/*
- TODO: give proper title and description to subviews
-        - create arrays to hold those strings
-        - create button on nav bar to save and go to next screen
- */
-
 import UIKit
 
-extension GenreView: UICollectionViewDelegate {
+extension GenreViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
             cell.genreDescription.backgroundColor = UIColor.lightGray
@@ -31,7 +25,7 @@ extension GenreView: UICollectionViewDelegate {
     }
 }
 
-extension GenreView: UICollectionViewDataSource {
+extension GenreViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return genreTitles.count
@@ -46,7 +40,7 @@ extension GenreView: UICollectionViewDataSource {
     }
 }
 
-extension GenreView: UICollectionViewDelegateFlowLayout {
+extension GenreViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
