@@ -74,6 +74,7 @@ class GenreViewController: UIViewController {
         if returnGenreTitle() == "NIL" {
             noGenreSelected()
         } else {
+            newController.headerTitle = returnGenreTitle()
             self.navigationController?.pushViewController(newController, animated: true)
         }
     }

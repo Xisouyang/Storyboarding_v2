@@ -15,8 +15,8 @@ class ElementsViewController: UIViewController {
     var elementsTableView: UITableView!
     var tableViewHeader: UIView!
     var headerLabel: UILabel!
-    var cellID = ""
-    
+    var headerTitle: String?
+    var cellID: String = "cellID"
     let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
     
     override func viewDidLoad() {
@@ -24,6 +24,14 @@ class ElementsViewController: UIViewController {
         setupNav()
         setupTableView()
         
+        ServiceLayer.request(router: Router.getAllStories) { (result: Result<[StoryModel]>) in
+            switch result {
+            case .success:
+                print("success")
+            case .failure:
+                print("failure")
+            }
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -35,6 +43,7 @@ class ElementsViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
         saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         navigationItem.rightBarButtonItem = saveButton
+        navigationItem.title = headerTitle
     }
     
     func setupTableView() {

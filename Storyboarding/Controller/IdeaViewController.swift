@@ -37,12 +37,13 @@ class IdeaViewController: UIViewController {
     
     func setupTableView() {
         ideaTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        ideaTableView.backgroundColor = .black
         ideaTableViewConstraints()
         tableViewSeperators()
     }
     
     func tableViewSeperators() {
-        ideaTableView.separatorColor = .black
+        ideaTableView.separatorColor = .white
         ideaTableView.separatorInset.left = 10
         ideaTableView.separatorInset.right = 10
     }
