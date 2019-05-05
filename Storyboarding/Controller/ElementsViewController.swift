@@ -16,8 +16,10 @@ class ElementsViewController: UIViewController {
     var tableViewHeader: UIView!
     var headerLabel: UILabel!
     var headerTitle: String?
+    
     var cellID: String = "cellID"
     let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
+    var storyArr = [StoryModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +28,16 @@ class ElementsViewController: UIViewController {
         
         ServiceLayer.request(router: Router.getAllStories) { (result: Result<[StoryModel]>) in
             switch result {
-            case .success:
+            case .success(let result):
+                self.storyArr = result
+                print(self.storyArr)
                 print("success")
-            case .failure:
-                print("failure")
+            case .failure(let error):
+                print("\(error)")
             }
         }
         // Do any additional setup after loading the view.
     }
-
     
     func setupNav() {
         navigationController?.navigationBar.barTintColor = UIColor.black
