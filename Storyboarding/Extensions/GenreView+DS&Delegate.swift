@@ -9,6 +9,8 @@
 import UIKit
 
 extension GenreViewController: UICollectionViewDelegate {
+    
+    // function that fires when we select an item that's part of the collection view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
             cell.genreDescription.backgroundColor = UIColor.lightGray
@@ -17,6 +19,7 @@ extension GenreViewController: UICollectionViewDelegate {
         }
     }
     
+    // fires when we deselect an item in the collection view by clicking another one
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
             cell.genreDescription.backgroundColor = .white
@@ -24,6 +27,9 @@ extension GenreViewController: UICollectionViewDelegate {
         }
     }
 }
+
+
+//MARK: collection view data
 
 extension GenreViewController: UICollectionViewDataSource {
     
@@ -40,6 +46,7 @@ extension GenreViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: collection view UI
 extension GenreViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,

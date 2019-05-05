@@ -69,7 +69,7 @@ class GenreViewController: UIViewController {
     }
     
     @objc func addTapped() {
-        print("genreVC add button tapped")
+        print("GENRE VIEW CONTROLLER add button tapped")
         let newController = ElementsViewController()
         if returnGenreTitle() == "NIL" {
             noGenreSelected()

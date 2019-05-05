@@ -10,6 +10,8 @@ import UIKit
 
 extension ElementsViewController: UITableViewDelegate {
     
+    //MARK: Tableview UI
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.height / 4
     }
@@ -54,7 +56,7 @@ extension ElementsViewController: UITableViewDataSource {
         return cell
     }
     
-    /* Populate each cell with the parsed stories or loading text if fetching */
+    //Populate each cell with the parsed stories or loading text if fetching
     func populateRows(cell: ElementsTableViewCell, path: IndexPath) {
         
         cell.cellTextView.text = "loading..."
@@ -63,9 +65,9 @@ extension ElementsViewController: UITableViewDataSource {
     
     func selectCellID(indexPath: IndexPath) -> String {
         
-        /*
-         Need switch statement to keep cells from different sections separate from each other
-         */
+        
+        //Need switch statement to keep cells from different sections separate from each other
+ 
         
         switch indexPath.section {
         case 0:
@@ -89,6 +91,8 @@ extension ElementsViewController: UITableViewDataSource {
             
         }
     }
+    
+    //MARK: constraints
     
     func elementsTVConstraints() {
         

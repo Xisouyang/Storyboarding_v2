@@ -72,7 +72,7 @@ class ElementsViewController: UIViewController {
     }
     
     @objc func saveTapped() {
-        print("ELEMENTVC: save tapped")
+        print("ELEMENT VIEW CONTROLLER: save tapped")
     }
     
     /*
