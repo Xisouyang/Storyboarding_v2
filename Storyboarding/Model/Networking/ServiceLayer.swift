@@ -49,10 +49,15 @@ class ServiceLayer {
             completion(.failure(.badURL))
             return
         }
+        
+        //create request
         var urlRequest = URLRequest(url: url)
+        //specify request method
         urlRequest.httpMethod = router.method
         
+        //create session
         let session = URLSession(configuration: .default)
+        //create data task
         let dataTask = session.dataTask(with: urlRequest) { data, response, error in
             
             guard let httpResponse = response as? HTTPURLResponse else {
@@ -68,6 +73,7 @@ class ServiceLayer {
             if let responseData = data {
                 do {
                     let responseObj = try JSONDecoder().decode(T.self, from: responseData)
+//                    ElementsViewController.needToCallAPI = true
                     completion(.success(responseObj))
                 } catch {
                     completion(.failure(.jsonConversionFailure))

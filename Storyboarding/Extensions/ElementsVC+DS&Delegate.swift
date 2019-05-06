@@ -39,7 +39,11 @@ extension ElementsViewController: UITableViewDelegate {
 extension ElementsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if parsedStoryDict.count == 0 {
+            return 5
+        } else {
+            return (parsedStoryDict[elements[section]]?.count)!
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +63,13 @@ extension ElementsViewController: UITableViewDataSource {
     //Populate each cell with the parsed stories or loading text if fetching
     func populateRows(cell: ElementsTableViewCell, path: IndexPath) {
         
-        cell.cellTextView.text = "loading..."
+        let storyCatagory = parsedStoryDict[elements[path.section]]
+        if storyCatagory?.count == 0 {
+            cell.cellTextView.text = "loading..."
+        } else {
+            guard let unwrappedCatagory = storyCatagory else { return }
+            cell.cellTextView.text = unwrappedCatagory[path.row]
+        }
     }
     
     

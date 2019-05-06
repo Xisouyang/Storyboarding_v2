@@ -10,6 +10,8 @@ import UIKit
 
 class ElementsViewController: UIViewController {
     
+//    static var needToCallAPI = true
+    
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var saveButton: UIBarButtonItem?
     var elementsTableView: UITableView!
@@ -19,7 +21,8 @@ class ElementsViewController: UIViewController {
     
     var cellID: String = "cellID"
     let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
-    var storyArr = [StoryModel]()
+    var allStoriesArr = [StoryModel]()
+    var parsedStoryDict: [String: [String]] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +32,8 @@ class ElementsViewController: UIViewController {
         ServiceLayer.request(router: Router.getAllStories) { (result: Result<[StoryModel]>) in
             switch result {
             case .success(let result):
-                self.storyArr = result
-                print(self.storyArr)
-                print("success")
+                self.allStoriesArr = result
+                self.parseStories(stories: self.allStoriesArr)
             case .failure(let error):
                 print("\(error)")
             }
@@ -39,6 +41,8 @@ class ElementsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: UI
+
     func setupNav() {
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -64,14 +68,45 @@ class ElementsViewController: UIViewController {
         elementsTVConstraints()
     }
     
-    // MARK: Header UI
-    
     func createHeaderLabel() {
         headerLabel = UILabel()
         headerLabel.textColor = .white
         headerLabel.font = UIFont.init(name: "Baskerville", size: 36)
         headerLabel.backgroundColor = .black
         headerLabel.textAlignment = .center
+    }
+    
+    func parseStories(stories: [StoryModel]) {
+        parsedStoryDict["Plot"] = []
+        parsedStoryDict["Conflict"] = []
+        parsedStoryDict["Resolution"] = []
+        parsedStoryDict["Character"] = []
+        parsedStoryDict["Setting"] = []
+        
+        for story in stories {
+            if story.genre != headerTitle {
+                continue
+            } else {
+                if let unwrappedPlot = story.plot {
+                    parsedStoryDict["Plot"]?.append(unwrappedPlot)
+                }
+                if let unwrappedConflicts = story.conflict {
+                    parsedStoryDict["Conflict"]?.append(unwrappedConflicts)
+                }
+                if let unwrappedResolutions = story.resolution {
+                    parsedStoryDict["Resolution"]?.append(unwrappedResolutions)
+                }
+                if let unwrappedChars = story.character {
+                    parsedStoryDict["Character"]?.append(unwrappedChars)
+                }
+                if let unwrappedSettings = story.setting {
+                    parsedStoryDict["Setting"]?.append(unwrappedSettings)
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            self.elementsTableView.reloadData()
+        }
     }
     
     @objc func saveTapped() {
