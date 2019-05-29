@@ -29,8 +29,10 @@ class GenreViewController: UIViewController {
         super.viewDidLoad()
         setupNav()
         setupView()
-        // Do any additional setup after loading the view.
     }
+    
+    
+    //MARK: UI
     
     func setupView() {
         
@@ -69,6 +71,8 @@ class GenreViewController: UIViewController {
         collection.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         collection.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
+    
+    //MARK: Button functionality
     
     @objc func addTapped() {
         print("GENRE VIEW CONTROLLER add button tapped")

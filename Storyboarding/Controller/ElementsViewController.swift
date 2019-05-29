@@ -6,11 +6,22 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+
+// TODO:
+// 1) finish commenting
+// 2) implement UI alert when saving
+//    - cannot save if we do not add a title for the storyboard
+//    - if title is added, then send title to idea view controller screen
+// 3) implement Core Data
+
+
 import UIKit
 
 class ElementsViewController: UIViewController {
     
 //    static var needToCallAPI = true
+    
+    // Initialize neccessary variables
     
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var saveButton: UIBarButtonItem?
@@ -38,7 +49,6 @@ class ElementsViewController: UIViewController {
                 print("\(error)")
             }
         }
-        // Do any additional setup after loading the view.
     }
     
     // MARK: UI
@@ -76,6 +86,7 @@ class ElementsViewController: UIViewController {
         headerLabel.textAlignment = .center
     }
     
+    // parse converted JSON data
     func parseStories(stories: [StoryModel]) {
         parsedStoryDict["Plot"] = []
         parsedStoryDict["Conflict"] = []
@@ -112,14 +123,4 @@ class ElementsViewController: UIViewController {
     @objc func saveTapped() {
         print("ELEMENT VIEW CONTROLLER: save tapped")
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
