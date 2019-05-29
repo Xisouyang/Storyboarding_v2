@@ -8,6 +8,7 @@
 
 import Foundation
 
+// customized error messages
 enum NetworkingError: Error {
     
     case badURL
@@ -29,6 +30,7 @@ enum NetworkingError: Error {
     }
 }
 
+// return type to determine whether api call succeeded or failed
 enum Result<T>{
     case success(T)
     case failure(NetworkingError)
@@ -60,6 +62,8 @@ class ServiceLayer {
         //create data task
         let dataTask = session.dataTask(with: urlRequest) { data, response, error in
             
+            //checks to make sure process of making network call to data goes smoothly
+            
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(.failure(.requestFailed))
                 return
@@ -73,7 +77,6 @@ class ServiceLayer {
             if let responseData = data {
                 do {
                     let responseObj = try JSONDecoder().decode(T.self, from: responseData)
-//                    ElementsViewController.needToCallAPI = true
                     completion(.success(responseObj))
                 } catch {
                     completion(.failure(.jsonConversionFailure))

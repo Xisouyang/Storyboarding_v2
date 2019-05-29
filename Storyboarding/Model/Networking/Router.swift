@@ -1,5 +1,5 @@
 //
-//  '.swift
+//  Router.swift
 //  Storyboarding
 //
 //  Created by Stephen Ouyang on 5/3/19.
@@ -8,6 +8,7 @@
 
 import Foundation
 
+// allow us to select which option we want, and based on that will piece together URL
 enum Router {
     case getAllStories
     

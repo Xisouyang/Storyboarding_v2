@@ -10,6 +10,8 @@ import UIKit
 
 class GenreViewController: UIViewController {
     
+    //initialize neccessary variables
+
     var collection: UICollectionView!
     var collectionHeight: CGFloat!
     var genreTitles: [String] = ["Adventure", "Horror", "Mystery", "Romance"]
@@ -89,17 +91,4 @@ class GenreViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -10,7 +10,7 @@ import UIKit
 
 extension ElementsViewController: UITableViewDelegate {
     
-    //MARK: Tableview UI
+    //MARK: tableview UI
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.height / 4
@@ -36,6 +36,7 @@ extension ElementsViewController: UITableViewDelegate {
     }
 }
 
+//MARK: tableview data handling
 extension ElementsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

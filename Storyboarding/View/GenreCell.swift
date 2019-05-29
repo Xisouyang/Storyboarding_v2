@@ -10,6 +10,8 @@ import UIKit
 
 class GenreCell: UICollectionViewCell {
     
+    //initialize neccessary variables
+    
     static var identifier: String = "cell"
     var genreView: UIView!
     var genreLabel: UILabel!
@@ -25,6 +27,8 @@ class GenreCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: Cell UI elements
     
     func setGenreView() {
         genreView = UIView(frame: .zero)

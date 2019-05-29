@@ -8,6 +8,7 @@
 
 import Foundation
 
+// model to represent story data converted from JSON
 struct StoryModel: Codable {
     let genre: String?
     let plot: String?

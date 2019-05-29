@@ -14,8 +14,4 @@ extension ElementsTableViewCell: UITextViewDelegate {
         print("current section: \(currentSection), current row: \(currentRow!)")
         return true
     }
-    
-//    func textViewDidBeginEditing(_ textView: UITextView) {
-//
-//    }
 }
