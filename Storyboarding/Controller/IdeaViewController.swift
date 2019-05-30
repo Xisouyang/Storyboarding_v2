@@ -13,13 +13,18 @@ class IdeaViewController: UIViewController {
     let ideaTableView = UITableView()
     var addButtonItem: UIBarButtonItem!
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+    
+    static var storyArr: [String] = []
+    
+    override func loadView() {
+        super.loadView()
+        view.addSubview(ideaTableView)
+        setupTableView()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(ideaTableView)
         setupNav()
-        setupTableView()
     }
     
     //MARK: view setup functionality
@@ -37,6 +42,8 @@ class IdeaViewController: UIViewController {
     
     func setupTableView() {
         ideaTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        ideaTableView.delegate = self
+        ideaTableView.dataSource = self
         ideaTableView.backgroundColor = .black
         ideaTableViewConstraints()
         tableViewSeperators()

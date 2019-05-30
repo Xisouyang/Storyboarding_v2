@@ -17,7 +17,3 @@ struct StoryModel: Codable {
     let character: String?
     let setting: String?
 }
-
-//struct StoryList: Codable {
-//    let stories: [StoryModel]
-//}

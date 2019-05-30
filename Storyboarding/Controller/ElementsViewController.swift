@@ -13,6 +13,7 @@
 //    - cannot save if we do not add a title for the storyboard
 //    - if title is added, then send title to idea view controller screen
 // 3) implement Core Data
+// 4) create booleans to check for if we need to request data from api or retrieve data from Core Data
 
 
 import UIKit
@@ -135,7 +136,13 @@ class ElementsViewController: UIViewController {
         let alert = UIAlertController(title: "Please enter a title", message: nil, preferredStyle: .alert)
         
         // create action
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+            let newVC = IdeaViewController()
+            guard let unwrappedTextFields = alert.textFields else { return }
+            guard let unwrappedText = unwrappedTextFields[0].text else { return }
+            IdeaViewController.storyArr.append(unwrappedText)
+            self.navigationController?.initRootViewController(vc: newVC)
+        })
         okAction.isEnabled = false
         alert.addAction(okAction)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

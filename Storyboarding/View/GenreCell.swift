@@ -12,7 +12,7 @@ class GenreCell: UICollectionViewCell {
     
     //initialize neccessary variables
     
-    static var identifier: String = "cell"
+    static var identifier: String = "genreCell"
     var genreView: UIView!
     var genreLabel: UILabel!
     var genreDescription: UILabel!

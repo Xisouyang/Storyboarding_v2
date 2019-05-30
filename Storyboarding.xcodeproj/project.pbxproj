@@ -18,6 +18,7 @@
 		5DF4309E223A1C23008483D3 /* GenreCell+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */; };
 		5DF4B68D2246B4C900C5C66E /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF4B68C2246B4C900C5C66E /* UINavigationController.swift */; };
 		5DF744342241AC5E005F9745 /* StoryObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF744332241AC5E005F9745 /* StoryObjectModel.swift */; };
+		5DF8EFD0229F58EA0064214A /* IdeaVC+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8EFCF229F58EA0064214A /* IdeaVC+DS&Delegate.swift */; };
 		5DF9A8D92240212200F6AD52 /* ElementsTVCell+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8D82240212200F6AD52 /* ElementsTVCell+Delegate.swift */; };
 		5DFF594C227CF3C800E1D6FD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF594B227CF3C800E1D6FD /* Router.swift */; };
 		5DFF594E227CF79000E1D6FD /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF594D227CF79000E1D6FD /* ServiceLayer.swift */; };
@@ -40,6 +41,7 @@
 		5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreCell+Constraints.swift"; sourceTree = "<group>"; };
 		5DF4B68C2246B4C900C5C66E /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		5DF744332241AC5E005F9745 /* StoryObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryObjectModel.swift; sourceTree = "<group>"; };
+		5DF8EFCF229F58EA0064214A /* IdeaVC+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdeaVC+DS&Delegate.swift"; sourceTree = "<group>"; };
 		5DF9A8D82240212200F6AD52 /* ElementsTVCell+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsTVCell+Delegate.swift"; sourceTree = "<group>"; };
 		5DFF594B227CF3C800E1D6FD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5DFF594D227CF79000E1D6FD /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		5DC629DD22373A3300074B30 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				5DF8EFCF229F58EA0064214A /* IdeaVC+DS&Delegate.swift */,
 				5DF43098223A19E0008483D3 /* GenreVC+DS&Delegate.swift */,
 				5DFFF762223C660C007C9035 /* ElementsVC+DS&Delegate.swift */,
 				5DF9A8D82240212200F6AD52 /* ElementsTVCell+Delegate.swift */,
@@ -236,6 +239,7 @@
 			files = (
 				5DF43099223A19E0008483D3 /* GenreVC+DS&Delegate.swift in Sources */,
 				5DFFF767223C8C79007C9035 /* ElementsTVCell+Constraints.swift in Sources */,
+				5DF8EFD0229F58EA0064214A /* IdeaVC+DS&Delegate.swift in Sources */,
 				5DF4B68D2246B4C900C5C66E /* UINavigationController.swift in Sources */,
 				5DC629C92237317000074B30 /* IdeaViewController.swift in Sources */,
 				5DFFF765223C8BAE007C9035 /* ElementsTableViewCell.swift in Sources */,
