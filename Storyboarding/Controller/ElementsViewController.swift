@@ -122,5 +122,38 @@ class ElementsViewController: UIViewController {
     
     @objc func saveTapped() {
         print("ELEMENT VIEW CONTROLLER: save tapped")
+        handleAlert()
+    }
+    
+    func handleAlert() {
+        // create alert
+        // create ok and cancel buttons
+        // create textfield
+        // add notification center to handle checking whether text field is empty or not
+        
+        // create alert controller
+        let alert = UIAlertController(title: "Please enter a title", message: nil, preferredStyle: .alert)
+        
+        // create action
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        okAction.isEnabled = false
+        alert.addAction(okAction)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        // add textfield to alert
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "Input Title"
+            
+            // add notification center to check when text field changes
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using: {_ in
+                
+                // code in here executes when notification is fired
+                
+                let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                let textNotEmpty = textCount > 0
+                okAction.isEnabled = textNotEmpty
+            })
+        })
+        self.present(alert, animated: true)
     }
 }
