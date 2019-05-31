@@ -6,6 +6,9 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+//TODO:
+// create custom cell so stories may have longer titles
+
 import UIKit
 
 class IdeaViewController: UIViewController {
@@ -14,12 +17,13 @@ class IdeaViewController: UIViewController {
     var addButtonItem: UIBarButtonItem!
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     
-    static var storyArr: [String] = []
+    static var storyArr: [Storyboard] = []
     
     override func loadView() {
         super.loadView()
         view.addSubview(ideaTableView)
         setupTableView()
+        populateTableView()
     }
 
     override func viewDidLoad() {
@@ -47,6 +51,15 @@ class IdeaViewController: UIViewController {
         ideaTableView.backgroundColor = .black
         ideaTableViewConstraints()
         tableViewSeperators()
+    }
+    
+    func populateTableView() {
+        let data = CoreDataManager.sharedManager.fetchStoryboards()
+        guard let unwrappedData = data else {
+            print("FAILURE: unable to access storyboards: \(String(describing: data))")
+            return
+        }
+        IdeaViewController.storyArr = unwrappedData
     }
     
     func tableViewSeperators() {
@@ -85,6 +98,7 @@ class IdeaViewController: UIViewController {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
         navigationItem.rightBarButtonItem = addButtonItem
+        navigationItem.rightBarButtonItem?.isEnabled = true
     }
 }
 

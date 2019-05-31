@@ -16,6 +16,7 @@
 // 4) create booleans to check for if we need to request data from api or retrieve data from Core Data
 
 
+
 import UIKit
 
 class ElementsViewController: UIViewController {
@@ -140,7 +141,10 @@ class ElementsViewController: UIViewController {
             let newVC = IdeaViewController()
             guard let unwrappedTextFields = alert.textFields else { return }
             guard let unwrappedText = unwrappedTextFields[0].text else { return }
-            IdeaViewController.storyArr.append(unwrappedText)
+            
+            // save text title to Core Data
+            CoreDataManager.sharedManager.createStoryboard(storyName: unwrappedText)
+            
             self.navigationController?.initRootViewController(vc: newVC)
         })
         okAction.isEnabled = false
