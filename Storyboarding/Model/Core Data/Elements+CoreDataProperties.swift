@@ -2,7 +2,7 @@
 //  Elements+CoreDataProperties.swift
 //  Storyboarding
 //
-//  Created by Stephen Ouyang on 5/30/19.
+//  Created by Stephen Ouyang on 5/31/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 //
@@ -17,11 +17,8 @@ extension Elements {
         return NSFetchRequest<Elements>(entityName: "Elements")
     }
 
-    @NSManaged public var plot: String?
-    @NSManaged public var conflict: String?
-    @NSManaged public var resolution: String?
-    @NSManaged public var character: String?
-    @NSManaged public var setting: String?
+    @NSManaged public var type: String?
+    @NSManaged public var content: String?
     @NSManaged public var storyboard: Storyboard?
 
 }

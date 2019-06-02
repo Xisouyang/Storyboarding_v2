@@ -14,14 +14,14 @@
 //    - if title is added, then send title to idea view controller screen
 // 3) implement Core Data
 // 4) create booleans to check for if we need to request data from api or retrieve data from Core Data
-
+// 5) Implement functionality to create new cells
 
 
 import UIKit
 
 class ElementsViewController: UIViewController {
     
-//    static var needToCallAPI = true
+    static var needToCallAPI: Bool?
     
     // Initialize neccessary variables
     
@@ -36,21 +36,18 @@ class ElementsViewController: UIViewController {
     let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
     var allStoriesArr = [StoryModel]()
     var parsedStoryDict: [String: [String]] = [:]
+    var returnElements: NSSet?
+    
+    override func loadView() {
+        super.loadView()
+        setupTableView()
+        fetchStoryElements()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
-        setupTableView()
-        
-        ServiceLayer.request(router: Router.getAllStories) { (result: Result<[StoryModel]>) in
-            switch result {
-            case .success(let result):
-                self.allStoriesArr = result
-                self.parseStories(stories: self.allStoriesArr)
-            case .failure(let error):
-                print("\(error)")
-            }
-        }
+        print(ElementsViewController.needToCallAPI)
     }
     
     // MARK: UI
@@ -88,8 +85,33 @@ class ElementsViewController: UIViewController {
         headerLabel.textAlignment = .center
     }
     
+    // MARK: handle data
+    
+    func fetchStoryElements() {
+        guard let unwrappedBool = ElementsViewController.needToCallAPI else { return }
+        if unwrappedBool {
+            fetchFromAPI()
+        } else {
+            fetchFromCoreData()
+            guard let unwrappedData = returnElements else { return }
+            parseFromCoreData(elements: unwrappedData)
+        }
+    }
+    
+    func fetchFromAPI() {
+        ServiceLayer.request(router: Router.getAllStories) { (result: Result<[StoryModel]>) in
+            switch result {
+            case .success(let result):
+                self.allStoriesArr = result
+                self.parseFromAPI(stories: self.allStoriesArr)
+            case .failure(let error):
+                print("\(error)")
+            }
+        }
+    }
+    
     // parse converted JSON data
-    func parseStories(stories: [StoryModel]) {
+    func parseFromAPI(stories: [StoryModel]) {
         parsedStoryDict["Plot"] = []
         parsedStoryDict["Conflict"] = []
         parsedStoryDict["Resolution"] = []
@@ -122,11 +144,72 @@ class ElementsViewController: UIViewController {
         }
     }
     
+    func fetchFromCoreData() {
+        guard let unwrappedTitle = headerTitle else { return }
+        let story = CoreDataManager.sharedManager.fetchStoryboard(boardName: unwrappedTitle) as! Storyboard
+        let storyElements = story.elements
+        guard let unwrappedElements = storyElements else { return }
+        returnElements = unwrappedElements
+    }
+    
+    func parseFromCoreData(elements: NSSet) {
+        parsedStoryDict["Plot"] = []
+        parsedStoryDict["Conflict"] = []
+        parsedStoryDict["Resolution"] = []
+        parsedStoryDict["Character"] = []
+        parsedStoryDict["Setting"] = []
+        
+        for item in elements {
+            let element = item as! Elements
+            guard let unwrappedContent = element.content else { return }
+            guard let unwrappedType = element.type else { return }
+            
+            switch unwrappedType {
+            case "Plot":
+                parsedStoryDict["Plot"]?.append(unwrappedContent)
+            case "Conflict":
+                parsedStoryDict["Conflict"]?.append(unwrappedContent)
+            case "Resolution":
+                parsedStoryDict["Resolution"]?.append(unwrappedContent)
+            case "Character":
+                parsedStoryDict["Character"]?.append(unwrappedContent)
+            case "Setting":
+                parsedStoryDict["Setting"]?.append(unwrappedContent)
+            default:
+                print("No more elements to parse")
+            }
+        }
+    }
+    
     @objc func saveTapped() {
         print("ELEMENT VIEW CONTROLLER: save tapped")
         handleAlert()
     }
     
+    func saveBoard(storyboard: Dictionary<String, [String]>, name: String) {
+        
+        // loop through each key in the dictionary
+        // loop through each element in the array
+        // call function to save element
+        // function will take in parameters type: (dictionary key) and content: (element)
+        for key in storyboard.keys {
+            guard let unwrappedElementArr = storyboard[key] else {
+                print("ERROR: unable to access story elements: \(String(describing: storyboard[key]))")
+                return
+            }
+            for item in unwrappedElementArr {
+                // call Core Data
+                    // fetch specific storyboard
+                let storyboard = CoreDataManager.sharedManager.fetchStoryboard(boardName: name)
+                guard let unwrappedBoard = storyboard else { return }
+                CoreDataManager.sharedManager.createElement(type: key, content: item, storyboard: storyboard as! Storyboard)
+                    // to do that I need to access the story's title
+                    // I can pass that story's title by clicking on the tableview cell in the first screen
+                    // need to set booleans to check if we're adding brand new storyboard or if we're visiting an old one
+            }
+        }
+    }
+
     func handleAlert() {
         // create alert
         // create ok and cancel buttons
@@ -144,6 +227,11 @@ class ElementsViewController: UIViewController {
             
             // save text title to Core Data
             CoreDataManager.sharedManager.createStoryboard(storyName: unwrappedText)
+            
+            let storyboard: Storyboard = CoreDataManager.sharedManager.fetchStoryboard(boardName: unwrappedText) as! Storyboard
+            print(storyboard)
+            // save story elements
+            self.saveBoard(storyboard: self.parsedStoryDict, name: unwrappedText)
             
             self.navigationController?.initRootViewController(vc: newVC)
         })

@@ -70,6 +70,36 @@ class CoreDataManager {
         return allBoards
     }
     
+    // fetch single storyboard from Core Data
+    func fetchStoryboard(boardName: String) -> NSManagedObject? {
+        
+        // create array to hold all the items
+        // create variable to hold item that you want
+        
+        // create fetch request
+        // create predicate to query for the item you're looking for
+        
+        // fetch the request
+        // save item in array to the variable we made earlier
+                
+        var storyboardArr: [Storyboard] = []
+        var storyboard: Storyboard?
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Storyboard")
+        fetchRequest.predicate = NSPredicate(format: "title = %@", boardName)
+        
+        do {
+            storyboardArr = try context.fetch(fetchRequest) as! [Storyboard]
+            if !storyboardArr.isEmpty {
+                storyboard = storyboardArr.first
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return storyboard
+    }
+    
     // create single storyboard and save it into Core Data
     func createStoryboard(storyName: String) {
         
@@ -86,7 +116,35 @@ class CoreDataManager {
         
         // save
         saveContext()
+    }
+    
+    func fetchAllElements() -> [Elements]? {
+        var allElements: [Elements] = []
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Elements")
+        do {
+           allElements = try context.fetch(fetchRequest) as! [Elements]
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
+        return allElements
+    }
+    
+    // create single element and save to Core Data
+    func createElement(type: String, content: String, storyboard: Storyboard) {
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Elements", in: context)
+        guard let unwrappedEntity = entity else {
+            print("FAILURE: entity unable to be unwrapped: \(String(describing: entity))")
+            return
+        }
+        
+        let object = NSManagedObject(entity: unwrappedEntity, insertInto: context)
+        object.setValue(type, forKey: "type")
+        object.setValue(content, forKey: "content")
+        storyboard.addToElements(object as! Elements)
+        
+        saveContext()
+    }
     
     // remove any single item from Core Data
     func removeItem( objectID: NSManagedObjectID ) {

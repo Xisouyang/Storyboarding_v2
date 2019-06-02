@@ -8,10 +8,27 @@
 
 import UIKit
 
+// handles how user interacts with data
 extension IdeaViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // pass cell's text (title of the storyboard) to the element view controller screen
+        
+        // access cell
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        // set new variable equal to cell's text
+        let titleText = cell?.textLabel?.text
+        
+        // create new controller to go to
+        let newVC = ElementsViewController()
+        ElementsViewController.needToCallAPI = false
+        newVC.headerTitle = titleText
+        navigationController?.pushViewController(newVC, animated: true)
+    }
 }
 
+// handles how data is displayed in tableview
 extension IdeaViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return IdeaViewController.storyArr.count

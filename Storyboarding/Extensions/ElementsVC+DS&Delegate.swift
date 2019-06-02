@@ -61,25 +61,20 @@ extension ElementsViewController: UITableViewDataSource {
         return cell
     }
     
-    //Populate each cell with the parsed stories or loading text if fetching
+    //Populate each cell with the parsed stories
     func populateRows(cell: ElementsTableViewCell, path: IndexPath) {
         
-        let storyCatagory = parsedStoryDict[elements[path.section]]
-        if storyCatagory?.count == 0 {
-            cell.cellTextView.text = "loading..."
-        } else {
-            guard let unwrappedCatagory = storyCatagory else { return }
-            cell.cellTextView.text = unwrappedCatagory[path.row]
-        }
+        let elementName = elements[path.section]
+        let storyCatagory = parsedStoryDict[elementName]
+        guard let unwrappedCatagory = storyCatagory else { return }
+        cell.cellTextView.text = unwrappedCatagory[path.row]
     }
     
     
     func selectCellID(indexPath: IndexPath) -> String {
         
-        
         //Need switch statement to keep cells from different sections separate from each other
  
-        
         switch indexPath.section {
         case 0:
             cellID = elements[0]

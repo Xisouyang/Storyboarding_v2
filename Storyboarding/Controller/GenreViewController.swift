@@ -81,6 +81,7 @@ class GenreViewController: UIViewController {
             noGenreSelected()
         } else {
             newController.headerTitle = returnGenreTitle()
+            ElementsViewController.needToCallAPI = true
             self.navigationController?.pushViewController(newController, animated: true)
         }
     }
