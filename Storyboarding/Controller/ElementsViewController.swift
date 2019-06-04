@@ -4,8 +4,6 @@
 //
 //  Created by Stephen Ouyang on 3/14/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
-//
-
 
 // TODO:
 // 1) finish commenting
@@ -14,7 +12,11 @@
 //    - if title is added, then send title to idea view controller screen
 // 3) implement Core Data
 // 4) create booleans to check for if we need to request data from api or retrieve data from Core Data
-// 5) Implement functionality to create new cells
+// 5) Check if we need to create a new item in the array or update the item in the array in the idea view controller
+    // Just create a boolean to check whether we need to run the alert or just update using Core Data
+    // compare header title with elements in ideaviewcontroller array of stories, if we find it then set the bool to false
+// 6) Implement functionality to save edited text 
+// 7) Implement functionality to create new cells
 
 
 import UIKit
@@ -22,6 +24,8 @@ import UIKit
 class ElementsViewController: UIViewController {
     
     static var needToCallAPI: Bool?
+    var isNewStory: Bool?
+    
     
     // Initialize neccessary variables
     
@@ -42,12 +46,12 @@ class ElementsViewController: UIViewController {
         super.loadView()
         setupTableView()
         fetchStoryElements()
+        updateIsNewStory()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
-        print(ElementsViewController.needToCallAPI)
     }
     
     // MARK: UI
@@ -85,7 +89,20 @@ class ElementsViewController: UIViewController {
         headerLabel.textAlignment = .center
     }
     
-    // MARK: handle data
+    @objc func saveTapped() {
+        print("ELEMENT VIEW CONTROLLER: save tapped")
+        if isNewStory == true {
+            handleAlert()
+        } else {
+            CoreDataManager.sharedManager.saveContext()
+            let newVC = IdeaViewController()
+            navigationController?.initRootViewController(vc: newVC)
+        }
+    }
+}
+
+// MARK: handle data
+extension ElementsViewController {
     
     func fetchStoryElements() {
         guard let unwrappedBool = ElementsViewController.needToCallAPI else { return }
@@ -180,10 +197,26 @@ class ElementsViewController: UIViewController {
             }
         }
     }
+}
+
+// MARK: Handle saving data
+extension ElementsViewController {
     
-    @objc func saveTapped() {
-        print("ELEMENT VIEW CONTROLLER: save tapped")
-        handleAlert()
+    // function to check if we useAlertController or not
+    func updateIsNewStory() {
+        
+        if IdeaViewController.storyArr.count == 0 {
+            isNewStory = true
+        } else {
+            for item in IdeaViewController.storyArr {
+                let title = item.title
+                if headerTitle == title {
+                    isNewStory = false
+                    return
+                }
+            }
+            isNewStory = true
+        }
     }
     
     func saveBoard(storyboard: Dictionary<String, [String]>, name: String) {
@@ -199,17 +232,16 @@ class ElementsViewController: UIViewController {
             }
             for item in unwrappedElementArr {
                 // call Core Data
-                    // fetch specific storyboard
+                // fetch specific storyboard
                 let storyboard = CoreDataManager.sharedManager.fetchStoryboard(boardName: name)
-                guard let unwrappedBoard = storyboard else { return }
                 CoreDataManager.sharedManager.createElement(type: key, content: item, storyboard: storyboard as! Storyboard)
-                    // to do that I need to access the story's title
-                    // I can pass that story's title by clicking on the tableview cell in the first screen
-                    // need to set booleans to check if we're adding brand new storyboard or if we're visiting an old one
+                // to do that I need to access the story's title
+                // I can pass that story's title by clicking on the tableview cell in the first screen
+                // need to set booleans to check if we're adding brand new storyboard or if we're visiting an old one
             }
         }
     }
-
+    
     func handleAlert() {
         // create alert
         // create ok and cancel buttons
@@ -224,6 +256,15 @@ class ElementsViewController: UIViewController {
             let newVC = IdeaViewController()
             guard let unwrappedTextFields = alert.textFields else { return }
             guard let unwrappedText = unwrappedTextFields[0].text else { return }
+            
+            // check to see if title is valid
+            let genreVC = GenreViewController()
+            for item in genreVC.genreTitles {
+                if unwrappedText == item {
+                    self.wrongTitleAlert(text: unwrappedText)
+                    return
+                }
+            }
             
             // save text title to Core Data
             CoreDataManager.sharedManager.createStoryboard(storyName: unwrappedText)
@@ -253,6 +294,14 @@ class ElementsViewController: UIViewController {
                 okAction.isEnabled = textNotEmpty
             })
         })
+        self.present(alert, animated: true)
+    }
+    
+    func wrongTitleAlert(text: String) {
+        
+        let alert = UIAlertController(title: "Please enter valid title", message: nil, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
         self.present(alert, animated: true)
     }
 }
