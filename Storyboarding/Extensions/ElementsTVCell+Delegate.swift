@@ -11,7 +11,14 @@ import UIKit
 extension ElementsTableViewCell: UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        print("current section: \(currentSection), current row: \(currentRow!)")
+
         return true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let cellText = self.cellTextView.text
+        guard let unwrappedText = cellText else { return }
+        let elementName = ElementsViewController.elements[currentSection]
+        ElementsViewController.parsedStoryDict[elementName]![currentRow] = unwrappedText
     }
 }

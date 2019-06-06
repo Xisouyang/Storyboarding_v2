@@ -52,6 +52,7 @@ class ElementsTableViewCell: UITableViewCell {
     func createCellTextView() {
         cellTextView = UITextView()
         cellTextView.font = UIFont.init(name: "Times New Roman", size: 18)
+        cellTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         cellView.addSubview(cellTextView)
         cellTextViewConstraints()
     }

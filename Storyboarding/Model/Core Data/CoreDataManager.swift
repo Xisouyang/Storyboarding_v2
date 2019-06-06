@@ -100,6 +100,13 @@ class CoreDataManager {
         return storyboard
     }
     
+//    func updateStoryboard(story: NSManagedObject, storyName: String) {
+////        story.setValue(storyName, forKey: <#T##String#>)
+//        removeItem(objectID: story.objectID)
+//        story.setValue(storyName, forKey: "title")
+//        saveContext()
+//    }
+    
     // create single storyboard and save it into Core Data
     func createStoryboard(storyName: String) {
         

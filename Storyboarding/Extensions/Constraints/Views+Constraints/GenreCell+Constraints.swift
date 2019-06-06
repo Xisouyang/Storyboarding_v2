@@ -25,10 +25,11 @@ extension GenreCell {
         genreLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
     }
     
-    func textViewConstraints() {
+    func descriptionConstraints() {
         genreDescription.translatesAutoresizingMaskIntoConstraints = false
         genreDescription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        genreDescription.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.5).isActive = true
-        genreDescription.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
+        genreDescription.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.6).isActive = true
+        genreDescription.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.9).isActive = true
+        genreDescription.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     }
 }

@@ -13,17 +13,20 @@ extension GenreViewController: UICollectionViewDelegate {
     // function that fires when we select an item that's part of the collection view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
-            cell.genreDescription.backgroundColor = UIColor.lightGray
-            cell.genreLabel.backgroundColor = UIColor.lightGray
+            cell.genreView.backgroundColor = UIColor.lightGray
             selectedGenre = cell.genreLabel.text
+            
+            let newController = ElementsViewController()
+            newController.headerTitle = returnGenreTitle()
+            ElementsViewController.needToCallAPI = true
+            self.navigationController?.pushViewController(newController, animated: true)
         }
     }
     
     // fires when we deselect an item in the collection view by clicking another one
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
-            cell.genreDescription.backgroundColor = .white
-            cell.genreLabel.backgroundColor = .white
+            cell.genreView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
     }
 }

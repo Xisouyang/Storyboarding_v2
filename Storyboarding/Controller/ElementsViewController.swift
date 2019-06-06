@@ -37,9 +37,9 @@ class ElementsViewController: UIViewController {
     var headerTitle: String?
     
     var cellID: String = "cellID"
-    let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
+    static let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
     var allStoriesArr = [StoryModel]()
-    var parsedStoryDict: [String: [String]] = [:]
+    static var parsedStoryDict: [String: [String]] = [:]
     var returnElements: NSSet?
     
     override func loadView() {
@@ -68,11 +68,11 @@ class ElementsViewController: UIViewController {
     
     func setupTableView() {
         elementsTableView = UITableView(frame: .zero)
-        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[0])
-        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[1])
-        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[2])
-        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[3])
-        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: elements[4])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[0])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[1])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[2])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[3])
+        elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[4])
         elementsTableView.delegate = self
         elementsTableView.dataSource = self
         elementsTableView.backgroundColor = .black
@@ -90,11 +90,12 @@ class ElementsViewController: UIViewController {
     }
     
     @objc func saveTapped() {
+        self.view.endEditing(true)
         print("ELEMENT VIEW CONTROLLER: save tapped")
         if isNewStory == true {
             handleAlert()
         } else {
-            CoreDataManager.sharedManager.saveContext()
+            updateBoard()
             let newVC = IdeaViewController()
             navigationController?.initRootViewController(vc: newVC)
         }
@@ -129,30 +130,30 @@ extension ElementsViewController {
     
     // parse converted JSON data
     func parseFromAPI(stories: [StoryModel]) {
-        parsedStoryDict["Plot"] = []
-        parsedStoryDict["Conflict"] = []
-        parsedStoryDict["Resolution"] = []
-        parsedStoryDict["Character"] = []
-        parsedStoryDict["Setting"] = []
+        ElementsViewController.parsedStoryDict["Plot"] = []
+        ElementsViewController.parsedStoryDict["Conflict"] = []
+        ElementsViewController.parsedStoryDict["Resolution"] = []
+        ElementsViewController.parsedStoryDict["Character"] = []
+        ElementsViewController.parsedStoryDict["Setting"] = []
         
         for story in stories {
             if story.genre != headerTitle {
                 continue
             } else {
                 if let unwrappedPlot = story.plot {
-                    parsedStoryDict["Plot"]?.append(unwrappedPlot)
+                    ElementsViewController.parsedStoryDict["Plot"]?.append(unwrappedPlot)
                 }
                 if let unwrappedConflicts = story.conflict {
-                    parsedStoryDict["Conflict"]?.append(unwrappedConflicts)
+                    ElementsViewController.parsedStoryDict["Conflict"]?.append(unwrappedConflicts)
                 }
                 if let unwrappedResolutions = story.resolution {
-                    parsedStoryDict["Resolution"]?.append(unwrappedResolutions)
+                    ElementsViewController.parsedStoryDict["Resolution"]?.append(unwrappedResolutions)
                 }
                 if let unwrappedChars = story.character {
-                    parsedStoryDict["Character"]?.append(unwrappedChars)
+                    ElementsViewController.parsedStoryDict["Character"]?.append(unwrappedChars)
                 }
                 if let unwrappedSettings = story.setting {
-                    parsedStoryDict["Setting"]?.append(unwrappedSettings)
+                    ElementsViewController.parsedStoryDict["Setting"]?.append(unwrappedSettings)
                 }
             }
         }
@@ -170,11 +171,11 @@ extension ElementsViewController {
     }
     
     func parseFromCoreData(elements: NSSet) {
-        parsedStoryDict["Plot"] = []
-        parsedStoryDict["Conflict"] = []
-        parsedStoryDict["Resolution"] = []
-        parsedStoryDict["Character"] = []
-        parsedStoryDict["Setting"] = []
+        ElementsViewController.parsedStoryDict["Plot"] = []
+        ElementsViewController.parsedStoryDict["Conflict"] = []
+        ElementsViewController.parsedStoryDict["Resolution"] = []
+        ElementsViewController.parsedStoryDict["Character"] = []
+        ElementsViewController.parsedStoryDict["Setting"] = []
         
         for item in elements {
             let element = item as! Elements
@@ -183,15 +184,15 @@ extension ElementsViewController {
             
             switch unwrappedType {
             case "Plot":
-                parsedStoryDict["Plot"]?.append(unwrappedContent)
+                ElementsViewController.parsedStoryDict["Plot"]?.append(unwrappedContent)
             case "Conflict":
-                parsedStoryDict["Conflict"]?.append(unwrappedContent)
+                ElementsViewController.parsedStoryDict["Conflict"]?.append(unwrappedContent)
             case "Resolution":
-                parsedStoryDict["Resolution"]?.append(unwrappedContent)
+                ElementsViewController.parsedStoryDict["Resolution"]?.append(unwrappedContent)
             case "Character":
-                parsedStoryDict["Character"]?.append(unwrappedContent)
+                ElementsViewController.parsedStoryDict["Character"]?.append(unwrappedContent)
             case "Setting":
-                parsedStoryDict["Setting"]?.append(unwrappedContent)
+                ElementsViewController.parsedStoryDict["Setting"]?.append(unwrappedContent)
             default:
                 print("No more elements to parse")
             }
@@ -242,6 +243,14 @@ extension ElementsViewController {
         }
     }
     
+    func updateBoard() {
+        guard let unwrappedTitle = headerTitle else { return }
+        let test = CoreDataManager.sharedManager.fetchStoryboard(boardName: headerTitle!) as! Storyboard
+        CoreDataManager.sharedManager.removeItem(objectID: test.objectID)
+        CoreDataManager.sharedManager.createStoryboard(storyName: unwrappedTitle)
+        saveBoard(storyboard: ElementsViewController.parsedStoryDict, name: unwrappedTitle)
+    }
+    
     func handleAlert() {
         // create alert
         // create ok and cancel buttons
@@ -269,10 +278,9 @@ extension ElementsViewController {
             // save text title to Core Data
             CoreDataManager.sharedManager.createStoryboard(storyName: unwrappedText)
             
-            let storyboard: Storyboard = CoreDataManager.sharedManager.fetchStoryboard(boardName: unwrappedText) as! Storyboard
-            print(storyboard)
+//            let storyboard: Storyboard = CoreDataManager.sharedManager.fetchStoryboard(boardName: unwrappedText) as! Storyboard
             // save story elements
-            self.saveBoard(storyboard: self.parsedStoryDict, name: unwrappedText)
+            self.saveBoard(storyboard: ElementsViewController.parsedStoryDict, name: unwrappedText)
             
             self.navigationController?.initRootViewController(vc: newVC)
         })

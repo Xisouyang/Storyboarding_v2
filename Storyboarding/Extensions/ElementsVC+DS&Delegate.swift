@@ -17,7 +17,7 @@ extension ElementsViewController: UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return elements.count
+        return ElementsViewController.elements.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -25,7 +25,7 @@ extension ElementsViewController: UITableViewDelegate {
         tableViewHeader = UIView()
         tableViewHeader.backgroundColor = .clear
         createHeaderLabel()
-        headerLabel.text = elements[section]
+        headerLabel.text = ElementsViewController.elements[section]
         tableViewHeader.addSubview(headerLabel)
         elementsHeaderLabelConstraints()
         return tableViewHeader
@@ -40,10 +40,10 @@ extension ElementsViewController: UITableViewDelegate {
 extension ElementsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if parsedStoryDict.count == 0 {
+        if ElementsViewController.parsedStoryDict.count == 0 {
             return 5
         } else {
-            return (parsedStoryDict[elements[section]]?.count)!
+            return (ElementsViewController.parsedStoryDict[ElementsViewController.elements[section]]?.count)!
         }
     }
     
@@ -64,8 +64,8 @@ extension ElementsViewController: UITableViewDataSource {
     //Populate each cell with the parsed stories
     func populateRows(cell: ElementsTableViewCell, path: IndexPath) {
         
-        let elementName = elements[path.section]
-        let storyCatagory = parsedStoryDict[elementName]
+        let elementName = ElementsViewController.elements[path.section]
+        let storyCatagory = ElementsViewController.parsedStoryDict[elementName]
         guard let unwrappedCatagory = storyCatagory else { return }
         cell.cellTextView.text = unwrappedCatagory[path.row]
     }
@@ -77,15 +77,15 @@ extension ElementsViewController: UITableViewDataSource {
  
         switch indexPath.section {
         case 0:
-            cellID = elements[0]
+            cellID = ElementsViewController.elements[0]
         case 1:
-            cellID = elements[1]
+            cellID = ElementsViewController.elements[1]
         case 2:
-            cellID = elements[2]
+            cellID = ElementsViewController.elements[2]
         case 3:
-            cellID = elements[3]
+            cellID = ElementsViewController.elements[3]
         case 4:
-            cellID = elements[4]
+            cellID = ElementsViewController.elements[4]
         default:
             cellID = "cellID"
         }

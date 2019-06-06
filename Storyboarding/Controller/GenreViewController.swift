@@ -48,8 +48,6 @@ class GenreViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
-        addButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = addButtonItem
     }
     
     func setupCollectionView() {
@@ -74,26 +72,8 @@ class GenreViewController: UIViewController {
     
     //MARK: Button functionality
     
-    @objc func addTapped() {
-        print("GENRE VIEW CONTROLLER add button tapped")
-        let newController = ElementsViewController()
-        if returnGenreTitle() == "NIL" {
-            noGenreSelected()
-        } else {
-            newController.headerTitle = returnGenreTitle()
-            ElementsViewController.needToCallAPI = true
-            self.navigationController?.pushViewController(newController, animated: true)
-        }
-    }
-    
     func returnGenreTitle() -> String {
         
         return selectedGenre ?? "NIL"
-    }
-    
-    func noGenreSelected() {
-        let alert = UIAlertController(title: "Please select a genre", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
     }
 }

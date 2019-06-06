@@ -26,6 +26,7 @@ enum NetworkingError: Error {
         case .responseUnsuccessful: return "Response Unsuccessful"
         case .jsonParsingFailure: return "JSON Parsing Failure"
         case .jsonConversionFailure: return "JSON Conversion Failure"
+            
         }
     }
 }

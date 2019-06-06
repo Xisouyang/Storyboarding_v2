@@ -53,6 +53,6 @@ class GenreCell: UICollectionViewCell {
         genreView.addSubview(genreDescription)
         genreDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
         genreDescription.numberOfLines = 0
-        textViewConstraints()
+        descriptionConstraints()
     }
 }
