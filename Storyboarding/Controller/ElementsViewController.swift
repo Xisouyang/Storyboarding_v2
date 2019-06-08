@@ -39,7 +39,7 @@ class ElementsViewController: UIViewController {
     var cellID: String = "cellID"
     static let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
     var allStoriesArr = [StoryModel]()
-    static var parsedStoryDict: [String: [String]] = [:]
+    static var parsedStoryDict: [String: [String]] = [:] 
     var returnElements: NSSet?
     
     override func loadView() {
@@ -278,7 +278,6 @@ extension ElementsViewController {
             // save text title to Core Data
             CoreDataManager.sharedManager.createStoryboard(storyName: unwrappedText)
             
-//            let storyboard: Storyboard = CoreDataManager.sharedManager.fetchStoryboard(boardName: unwrappedText) as! Storyboard
             // save story elements
             self.saveBoard(storyboard: ElementsViewController.parsedStoryDict, name: unwrappedText)
             

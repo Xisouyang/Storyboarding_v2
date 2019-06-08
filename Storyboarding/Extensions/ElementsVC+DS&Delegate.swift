@@ -73,7 +73,7 @@ extension ElementsViewController: UITableViewDataSource {
     
     func selectCellID(indexPath: IndexPath) -> String {
         
-        //Need switch statement to keep cells from different sections separate from each other
+        // Need switch statement to keep cells from different sections separate from each other
  
         switch indexPath.section {
         case 0:
@@ -94,7 +94,10 @@ extension ElementsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
+            let sectionName = ElementsViewController.elements[indexPath.section]
+            let arrayIndex = indexPath.row
+            ElementsViewController.parsedStoryDict[sectionName]?.remove(at: arrayIndex)
+            elementsTableView.reloadData()
         }
     }
     

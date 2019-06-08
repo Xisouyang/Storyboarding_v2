@@ -10,7 +10,6 @@ import UIKit
 
 class ElementsTableViewCell: UITableViewCell {
     
-//    static var identifier: String = "plotCell"
     var cellView: UIView!
     var cellTextView: UITextView!
     
