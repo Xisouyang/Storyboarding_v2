@@ -30,6 +30,7 @@ extension IdeaViewController: UITableViewDelegate {
 
 // handles how data is displayed in tableview
 extension IdeaViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return IdeaViewController.storyArr.count
     }

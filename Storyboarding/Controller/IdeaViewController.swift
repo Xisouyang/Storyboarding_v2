@@ -14,8 +14,8 @@ import UIKit
 class IdeaViewController: UIViewController {
     
     let ideaTableView = UITableView()
-    var addButtonItem: UIBarButtonItem!
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+    let addButton = AddButton()
     
     static var storyArr: [Storyboard] = []
     
@@ -24,6 +24,7 @@ class IdeaViewController: UIViewController {
         view.addSubview(ideaTableView)
         setupTableView()
         populateTableView()
+        setupButton()
     }
 
     override func viewDidLoad() {
@@ -33,14 +34,20 @@ class IdeaViewController: UIViewController {
     
     //MARK: view setup functionality
     
+    func setupButton() {
+        let buttonRadius = (view.frame.width * 0.15) / 2
+        addButton.layer.cornerRadius = buttonRadius
+        addButton.clipsToBounds = true
+        self.view.insertSubview(addButton, aboveSubview: ideaTableView)
+        buttonConstraints()
+    }
+    
     func setupNav() {
         navigationItem.title = "Storyboarding"
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
-        addButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = addButtonItem
         navigationController?.navigationBar.tintColor = .white
     }
     
@@ -72,6 +79,8 @@ class IdeaViewController: UIViewController {
         ideaTableView.translatesAutoresizingMaskIntoConstraints = false
         ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         ideaTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        ideaTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ideaTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     //MARK: button functionality
@@ -88,17 +97,6 @@ class IdeaViewController: UIViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
-        navigationItem.rightBarButtonItem?.isEnabled = false
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-        navigationItem.rightBarButtonItem = addButtonItem
-        navigationItem.rightBarButtonItem?.isEnabled = true
     }
 }
 

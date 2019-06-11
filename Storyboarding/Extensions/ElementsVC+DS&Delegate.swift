@@ -16,6 +16,15 @@ extension ElementsViewController: UITableViewDelegate {
         return view.frame.height / 4
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if ElementsViewController.parsedStoryDict.count == 0 {
+            return 5
+        } else {
+            // change this to be randomized to 5 different ones each time
+            return (ElementsViewController.parsedStoryDict[ElementsViewController.elements[section]]?.count)!
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return ElementsViewController.elements.count
     }
@@ -39,14 +48,7 @@ extension ElementsViewController: UITableViewDelegate {
 //MARK: tableview data handling
 extension ElementsViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if ElementsViewController.parsedStoryDict.count == 0 {
-            return 5
-        } else {
-            return (ElementsViewController.parsedStoryDict[ElementsViewController.elements[section]]?.count)!
-        }
-    }
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         cellID = selectCellID(indexPath: indexPath)

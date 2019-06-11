@@ -26,6 +26,8 @@
 		5DF9A8D92240212200F6AD52 /* ElementsTVCell+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8D82240212200F6AD52 /* ElementsTVCell+Delegate.swift */; };
 		5DFA3BC022A04FE30085B04A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA3BBF22A04FE30085B04A /* CoreDataManager.swift */; };
 		5DFA3BC322A0667D0085B04A /* Storyboarding.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA3BC122A0667D0085B04A /* Storyboarding.xcdatamodeld */; };
+		5DFB4DEA22AF10A7007C1047 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB4DE922AF10A7007C1047 /* AddButton.swift */; };
+		5DFB4DEC22AF1175007C1047 /* AddButton+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFB4DEB22AF1175007C1047 /* AddButton+Constraints.swift */; };
 		5DFF594C227CF3C800E1D6FD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF594B227CF3C800E1D6FD /* Router.swift */; };
 		5DFF594E227CF79000E1D6FD /* ServiceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF594D227CF79000E1D6FD /* ServiceLayer.swift */; };
 		5DFFF763223C660C007C9035 /* ElementsVC+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFFF762223C660C007C9035 /* ElementsVC+DS&Delegate.swift */; };
@@ -55,6 +57,8 @@
 		5DF9A8D82240212200F6AD52 /* ElementsTVCell+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsTVCell+Delegate.swift"; sourceTree = "<group>"; };
 		5DFA3BBF22A04FE30085B04A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		5DFA3BC222A0667D0085B04A /* Storyboarding.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Storyboarding.xcdatamodel; sourceTree = "<group>"; };
+		5DFB4DE922AF10A7007C1047 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		5DFB4DEB22AF1175007C1047 /* AddButton+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddButton+Constraints.swift"; sourceTree = "<group>"; };
 		5DFF594B227CF3C800E1D6FD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5DFF594D227CF79000E1D6FD /* ServiceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLayer.swift; sourceTree = "<group>"; };
 		5DFFF762223C660C007C9035 /* ElementsVC+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsVC+DS&Delegate.swift"; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				5DF4309B223A1AD4008483D3 /* GenreCell.swift */,
+				5DFB4DE922AF10A7007C1047 /* AddButton.swift */,
 				5DFFF764223C8BAE007C9035 /* ElementsTableViewCell.swift */,
 			);
 			path = View;
@@ -160,6 +165,7 @@
 			children = (
 				5DF4309D223A1C23008483D3 /* GenreCell+Constraints.swift */,
 				5DFFF766223C8C79007C9035 /* ElementsTVCell+Constraints.swift */,
+				5DFB4DEB22AF1175007C1047 /* AddButton+Constraints.swift */,
 			);
 			path = "Views+Constraints";
 			sourceTree = "<group>";
@@ -269,6 +275,7 @@
 				5DF8EFD0229F58EA0064214A /* IdeaVC+DS&Delegate.swift in Sources */,
 				5DF4B68D2246B4C900C5C66E /* UINavigationController.swift in Sources */,
 				5DFA3BC022A04FE30085B04A /* CoreDataManager.swift in Sources */,
+				5DFB4DEC22AF1175007C1047 /* AddButton+Constraints.swift in Sources */,
 				5DF8036A22A1EE6D00D6E3AE /* Storyboard+CoreDataProperties.swift in Sources */,
 				5DFA3BC322A0667D0085B04A /* Storyboarding.xcdatamodeld in Sources */,
 				5DC629C92237317000074B30 /* IdeaViewController.swift in Sources */,
@@ -282,6 +289,7 @@
 				5DFF594E227CF79000E1D6FD /* ServiceLayer.swift in Sources */,
 				5D01E744223B000E00C25254 /* ElementsViewController.swift in Sources */,
 				5DF8036722A1EE6D00D6E3AE /* Elements+CoreDataClass.swift in Sources */,
+				5DFB4DEA22AF10A7007C1047 /* AddButton.swift in Sources */,
 				5DF9A8D92240212200F6AD52 /* ElementsTVCell+Delegate.swift in Sources */,
 				5DF744342241AC5E005F9745 /* StoryObjectModel.swift in Sources */,
 				5DC629C72237317000074B30 /* AppDelegate.swift in Sources */,
