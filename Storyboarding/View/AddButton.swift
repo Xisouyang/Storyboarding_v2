@@ -20,14 +20,7 @@ class AddButton: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func addStoryGesture() -> UITapGestureRecognizer {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(addStoryTapped(sender:)))
-        tap.numberOfTouchesRequired = 1
-        tap.numberOfTapsRequired = 1
-        return tap
-    }
-    
+        
     func setupCircle() {
         
         self.backgroundColor = .black
@@ -67,23 +60,6 @@ class AddButton: UIView {
         line.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
         line.widthAnchor.constraint(equalToConstant: 2).isActive = true
     }
-    
-    @objc func addStoryTapped(sender: UIGestureRecognizer) {
-        guard let ideaVC = findViewController() as? IdeaViewController else { return }
-        let newVC = GenreViewController()
-        ideaVC.navigationController?.pushViewController(newVC, animated: true)
-    }
 }
 
-extension UIView {
-    
-    func findViewController() -> UIViewController? {
-        if let nextResponder = self.next as? UIViewController {
-            return nextResponder
-        } else if let nextResponder = self.next as? UIView {
-            return nextResponder.findViewController()
-        } else {
-            return nil
-        }
-    }
-}
+

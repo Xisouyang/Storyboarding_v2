@@ -15,7 +15,7 @@ class IdeaViewController: UIViewController {
     
     let ideaTableView = UITableView()
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-    let addButton = AddButton()
+    let addStoryButton = AddButton()
     
     static var storyArr: [Storyboard] = []
     
@@ -36,13 +36,20 @@ class IdeaViewController: UIViewController {
     
     func setupButton() {
         
-        let tap = addButton.addStoryGesture()
+        let tap = addStoryGesture()
         let buttonRadius = (view.frame.width * 0.15) / 2
-        addButton.layer.cornerRadius = buttonRadius
-        addButton.clipsToBounds = true
-        addButton.addGestureRecognizer(tap)
-        self.view.insertSubview(addButton, aboveSubview: ideaTableView)
+        addStoryButton.layer.cornerRadius = buttonRadius
+        addStoryButton.clipsToBounds = true
+        addStoryButton.addGestureRecognizer(tap)
+        self.view.insertSubview(addStoryButton, aboveSubview: ideaTableView)
         addStoryConstraints()
+    }
+    
+    func addStoryGesture() -> UITapGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addStoryTapped(sender:)))
+        tap.numberOfTouchesRequired = 1
+        tap.numberOfTapsRequired = 1
+        return tap
     }
     
     func setupNav() {
@@ -78,14 +85,11 @@ class IdeaViewController: UIViewController {
         ideaTableView.separatorInset.right = 10
     }
     
-    //MARK: button functionality
-    
-    @objc func addTapped() {
-        print("IDEA VIEW CONTROLLER add button tapped")
-        let newController = GenreViewController()
-        self.navigationController?.pushViewController(newController, animated: true)
+    @objc func addStoryTapped(sender: UIGestureRecognizer) {
+        let newVC = GenreViewController()
+        self.navigationController?.pushViewController(newVC, animated: true)
     }
-    
+        
     //MARK: scrollView functionality
     
     /* maintains color of title when scrolling */
@@ -107,12 +111,11 @@ extension IdeaViewController {
     
     func addStoryConstraints() {
         
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
-        addButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
-        addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
-        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        addStoryButton.translatesAutoresizingMaskIntoConstraints = false
+        addStoryButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        addStoryButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        addStoryButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        addStoryButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
     }
 }
-
