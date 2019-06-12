@@ -31,17 +31,31 @@ extension ElementsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        tableViewHeader = UIView()
+        let tableViewHeader = UIView()
         tableViewHeader.backgroundColor = .clear
-        createHeaderLabel()
+        let headerLabel = createHeaderLabel()
         headerLabel.text = ElementsViewController.elements[section]
         tableViewHeader.addSubview(headerLabel)
-        elementsHeaderLabelConstraints()
+        elementsHeaderLabelConstraints(label: headerLabel, header: tableViewHeader)
         return tableViewHeader
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return view.frame.height / 16
+    }
+    
+    func createHeaderLabel() -> UILabel {
+        let label = UILabel()
+        label.textColor = .white
+        label.font = UIFont.init(name: "Baskerville", size: 36)
+        label.backgroundColor = .black
+        label.textAlignment = .center
+        return label
+    }
+    
+    func configHeaderBtn() {
+        let sectionButton = AddButton()
+        
     }
 }
 
@@ -117,11 +131,11 @@ extension ElementsViewController {
         elementsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    func elementsHeaderLabelConstraints() {
-        headerLabel.translatesAutoresizingMaskIntoConstraints = false
-        headerLabel.leftAnchor.constraint(equalTo: tableViewHeader.leftAnchor).isActive = true
-        headerLabel.topAnchor.constraint(equalTo: tableViewHeader.topAnchor).isActive = true
-        headerLabel.rightAnchor.constraint(equalTo: tableViewHeader.rightAnchor).isActive = true
-        headerLabel.bottomAnchor.constraint(equalTo: tableViewHeader.bottomAnchor).isActive = true
+    func elementsHeaderLabelConstraints(label: UILabel, header: UIView) {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.leftAnchor.constraint(equalTo: header.leftAnchor).isActive = true
+        label.topAnchor.constraint(equalTo: header.topAnchor).isActive = true
+        label.rightAnchor.constraint(equalTo: header.rightAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
     }
 }

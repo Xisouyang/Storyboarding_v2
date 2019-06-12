@@ -29,10 +29,8 @@ class ElementsViewController: UIViewController {
     // Initialize neccessary variables
     
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-    var saveButton: UIBarButtonItem?
+//    var headerButton: AddButton?
     var elementsTableView: UITableView!
-    var tableViewHeader: UIView!
-    var headerLabel: UILabel!
     var headerTitle: String?
     
     var cellID: String = "cellID"
@@ -46,28 +44,23 @@ class ElementsViewController: UIViewController {
         setupTableView()
         fetchStoryElements()
         updateIsNewStory()
+        handleKeyboard()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false 
-        view.addGestureRecognizer(tap)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: UI
 
     func setupNav() {
+        
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
-        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         navigationItem.rightBarButtonItem = saveButton
         navigationItem.title = headerTitle
     }
@@ -87,12 +80,13 @@ class ElementsViewController: UIViewController {
         elementsTVConstraints()
     }
     
-    func createHeaderLabel() {
-        headerLabel = UILabel()
-        headerLabel.textColor = .white
-        headerLabel.font = UIFont.init(name: "Baskerville", size: 36)
-        headerLabel.backgroundColor = .black
-        headerLabel.textAlignment = .center
+    func handleKeyboard() {
+        let keyboardTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+//        keyboardTap.cancelsTouchesInView = false
+        view.addGestureRecognizer(keyboardTap)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func saveTapped() {
