@@ -102,6 +102,9 @@ extension ElementsViewController: UITableViewDataSource {
             elementsTableView.reloadData()
         }
     }
+}
+
+extension ElementsViewController {
     
     //MARK: constraints
     
@@ -112,7 +115,6 @@ extension ElementsViewController: UITableViewDataSource {
         elementsTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         elementsTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         elementsTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
     }
     
     func elementsHeaderLabelConstraints() {

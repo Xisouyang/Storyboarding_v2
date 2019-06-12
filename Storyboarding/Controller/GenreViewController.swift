@@ -31,7 +31,6 @@ class GenreViewController: UIViewController {
         setupView()
     }
     
-    
     //MARK: UI
     
     func setupView() {
@@ -62,18 +61,21 @@ class GenreViewController: UIViewController {
         self.collection.backgroundColor = .black
     }
     
+    //MARK: Button functionality
+    
+    func returnGenreTitle() -> String {
+        
+        return selectedGenre ?? "NIL"
+    }
+}
+
+extension GenreViewController {
+    
     func collectionConstraints() {
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         collection.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collection.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         collection.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-    }
-    
-    //MARK: Button functionality
-    
-    func returnGenreTitle() -> String {
-        
-        return selectedGenre ?? "NIL"
     }
 }

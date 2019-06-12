@@ -13,7 +13,7 @@ class AddButton: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupself()
+        setupCircle()
         setupPlusSymbol()
     }
     
@@ -21,23 +21,20 @@ class AddButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createGesture() -> UITapGestureRecognizer {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(addTapped(sender:)))
+    func addStoryGesture() -> UITapGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(addStoryTapped(sender:)))
         tap.numberOfTouchesRequired = 1
         tap.numberOfTapsRequired = 1
         return tap
     }
     
-    func setupself() {
-        
-        let tapGesture = createGesture()
+    func setupCircle() {
         
         self.backgroundColor = .black
         self.isUserInteractionEnabled = true
         self.clipsToBounds = true
         self.layer.borderWidth = 3
         self.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        self.addGestureRecognizer(tapGesture)
     }
     
     func setupPlusSymbol() {
@@ -71,7 +68,7 @@ class AddButton: UIView {
         line.widthAnchor.constraint(equalToConstant: 2).isActive = true
     }
     
-    @objc func addTapped(sender: UIGestureRecognizer) {
+    @objc func addStoryTapped(sender: UIGestureRecognizer) {
         guard let ideaVC = findViewController() as? IdeaViewController else { return }
         let newVC = GenreViewController()
         ideaVC.navigationController?.pushViewController(newVC, animated: true)

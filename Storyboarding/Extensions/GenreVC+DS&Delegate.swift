@@ -31,7 +31,6 @@ extension GenreViewController: UICollectionViewDelegate {
     }
 }
 
-
 //MARK: collection view data
 
 extension GenreViewController: UICollectionViewDataSource {

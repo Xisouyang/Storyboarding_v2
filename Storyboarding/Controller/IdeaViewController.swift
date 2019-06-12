@@ -35,11 +35,14 @@ class IdeaViewController: UIViewController {
     //MARK: view setup functionality
     
     func setupButton() {
+        
+        let tap = addButton.addStoryGesture()
         let buttonRadius = (view.frame.width * 0.15) / 2
         addButton.layer.cornerRadius = buttonRadius
         addButton.clipsToBounds = true
+        addButton.addGestureRecognizer(tap)
         self.view.insertSubview(addButton, aboveSubview: ideaTableView)
-        buttonConstraints()
+        addStoryConstraints()
     }
     
     func setupNav() {
@@ -75,14 +78,6 @@ class IdeaViewController: UIViewController {
         ideaTableView.separatorInset.right = 10
     }
     
-    func ideaTableViewConstraints() {
-        ideaTableView.translatesAutoresizingMaskIntoConstraints = false
-        ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        ideaTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        ideaTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        ideaTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    }
-    
     //MARK: button functionality
     
     @objc func addTapped() {
@@ -100,4 +95,24 @@ class IdeaViewController: UIViewController {
     }
 }
 
+extension IdeaViewController {
+    
+    func ideaTableViewConstraints() {
+        ideaTableView.translatesAutoresizingMaskIntoConstraints = false
+        ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        ideaTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        ideaTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ideaTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    func addStoryConstraints() {
+        
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        addButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        
+    }
+}
 
