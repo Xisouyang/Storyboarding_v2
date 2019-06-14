@@ -29,7 +29,6 @@ class ElementsViewController: UIViewController {
     // Initialize neccessary variables
     
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-//    var headerButton: AddButton?
     var elementsTableView: UITableView!
     var headerTitle: String?
     

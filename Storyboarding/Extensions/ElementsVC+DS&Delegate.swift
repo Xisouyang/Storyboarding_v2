@@ -29,19 +29,39 @@ extension ElementsViewController: UITableViewDelegate {
         return ElementsViewController.elements.count
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return view.frame.height / 16
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let tableViewHeader = UIView()
         tableViewHeader.backgroundColor = .clear
+        
         let headerLabel = createHeaderLabel()
         headerLabel.text = ElementsViewController.elements[section]
         tableViewHeader.addSubview(headerLabel)
         elementsHeaderLabelConstraints(label: headerLabel, header: tableViewHeader)
+        
+        let headerButton = createButton(section: section)
+        headerButton.tag = section
+        tableViewHeader.addSubview(headerButton)
+        sectionBtnConstraints(button: headerButton, header: tableViewHeader)
+        
         return tableViewHeader
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return view.frame.height / 16
+    func createButton(section: Int) -> UIButton {
+        
+        let button = UIButton(frame: .zero)
+        let buttonImage = UIImage(named: "addButton")
+        button.setImage(buttonImage, for: .normal)
+        button.layer.cornerRadius = (view.frame.width * 0.115) / 2
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        
+        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        return button
     }
     
     func createHeaderLabel() -> UILabel {
@@ -51,11 +71,6 @@ extension ElementsViewController: UITableViewDelegate {
         label.backgroundColor = .black
         label.textAlignment = .center
         return label
-    }
-    
-    func configHeaderBtn() {
-        let sectionButton = AddButton()
-        
     }
 }
 
@@ -116,6 +131,33 @@ extension ElementsViewController: UITableViewDataSource {
             elementsTableView.reloadData()
         }
     }
+    
+    @objc func addButtonTapped(sender: UIButton) {
+//        print(sender.tag)
+        let currSection = sender.tag
+        addCard(section: currSection)
+    }
+    
+    func addCard(section: Int) {
+        // add a card to that specific section that we're in
+        let categoryName = ElementsViewController.elements[section]
+        ElementsViewController.parsedStoryDict[categoryName]?.append("")
+        guard let unwrappedCount = ElementsViewController.parsedStoryDict[categoryName]?.count else { return }
+        let rowToInsert = unwrappedCount - 1
+        let path = IndexPath(row: rowToInsert, section: section)
+
+        elementsTableView.beginUpdates()
+        elementsTableView.insertRows(at: [path], with: .fade)
+        elementsTableView.endUpdates()
+        
+        
+        // determine which section we're in based on the name of the header
+        // using header title, access the specific array within the parsed story dictionary
+        // add an empty string into that array
+        // can use a switch statement to determine which section we're in based on the header title
+        // create a new index path using the (array.count - 1) for row and the section number
+        // insert row in tableview using that indexPath
+    }
 }
 
 extension ElementsViewController {
@@ -137,5 +179,14 @@ extension ElementsViewController {
         label.topAnchor.constraint(equalTo: header.topAnchor).isActive = true
         label.rightAnchor.constraint(equalTo: header.rightAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: header.bottomAnchor).isActive = true
+    }
+    
+    func sectionBtnConstraints(button: UIButton, header: UIView) {
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.115).isActive = true
+        button.heightAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.115).isActive = true
+        button.topAnchor.constraint(equalTo: header.topAnchor, constant: 7).isActive = true
+        button.rightAnchor.constraint(equalTo: header.rightAnchor, constant: -20).isActive = true
     }
 }
