@@ -8,9 +8,9 @@
 
 import UIKit
 
+//MARK: tableview UI
 extension ElementsViewController: UITableViewDelegate {
     
-    //MARK: tableview UI
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.height / 4
@@ -20,7 +20,6 @@ extension ElementsViewController: UITableViewDelegate {
         if ElementsViewController.parsedStoryDict.count == 0 {
             return 5
         } else {
-            // change this to be randomized to 5 different ones each time
             return (ElementsViewController.parsedStoryDict[ElementsViewController.elements[section]]?.count)!
         }
     }
@@ -35,23 +34,35 @@ extension ElementsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let tableViewHeader = UIView()
-        tableViewHeader.backgroundColor = .clear
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SmartHeader.reuseIdentifier) as! SmartHeader
+        headerView.contentView.frame = view.frame
+        headerView.label.text = ElementsViewController.elements[section]
         
-        let headerLabel = createHeaderLabel()
-        headerLabel.text = ElementsViewController.elements[section]
-        tableViewHeader.addSubview(headerLabel)
-        elementsHeaderLabelConstraints(label: headerLabel, header: tableViewHeader)
+//        let tableViewHeader = UIView()
+//        tableViewHeader.backgroundColor = .clear
+//
+//        let headerLabel = createHeaderLabel()
+//        headerLabel.text = ElementsViewController.elements[section]
+//        tableViewHeader.addSubview(headerLabel)
+//        elementsHeaderLabelConstraints(label: headerLabel, header: tableViewHeader)
+//
+//        let headerButton = createButton()
+//        headerButton.tag = section
+//        tableViewHeader.addSubview(headerButton)
+//        sectionBtnConstraints(button: headerButton, header: tableViewHeader)
         
-        let headerButton = createButton(section: section)
-        headerButton.tag = section
-        tableViewHeader.addSubview(headerButton)
-        sectionBtnConstraints(button: headerButton, header: tableViewHeader)
-        
-        return tableViewHeader
+        return headerView
     }
     
-    func createButton(section: Int) -> UIButton {
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView:SmartHeader = view as? SmartHeader {
+            headerView.label.text = ElementsViewController.elements[section] 
+            headerView.button.tag = section
+            headerView.button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        }
+    }
+    
+    func createButton() -> UIButton {
         
         let button = UIButton(frame: .zero)
         let buttonImage = UIImage(named: "addButton")
@@ -77,7 +88,6 @@ extension ElementsViewController: UITableViewDelegate {
 //MARK: tableview data handling
 extension ElementsViewController: UITableViewDataSource {
     
-   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         cellID = selectCellID(indexPath: indexPath)
@@ -133,30 +143,21 @@ extension ElementsViewController: UITableViewDataSource {
     }
     
     @objc func addButtonTapped(sender: UIButton) {
-//        print(sender.tag)
         let currSection = sender.tag
         addCard(section: currSection)
     }
     
     func addCard(section: Int) {
+        
         // add a card to that specific section that we're in
         let categoryName = ElementsViewController.elements[section]
-        ElementsViewController.parsedStoryDict[categoryName]?.append("")
-        guard let unwrappedCount = ElementsViewController.parsedStoryDict[categoryName]?.count else { return }
-        let rowToInsert = unwrappedCount - 1
-        let path = IndexPath(row: rowToInsert, section: section)
+        ElementsViewController.parsedStoryDict[categoryName]?.insert("", at: 0)
+        let path = IndexPath(row: 0, section: section)
 
         elementsTableView.beginUpdates()
         elementsTableView.insertRows(at: [path], with: .fade)
         elementsTableView.endUpdates()
-        
-        
-        // determine which section we're in based on the name of the header
-        // using header title, access the specific array within the parsed story dictionary
-        // add an empty string into that array
-        // can use a switch statement to determine which section we're in based on the header title
-        // create a new index path using the (array.count - 1) for row and the section number
-        // insert row in tableview using that indexPath
+ 
     }
 }
 

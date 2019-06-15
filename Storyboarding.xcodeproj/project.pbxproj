@@ -21,6 +21,7 @@
 		5DF8036822A1EE6D00D6E3AE /* Elements+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8036422A1EE6D00D6E3AE /* Elements+CoreDataProperties.swift */; };
 		5DF8036922A1EE6D00D6E3AE /* Storyboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8036522A1EE6D00D6E3AE /* Storyboard+CoreDataClass.swift */; };
 		5DF8036A22A1EE6D00D6E3AE /* Storyboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8036622A1EE6D00D6E3AE /* Storyboard+CoreDataProperties.swift */; };
+		5DF8C04F22B4692B00D373E8 /* SmartHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8C04E22B4692B00D373E8 /* SmartHeader.swift */; };
 		5DF8EFD0229F58EA0064214A /* IdeaVC+DS&Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8EFCF229F58EA0064214A /* IdeaVC+DS&Delegate.swift */; };
 		5DF9A8D92240212200F6AD52 /* ElementsTVCell+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF9A8D82240212200F6AD52 /* ElementsTVCell+Delegate.swift */; };
 		5DFA3BC022A04FE30085B04A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA3BBF22A04FE30085B04A /* CoreDataManager.swift */; };
@@ -52,6 +53,7 @@
 		5DF8036422A1EE6D00D6E3AE /* Elements+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Elements+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5DF8036522A1EE6D00D6E3AE /* Storyboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5DF8036622A1EE6D00D6E3AE /* Storyboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5DF8C04E22B4692B00D373E8 /* SmartHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartHeader.swift; sourceTree = "<group>"; };
 		5DF8EFCF229F58EA0064214A /* IdeaVC+DS&Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IdeaVC+DS&Delegate.swift"; sourceTree = "<group>"; };
 		5DF9A8D82240212200F6AD52 /* ElementsTVCell+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementsTVCell+Delegate.swift"; sourceTree = "<group>"; };
 		5DFA3BBF22A04FE30085B04A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				5DF4309B223A1AD4008483D3 /* GenreCell.swift */,
 				5DFB4DE922AF10A7007C1047 /* AddButton.swift */,
 				5DFFF764223C8BAE007C9035 /* ElementsTableViewCell.swift */,
+				5DF8C04E22B4692B00D373E8 /* SmartHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				5DF8036822A1EE6D00D6E3AE /* Elements+CoreDataProperties.swift in Sources */,
 				5DFF594C227CF3C800E1D6FD /* Router.swift in Sources */,
 				5DFFF763223C660C007C9035 /* ElementsVC+DS&Delegate.swift in Sources */,
+				5DF8C04F22B4692B00D373E8 /* SmartHeader.swift in Sources */,
 				5DD7BFF62239ACFB00D1A9E6 /* GenreViewController.swift in Sources */,
 				5DFDAC3C22B16802002AF0C5 /* ElementsVC+Fetch&Parse.swift in Sources */,
 				5DFDAC3E22B168C5002AF0C5 /* ElementsVC+Save.swift in Sources */,

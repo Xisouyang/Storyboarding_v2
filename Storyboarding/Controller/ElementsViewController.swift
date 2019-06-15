@@ -32,10 +32,10 @@ class ElementsViewController: UIViewController {
     var elementsTableView: UITableView!
     var headerTitle: String?
     
-    var cellID: String = "cellID"
     static let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
+    static var parsedStoryDict: [String: [String]] = [:]
+    var cellID: String = "cellID"
     var allStoriesArr = [StoryModel]()
-    static var parsedStoryDict: [String: [String]] = [:] 
     var returnElements: NSSet?
     
     override func loadView() {
@@ -71,6 +71,8 @@ class ElementsViewController: UIViewController {
         elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[2])
         elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[3])
         elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[4])
+        elementsTableView.register(SmartHeader.self, forHeaderFooterViewReuseIdentifier: SmartHeader.reuseIdentifier)
+
         elementsTableView.delegate = self
         elementsTableView.dataSource = self
         elementsTableView.backgroundColor = .black
@@ -79,18 +81,10 @@ class ElementsViewController: UIViewController {
         elementsTVConstraints()
     }
     
-    func handleKeyboard() {
-        let keyboardTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-//        keyboardTap.cancelsTouchesInView = false
-        view.addGestureRecognizer(keyboardTap)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
+    // MARK: button functionality
     
     @objc func saveTapped() {
         self.view.endEditing(true)
-        print("ELEMENT VIEW CONTROLLER: save tapped")
         if isNewStory == true {
             handleAlert()
         } else {

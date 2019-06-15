@@ -16,7 +16,6 @@ class IdeaViewController: UIViewController {
     let ideaTableView = UITableView()
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     let addStoryButton = AddButton()
-    
     static var storyArr: [Storyboard] = []
     
     override func loadView() {
@@ -90,14 +89,17 @@ class IdeaViewController: UIViewController {
         self.navigationController?.pushViewController(newVC, animated: true)
     }
         
-    //MARK: scrollView functionality
+    // MARK: scrollView functionality
     
-    /* maintains color of title when scrolling */
+    // maintains color of title when scrolling
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
 }
+
+
+// MARK: IdeaVC constraints
 
 extension IdeaViewController {
     
@@ -116,6 +118,5 @@ extension IdeaViewController {
         addStoryButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
         addStoryButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         addStoryButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        
     }
 }

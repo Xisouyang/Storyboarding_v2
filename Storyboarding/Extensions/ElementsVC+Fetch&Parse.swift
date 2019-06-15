@@ -9,6 +9,7 @@
 import Foundation
 
 // MARK: handle fetching/parsing data
+
 extension ElementsViewController {
     
     func fetchStoryElements() {
@@ -36,6 +37,13 @@ extension ElementsViewController {
     
     // parse converted JSON data
     func parseFromAPI(stories: [StoryModel]) {
+        
+        var plotCount = 0
+        var conflictCount = 0
+        var resolutionCount = 0
+        var characterCount = 0
+        var settingCount = 0
+        
         ElementsViewController.parsedStoryDict["Plot"] = []
         ElementsViewController.parsedStoryDict["Conflict"] = []
         ElementsViewController.parsedStoryDict["Resolution"] = []
@@ -43,23 +51,34 @@ extension ElementsViewController {
         ElementsViewController.parsedStoryDict["Setting"] = []
         
         for story in stories {
+            
             if story.genre != headerTitle {
                 continue
             } else {
                 if let unwrappedPlot = story.plot {
+                    if plotCount == 5 { continue }
                     ElementsViewController.parsedStoryDict["Plot"]?.append(unwrappedPlot)
+                    plotCount += 1
                 }
                 if let unwrappedConflicts = story.conflict {
+                    if conflictCount == 5 { continue }
                     ElementsViewController.parsedStoryDict["Conflict"]?.append(unwrappedConflicts)
+                    conflictCount += 1
                 }
                 if let unwrappedResolutions = story.resolution {
+                    if resolutionCount == 5 { continue }
                     ElementsViewController.parsedStoryDict["Resolution"]?.append(unwrappedResolutions)
+                    resolutionCount += 1
                 }
                 if let unwrappedChars = story.character {
+                    if characterCount == 5 { continue }
                     ElementsViewController.parsedStoryDict["Character"]?.append(unwrappedChars)
+                    characterCount += 1
                 }
                 if let unwrappedSettings = story.setting {
+                    if settingCount == 5 { continue }
                     ElementsViewController.parsedStoryDict["Setting"]?.append(unwrappedSettings)
+                    settingCount += 1
                 }
             }
         }
