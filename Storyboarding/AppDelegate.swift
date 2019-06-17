@@ -62,10 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let nav1 = UINavigationController()
-//        UINavigationBar.appearance().prefersLargeTitles = true
-//        UINavigationBar.appearance().largeTitleTextAttributes =
-//            [NSAttributedString.Key.foregroundColor: textAttributes,
-//             NSAttributedString.Key.font: UIFont(name: "Times New Roman", size: 18)!]
+        nav1.navigationBar.barStyle = .black
         let mainView = IdeaViewController(nibName: nil, bundle: nil)
         nav1.viewControllers = [mainView]
         self.window!.rootViewController = nav1
@@ -73,6 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -10,7 +10,6 @@ import UIKit
 
 class ElementsTableViewCell: UITableViewCell {
     
-//    static var identifier: String = "plotCell"
     var cellView: UIView!
     var cellTextView: UITextView!
     
@@ -19,7 +18,6 @@ class ElementsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -36,8 +34,6 @@ class ElementsTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func createCellView() {
@@ -52,9 +48,35 @@ class ElementsTableViewCell: UITableViewCell {
     func createCellTextView() {
         cellTextView = UITextView()
         cellTextView.font = UIFont.init(name: "Times New Roman", size: 18)
+        cellTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         cellView.addSubview(cellTextView)
         cellTextViewConstraints()
     }
 }
+
+extension ElementsTableViewCell {
+    
+    func cellViewConstraints() {
+        
+        cellView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let widthConstraint = NSLayoutConstraint(item: cellView, attribute: .width, relatedBy: .equal, toItem: self.contentView, attribute: .width, multiplier: 0.9, constant: 0)
+        let heightConstraint = NSLayoutConstraint(item: cellView, attribute: .height, relatedBy: .equal, toItem: self.contentView, attribute: .height, multiplier: 0.85, constant: 0)
+        let horizontalConstraint = NSLayoutConstraint(item: cellView, attribute: .centerX, relatedBy: .equal, toItem: self.contentView, attribute: .centerX, multiplier: 1.0, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: cellView, attribute: .centerY, relatedBy: .equal, toItem: self.contentView, attribute: .centerY, multiplier: 1.0, constant: 0)
+        self.contentView.addConstraints([widthConstraint, heightConstraint, horizontalConstraint, verticalConstraint])
+    }
+    
+    func cellTextViewConstraints() {
+        
+        cellTextView.translatesAutoresizingMaskIntoConstraints = false
+        cellTextView.topAnchor.constraint(equalTo: cellView.topAnchor).isActive = true
+        cellTextView.rightAnchor.constraint(equalTo: cellView.rightAnchor).isActive = true
+        cellTextView.bottomAnchor.constraint(equalTo: cellView.bottomAnchor).isActive = true
+        cellTextView.leftAnchor.constraint(equalTo: cellView.leftAnchor).isActive = true
+        
+    }
+}
+
 
 

@@ -6,57 +6,47 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+//TODO:
+// create custom cell so stories may have longer titles
+
 import UIKit
 
-protocol IdeaVCDelegate {
-    func goToElementVC(passedStory: [String:[String]])
-}
-
-class IdeaViewController: UIViewController, IdeaVCDelegate {
+class IdeaViewController: UIViewController {
     
-    var addButtonItem: UIBarButtonItem!
+    let ideaTableView = UITableView()
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+    static var storyArr: [Storyboard] = []
     
-    var passedStories: [String: [String]]? {
-        didSet {
-            if let unwrappedStories = passedStories {
-                print()
-                print("IdeaViewController passed story => \(unwrappedStories)")
-                IdeaView.storiesArr.append(unwrappedStories)
-            } else {
-                print("IdeaViewController: story not passed => \(String(describing: passedStories))")
-            }
-        }
-    }
-    
-    var passedTitle: String? {
-        didSet {
-            if let unwrappedTitle = passedTitle {
-                print()
-                print("IdeaViewController passed title => \(unwrappedTitle)")
-                IdeaView.titleArr.append(unwrappedTitle)
-            } else {
-                print("IdeaViewController: title not passed => \(String(describing: passedTitle))")
-            }
-        }
+    override func loadView() {
+        super.loadView()
+        view.addSubview(ideaTableView)
+        setupTableView()
+        populateTableView()
+        setupButton()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        setupView()
         setupNav()
     }
     
     //MARK: view setup functionality
     
-    func setupView() {
-        let mainViewFrame = UIScreen.main.bounds
-        let ideaView = IdeaView()
-        ideaView.delegate = self
-        ideaView.passedStories = passedStories
-        ideaView.frame = mainViewFrame
-        view.addSubview(ideaView)
+    func setupButton() {
+        
+        let buttonRadius = (view.frame.width * 0.15) / 2
+        let button = UIButton()
+        let buttonImage = UIImage(named: "addButton")
+        
+        button.setImage(buttonImage, for: .normal)
+        button.layer.cornerRadius = buttonRadius
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.addTarget(self, action: #selector(addStoryTapped), for: .touchUpInside)
+        
+        view.addSubview(button)
+        addStoryConstraints(addStoryButton: button)
+        
     }
     
     func setupNav() {
@@ -65,43 +55,66 @@ class IdeaViewController: UIViewController, IdeaVCDelegate {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
-        addButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = addButtonItem
         navigationController?.navigationBar.tintColor = .white
     }
     
-    //MARK: button functionality
-    
-    @objc func addTapped() {
-        print("ideaVC add button tapped")
-        let newController = GenreViewController()
-        self.navigationController?.pushViewController(newController, animated: true)
+    func setupTableView() {
+        ideaTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        ideaTableView.delegate = self
+        ideaTableView.dataSource = self
+        ideaTableView.backgroundColor = .black
+        ideaTableViewConstraints()
+        tableViewSeperators()
     }
     
-    //MARK: scrollView functionality
+    func populateTableView() {
+        let data = CoreDataManager.sharedManager.fetchStoryboards()
+        guard let unwrappedData = data else {
+            print("FAILURE: unable to access storyboards: \(String(describing: data))")
+            return
+        }
+        IdeaViewController.storyArr = unwrappedData
+    }
     
-    /* maintains color of title when scrolling */
+    func tableViewSeperators() {
+        ideaTableView.separatorColor = .white
+        ideaTableView.separatorInset.left = 10
+        ideaTableView.separatorInset.right = 10
+    }
+    
+    @objc func addStoryTapped(sender: UIGestureRecognizer) {
+        let newVC = GenreViewController()
+        self.navigationController?.pushViewController(newVC, animated: true)
+    }
+        
+    // MARK: scrollView functionality
+    
+    // maintains color of title when scrolling
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
-        navigationItem.rightBarButtonItem?.isEnabled = false
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-        navigationItem.rightBarButtonItem = addButtonItem
-    }
-    
-    func goToElementVC(passedStory: [String:[String]]) {
-        let elementVC = ElementsViewController()
-        elementVC.parse = false
-        elementVC.parsedStoryDict = passedStory
-        navigationController?.pushViewController(elementVC, animated: true)
-    }
 }
 
 
+// MARK: IdeaVC constraints
+
+extension IdeaViewController {
+    
+    func ideaTableViewConstraints() {
+        ideaTableView.translatesAutoresizingMaskIntoConstraints = false
+        ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        ideaTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        ideaTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ideaTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    func addStoryConstraints(addStoryButton: UIButton) {
+        
+        addStoryButton.translatesAutoresizingMaskIntoConstraints = false
+        addStoryButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        addStoryButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
+        addStoryButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        addStoryButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+    }
+}

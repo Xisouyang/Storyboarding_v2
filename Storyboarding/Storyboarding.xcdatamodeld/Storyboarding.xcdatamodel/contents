@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Elements" representedClassName="Elements" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="storyboard" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Storyboard" inverseName="elements" inverseEntity="Storyboard" syncable="YES"/>
+    </entity>
+    <entity name="Storyboard" representedClassName="Storyboard" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="elements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Elements" inverseName="storyboard" inverseEntity="Elements" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Elements" positionX="-45" positionY="18" width="128" height="90"/>
+        <element name="Storyboard" positionX="-63" positionY="-18" width="128" height="75"/>
+    </elements>
+</model>

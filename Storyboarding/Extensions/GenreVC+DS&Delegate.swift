@@ -6,32 +6,38 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-/*
- TODO: give proper title and description to subviews
-        - create arrays to hold those strings
-        - create button on nav bar to save and go to next screen
- */
-
 import UIKit
 
-extension GenreView: UICollectionViewDelegate {
+// MARK: user interaction with collection view
+extension GenreViewController: UICollectionViewDelegate {
+    
+    // function that fires when we select an item that's part of the collection view
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
-            cell.genreDescription.backgroundColor = UIColor.lightGray
-            cell.genreLabel.backgroundColor = UIColor.lightGray
+            
+            cell.genreView.backgroundColor = UIColor.lightGray
             selectedGenre = cell.genreLabel.text
+            goToElementView()
         }
     }
     
+    // fires when we deselect an item in the collection view by clicking another one
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? GenreCell {
-            cell.genreDescription.backgroundColor = .white
-            cell.genreLabel.backgroundColor = .white
+            cell.genreView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }
+    }
+    
+    func goToElementView() {
+        let newController = ElementsViewController()
+        newController.headerTitle = returnGenreTitle()
+        ElementsViewController.needToCallAPI = true
+        self.navigationController?.pushViewController(newController, animated: true)
     }
 }
 
-extension GenreView: UICollectionViewDataSource {
+// MARK: handle collection view data
+extension GenreViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return genreTitles.count
@@ -46,7 +52,8 @@ extension GenreView: UICollectionViewDataSource {
     }
 }
 
-extension GenreView: UICollectionViewDelegateFlowLayout {
+//MARK: collection view UI
+extension GenreViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

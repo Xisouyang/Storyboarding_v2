@@ -10,9 +10,18 @@ import UIKit
 
 class GenreViewController: UIViewController {
     
-    var delegate: GenreViewDelegate?
-    
-    var genreView: UIView!
+    //initialize neccessary variables
+
+    var collection: UICollectionView!
+    var collectionHeight: CGFloat!
+    var genreTitles: [String] = ["Adventure", "Horror", "Mystery", "Romance"]
+    var genreDescription: [String] = [
+        "Fiction that usually presents danger, or gives the reader a sense of excitement",
+        "Genre of speculative fiction which is intended to frighten, scare, disgust, or startle its readers by inducing feelings of horror and terror",
+        "Type of fiction in which a detective, or other professional, solves a crime or series of crimes",
+        "Centers around two people developing feelings for one another, usually with optimistic ending"
+    ]
+    var selectedGenre: String?
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
     var addButtonItem: UIBarButtonItem!
 
@@ -20,16 +29,16 @@ class GenreViewController: UIViewController {
         super.viewDidLoad()
         setupNav()
         setupView()
-        // Do any additional setup after loading the view.
     }
+    
+    //MARK: UI
     
     func setupView() {
         
-        let collectionHeight = view.frame.height
+        collectionHeight = view.frame.height
         - navigationController!.navigationBar.frame.height
-        genreView = GenreView(frame: self.view.frame, collectionHeight: collectionHeight)
-        self.delegate = genreView as? GenreViewDelegate
-        view.addSubview(genreView)
+        setupCollectionView()
+        collectionConstraints()
     }
     
     func setupNav() {
@@ -38,39 +47,35 @@ class GenreViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
-        addButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(addTapped))
-        navigationItem.rightBarButtonItem = addButtonItem
     }
     
-    @objc func addTapped() {
-        print("genreVC add button tapped")
-        let newController = ElementsViewController()
-        if self.delegate?.returnGenreTitle() == "NIL" {
-            noGenreSelected()
-        } else {
-            newController.genreTitle = self.delegate?.returnGenreTitle()
-            print(newController.genreTitle)
-            newController.parse = true
-            self.navigationController?.pushViewController(newController, animated: true)
-        }
+    func setupCollectionView() {
+        
+        collection = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        view.addSubview(collection)
+        
+        self.collection.dataSource = self
+        self.collection.delegate = self
+        self.collection.register(GenreCell.self, forCellWithReuseIdentifier: GenreCell.identifier)
+        self.collection.alwaysBounceVertical = true
+        self.collection.backgroundColor = .black
     }
     
-    func noGenreSelected() {
-        let alert = UIAlertController(title: "Please select a genre", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
-        self.present(alert, animated: true)
-    }
+    //MARK: Button functionality
     
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func returnGenreTitle() -> String {
+        
+        return selectedGenre ?? "NIL"
     }
-    */
+}
 
+extension GenreViewController {
+    
+    func collectionConstraints() {
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collection.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        collection.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        collection.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
 }
