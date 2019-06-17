@@ -5,19 +5,6 @@
 //  Created by Stephen Ouyang on 3/14/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 
-// TODO:
-// 1) finish commenting
-// 2) implement UI alert when saving
-//    - cannot save if we do not add a title for the storyboard
-//    - if title is added, then send title to idea view controller screen
-// 3) implement Core Data
-// 4) create booleans to check for if we need to request data from api or retrieve data from Core Data
-// 5) Check if we need to create a new item in the array or update the item in the array in the idea view controller
-    // Just create a boolean to check whether we need to run the alert or just update using Core Data
-    // compare header title with elements in ideaviewcontroller array of stories, if we find it then set the bool to false
-// 6) Implement functionality to save edited text 
-// 7) Implement functionality to create new cells
-
 
 import UIKit
 
@@ -71,7 +58,7 @@ class ElementsViewController: UIViewController {
         elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[2])
         elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[3])
         elementsTableView.register(ElementsTableViewCell.self, forCellReuseIdentifier: ElementsViewController.elements[4])
-        elementsTableView.register(SmartHeader.self, forHeaderFooterViewReuseIdentifier: SmartHeader.reuseIdentifier)
+        elementsTableView.register(SectionHeader.self, forHeaderFooterViewReuseIdentifier: SectionHeader.reuseIdentifier)
 
         elementsTableView.delegate = self
         elementsTableView.dataSource = self

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class SmartHeader: UITableViewHeaderFooterView {
+class SectionHeader: UITableViewHeaderFooterView {
 
-    static let reuseIdentifier: String = "SmartHeader"
+    static let reuseIdentifier: String = "SectionHeader"
     var label: UILabel
     var button: UIButton
 
@@ -58,7 +58,7 @@ class SmartHeader: UITableViewHeaderFooterView {
     }
 }
 
-extension SmartHeader {
+extension SectionHeader {
     
     func elementsHeaderLabelConstraints(label: UILabel, header: UIView) {
         label.translatesAutoresizingMaskIntoConstraints = false

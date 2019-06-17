@@ -9,11 +9,9 @@
 import UIKit
 
 extension UINavigationController {
-    /**
-     It removes all view controllers from navigation controller then set the new root view controller and it pops.
-     
-     - parameter vc: root view controller to set a new
-     */
+    
+     // Removes all view controllers from navigation controller then set the new root view controller and it pops.
+ 
     func initRootViewController(vc: UIViewController, transitionType type: String = "kCATransitionFade", duration: CFTimeInterval = 0.35) {
         self.addTransition(transitionType: type, duration: duration)
         self.viewControllers.removeAll()
@@ -21,12 +19,9 @@ extension UINavigationController {
         self.popToRootViewController(animated: false)
     }
     
-    /**
-     It adds the animation of navigation flow.
-     
-     - parameter type: kCATransitionType, it means style of animation
-     - parameter duration: CFTimeInterval, duration of animation
-     */
+    
+     // Adds the animation of navigation flow.
+    
     private func addTransition(transitionType type: String = "kCATransitionFade", duration: CFTimeInterval = 0.35) {
         let transition = CATransition()
         transition.duration = duration

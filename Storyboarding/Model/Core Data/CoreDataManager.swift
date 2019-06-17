@@ -72,15 +72,6 @@ class CoreDataManager {
     
     // fetch single storyboard from Core Data
     func fetchStoryboard(boardName: String) -> NSManagedObject? {
-        
-        // create array to hold all the items
-        // create variable to hold item that you want
-        
-        // create fetch request
-        // create predicate to query for the item you're looking for
-        
-        // fetch the request
-        // save item in array to the variable we made earlier
                 
         var storyboardArr: [Storyboard] = []
         var storyboard: Storyboard?

@@ -15,7 +15,6 @@ class IdeaViewController: UIViewController {
     
     let ideaTableView = UITableView()
     let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-    let addStoryButton = AddButton()
     static var storyArr: [Storyboard] = []
     
     override func loadView() {
@@ -35,20 +34,19 @@ class IdeaViewController: UIViewController {
     
     func setupButton() {
         
-        let tap = addStoryGesture()
         let buttonRadius = (view.frame.width * 0.15) / 2
-        addStoryButton.layer.cornerRadius = buttonRadius
-        addStoryButton.clipsToBounds = true
-        addStoryButton.addGestureRecognizer(tap)
-        self.view.insertSubview(addStoryButton, aboveSubview: ideaTableView)
-        addStoryConstraints()
-    }
-    
-    func addStoryGesture() -> UITapGestureRecognizer {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(addStoryTapped(sender:)))
-        tap.numberOfTouchesRequired = 1
-        tap.numberOfTapsRequired = 1
-        return tap
+        let button = UIButton()
+        let buttonImage = UIImage(named: "addButton")
+        
+        button.setImage(buttonImage, for: .normal)
+        button.layer.cornerRadius = buttonRadius
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.addTarget(self, action: #selector(addStoryTapped), for: .touchUpInside)
+        
+        view.addSubview(button)
+        addStoryConstraints(addStoryButton: button)
+        
     }
     
     func setupNav() {
@@ -111,7 +109,7 @@ extension IdeaViewController {
         ideaTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
-    func addStoryConstraints() {
+    func addStoryConstraints(addStoryButton: UIButton) {
         
         addStoryButton.translatesAutoresizingMaskIntoConstraints = false
         addStoryButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true

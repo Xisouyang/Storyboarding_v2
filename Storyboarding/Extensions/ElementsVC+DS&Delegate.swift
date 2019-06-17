@@ -20,7 +20,8 @@ extension ElementsViewController: UITableViewDelegate {
         if ElementsViewController.parsedStoryDict.count == 0 {
             return 5
         } else {
-            return (ElementsViewController.parsedStoryDict[ElementsViewController.elements[section]]?.count)!
+            return
+                (ElementsViewController.parsedStoryDict[ElementsViewController.elements[section]]?.count)!
         }
     }
     
@@ -34,54 +35,19 @@ extension ElementsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SmartHeader.reuseIdentifier) as! SmartHeader
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: SectionHeader.reuseIdentifier) as! SectionHeader
         headerView.contentView.frame = view.frame
         headerView.label.text = ElementsViewController.elements[section]
-        
-//        let tableViewHeader = UIView()
-//        tableViewHeader.backgroundColor = .clear
-//
-//        let headerLabel = createHeaderLabel()
-//        headerLabel.text = ElementsViewController.elements[section]
-//        tableViewHeader.addSubview(headerLabel)
-//        elementsHeaderLabelConstraints(label: headerLabel, header: tableViewHeader)
-//
-//        let headerButton = createButton()
-//        headerButton.tag = section
-//        tableViewHeader.addSubview(headerButton)
-//        sectionBtnConstraints(button: headerButton, header: tableViewHeader)
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let headerView:SmartHeader = view as? SmartHeader {
+        if let headerView:SectionHeader = view as? SectionHeader {
             headerView.label.text = ElementsViewController.elements[section] 
             headerView.button.tag = section
             headerView.button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         }
-    }
-    
-    func createButton() -> UIButton {
-        
-        let button = UIButton(frame: .zero)
-        let buttonImage = UIImage(named: "addButton")
-        button.setImage(buttonImage, for: .normal)
-        button.layer.cornerRadius = (view.frame.width * 0.115) / 2
-        button.contentHorizontalAlignment = .fill
-        button.contentVerticalAlignment = .fill
-        
-        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
-        return button
-    }
-    
-    func createHeaderLabel() -> UILabel {
-        let label = UILabel()
-        label.textColor = .white
-        label.font = UIFont.init(name: "Baskerville", size: 36)
-        label.backgroundColor = .black
-        label.textAlignment = .center
-        return label
     }
 }
 
@@ -153,11 +119,9 @@ extension ElementsViewController: UITableViewDataSource {
         let categoryName = ElementsViewController.elements[section]
         ElementsViewController.parsedStoryDict[categoryName]?.insert("", at: 0)
         let path = IndexPath(row: 0, section: section)
-
         elementsTableView.beginUpdates()
         elementsTableView.insertRows(at: [path], with: .fade)
         elementsTableView.endUpdates()
- 
     }
 }
 

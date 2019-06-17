@@ -10,11 +10,7 @@ import UIKit
 
 extension ElementsTableViewCell: UITextViewDelegate {
     
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-
-        return true
-    }
-    
+    // update dictionary with new user written text
     func textViewDidEndEditing(_ textView: UITextView) {
         let cellText = self.cellTextView.text
         guard let unwrappedText = cellText else { return }

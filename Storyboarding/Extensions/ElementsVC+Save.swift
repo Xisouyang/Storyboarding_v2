@@ -28,29 +28,23 @@ extension ElementsViewController {
         }
     }
     
+    // save all text currently on the screen
     func saveBoard(storyboard: Dictionary<String, [String]>, name: String) {
         
-        // loop through each key in the dictionary
-        // loop through each element in the array
-        // call function to save element
-        // function will take in parameters type: (dictionary key) and content: (element)
         for key in storyboard.keys {
             guard let unwrappedElementArr = storyboard[key] else {
                 print("ERROR: unable to access story elements: \(String(describing: storyboard[key]))")
                 return
             }
             for item in unwrappedElementArr {
-                // call Core Data
-                // fetch specific storyboard
+            
                 let storyboard = CoreDataManager.sharedManager.fetchStoryboard(boardName: name)
                 CoreDataManager.sharedManager.createElement(type: key, content: item, storyboard: storyboard as! Storyboard)
-                // to do that I need to access the story's title
-                // I can pass that story's title by clicking on the tableview cell in the first screen
-                // need to set booleans to check if we're adding brand new storyboard or if we're visiting an old one
             }
         }
     }
     
+    // update text on the screen to Core Data
     func updateBoard() {
         guard let unwrappedTitle = headerTitle else { return }
         let test = CoreDataManager.sharedManager.fetchStoryboard(boardName: headerTitle!) as! Storyboard
@@ -60,10 +54,6 @@ extension ElementsViewController {
     }
     
     func handleAlert() {
-        // create alert
-        // create ok and cancel buttons
-        // create textfield
-        // add notification center to handle checking whether text field is empty or not
         
         // create alert controller
         let alert = UIAlertController(title: "Please enter a title", message: nil, preferredStyle: .alert)

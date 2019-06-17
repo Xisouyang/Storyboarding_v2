@@ -8,7 +8,7 @@
 
 import UIKit
 
-// handles how user interacts with data
+// MARK: handles how user interacts with data
 extension IdeaViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -28,7 +28,7 @@ extension IdeaViewController: UITableViewDelegate {
     }
 }
 
-// handles how data is displayed in tableview
+// MARK: handles how data is displayed in tableview
 extension IdeaViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
