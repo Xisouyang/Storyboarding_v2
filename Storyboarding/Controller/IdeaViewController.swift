@@ -96,7 +96,6 @@ class IdeaViewController: UIViewController {
     }
 }
 
-
 // MARK: IdeaVC constraints
 
 extension IdeaViewController {
