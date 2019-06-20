@@ -31,6 +31,11 @@ class GenreViewController: UIViewController {
         setupView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ElementsViewController.parsedStoryDict = [:]
+    }
+    
     //MARK: UI
     
     func setupView() {

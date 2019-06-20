@@ -78,7 +78,7 @@ extension ElementsViewController {
             
             // save story elements
             self.saveBoard(storyboard: ElementsViewController.parsedStoryDict, name: unwrappedText)
-            
+                        
             self.navigationController?.initRootViewController(vc: newVC)
         })
         okAction.isEnabled = false

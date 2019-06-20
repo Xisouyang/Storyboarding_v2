@@ -30,6 +30,11 @@ class IdeaViewController: UIViewController {
         setupNav()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ElementsViewController.parsedStoryDict = [:]
+    }
+    
     //MARK: view setup functionality
     
     func setupButton() {

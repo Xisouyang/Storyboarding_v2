@@ -45,14 +45,29 @@ extension IdeaViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let boardName = IdeaViewController.storyArr[indexPath.row]
-            guard let unwrappedTitle = boardName.title else { return }
-            let storyToRemove = CoreDataManager.sharedManager.fetchStoryboard(boardName: unwrappedTitle)
-            guard let unwrappedID = storyToRemove?.objectID else { return }
-            CoreDataManager.sharedManager.removeItem(objectID: unwrappedID)
-            CoreDataManager.sharedManager.saveContext()
-            IdeaViewController.storyArr.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // create alert controller
+            let alert = UIAlertController(title: "Are you sure?", message: nil, preferredStyle: .alert)
+            // create action
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+                // delete story from array & Core Data
+                self.deleteStory(indexPath: indexPath)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            })
+            alert.addAction(okAction)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
         }
+    }
+    
+    func deleteStory(indexPath: IndexPath) {
+        let boardName = IdeaViewController.storyArr[indexPath.row]
+        guard let unwrappedTitle = boardName.title else { return }
+        let storyToRemove = CoreDataManager.sharedManager.fetchStoryboard(boardName: unwrappedTitle)
+        guard let unwrappedID = storyToRemove?.objectID else { return }
+        CoreDataManager.sharedManager.removeItem(objectID: unwrappedID)
+        CoreDataManager.sharedManager.saveContext()
+        IdeaViewController.storyArr.remove(at: indexPath.row)
     }
 }
