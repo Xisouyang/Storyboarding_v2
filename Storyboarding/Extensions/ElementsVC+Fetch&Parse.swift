@@ -28,6 +28,7 @@ extension ElementsViewController {
             switch result {
             case .success(let result):
                 self.allStoriesArr = result
+                self.allStoriesArr.shuffle()
                 self.parseFromAPI(stories: self.allStoriesArr)
             case .failure(let error):
                 print("\(error)")
@@ -82,6 +83,7 @@ extension ElementsViewController {
                 }
             }
         }
+        
         DispatchQueue.main.async {
             self.elementsTableView.reloadData()
         }
