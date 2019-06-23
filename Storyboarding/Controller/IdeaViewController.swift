@@ -30,6 +30,10 @@ class IdeaViewController: UIViewController {
         setupNav()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        ideaTableView.reloadData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ElementsViewController.parsedStoryDict = [:]
@@ -55,7 +59,7 @@ class IdeaViewController: UIViewController {
     }
     
     func setupNav() {
-        navigationItem.title = "Storyboarding"
+        navigationItem.title = "Story Snippets"
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true

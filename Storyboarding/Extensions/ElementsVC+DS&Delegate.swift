@@ -104,7 +104,7 @@ extension ElementsViewController: UITableViewDataSource {
             let sectionName = ElementsViewController.elements[indexPath.section]
             let arrayIndex = indexPath.row
             ElementsViewController.parsedStoryDict[sectionName]?.remove(at: arrayIndex)
-            elementsTableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
