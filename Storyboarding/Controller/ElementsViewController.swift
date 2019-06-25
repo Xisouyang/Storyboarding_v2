@@ -64,6 +64,7 @@ class ElementsViewController: UIViewController {
         elementsTableView.dataSource = self
         elementsTableView.backgroundColor = .black
         elementsTableView.separatorColor = .clear
+        elementsTableView.isScrollEnabled = false
         view.addSubview(elementsTableView)
         elementsTVConstraints()
     }

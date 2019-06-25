@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: handle fetching/parsing data
 
@@ -32,6 +33,7 @@ extension ElementsViewController {
                 self.parseFromAPI(stories: self.allStoriesArr)
             case .failure(let error):
                 print("\(error)")
+                self.dismiss(animated: false, completion: nil)
             }
         }
     }
@@ -86,6 +88,7 @@ extension ElementsViewController {
         
         DispatchQueue.main.async {
             self.elementsTableView.reloadData()
+            self.elementsTableView.isScrollEnabled = true
         }
     }
     
@@ -124,5 +127,6 @@ extension ElementsViewController {
                 print("No more elements to parse")
             }
         }
+        self.elementsTableView.isScrollEnabled = true
     }
 }
