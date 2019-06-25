@@ -35,7 +35,6 @@ class ElementsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(ElementsViewController.parsedStoryDict)
         setupNav()
     }
     

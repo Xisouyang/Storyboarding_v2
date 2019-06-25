@@ -71,8 +71,8 @@ extension SectionHeader {
     func sectionBtnConstraints(button: UIButton, header: UIView) {
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.115).isActive = true
-        button.heightAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.115).isActive = true
+        button.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.1).isActive = true
+        button.heightAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.1).isActive = true
         button.topAnchor.constraint(equalTo: header.topAnchor, constant: 7).isActive = true
         button.rightAnchor.constraint(equalTo: header.rightAnchor, constant: -20).isActive = true
     }

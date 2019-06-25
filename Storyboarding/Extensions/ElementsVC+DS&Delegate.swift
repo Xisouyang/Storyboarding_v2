@@ -30,7 +30,7 @@ extension ElementsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return view.frame.height / 16
+        return view.frame.height / 12
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -139,6 +139,7 @@ extension ElementsViewController {
     }
     
     func elementsHeaderLabelConstraints(label: UILabel, header: UIView) {
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.leftAnchor.constraint(equalTo: header.leftAnchor).isActive = true
         label.topAnchor.constraint(equalTo: header.topAnchor).isActive = true
@@ -149,9 +150,9 @@ extension ElementsViewController {
     func sectionBtnConstraints(button: UIButton, header: UIView) {
         
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.115).isActive = true
-        button.heightAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.115).isActive = true
-        button.topAnchor.constraint(equalTo: header.topAnchor, constant: 7).isActive = true
+        button.widthAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.001).isActive = true
+        button.heightAnchor.constraint(equalTo: header.widthAnchor, multiplier: 0.001).isActive = true
+        button.topAnchor.constraint(equalTo: header.topAnchor, constant: 5).isActive = true
         button.rightAnchor.constraint(equalTo: header.rightAnchor, constant: -20).isActive = true
     }
 }
