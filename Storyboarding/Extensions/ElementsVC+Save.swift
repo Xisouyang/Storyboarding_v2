@@ -11,7 +11,7 @@ import UIKit
 // MARK: Handle saving data
 extension ElementsViewController {
     
-    // function to check if we useAlertController or not
+    // function to check if we use AlertController or not
     func updateIsNewStory() {
         
         if IdeaViewController.storyArr.count == 0 {
@@ -68,7 +68,7 @@ extension ElementsViewController {
             let genreVC = GenreViewController()
             for item in genreVC.genreTitles {
                 if unwrappedText == item {
-                    self.wrongTitleAlert(text: unwrappedText)
+                    self.wrongTitleAlert()
                     return
                 }
             }
@@ -83,6 +83,7 @@ extension ElementsViewController {
         })
         okAction.isEnabled = false
         alert.addAction(okAction)
+
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         // add textfield to alert
@@ -102,11 +103,12 @@ extension ElementsViewController {
         self.present(alert, animated: true)
     }
     
-    func wrongTitleAlert(text: String) {
+    func wrongTitleAlert() {
         
         let alert = UIAlertController(title: "Please enter valid title", message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(action)
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.present(alert, animated: true)
     }
 }

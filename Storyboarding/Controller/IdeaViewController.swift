@@ -23,6 +23,10 @@ class IdeaViewController: UIViewController {
         setupTableView()
         populateTableView()
         setupButton()
+        
+        if firstLaunch() == true {
+            howToUseAlert()
+        }
     }
 
     override func viewDidLoad() {
@@ -40,6 +44,24 @@ class IdeaViewController: UIViewController {
     }
     
     //MARK: view setup functionality
+    
+    func firstLaunch() -> Bool {
+        let defaults = UserDefaults.standard
+        if let _ = defaults.string(forKey: "launchedOnce") {
+            return false
+        } else {
+            defaults.set(true, forKey: "launchedOnce")
+            return true
+        }
+    }
+    
+    func howToUseAlert() {
+        let alert = UIAlertController(title: "Hit the add button to create a new story!", message: nil, preferredStyle: .alert)
+        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
     
     func setupButton() {
         
@@ -90,6 +112,8 @@ class IdeaViewController: UIViewController {
         ideaTableView.separatorInset.left = 10
         ideaTableView.separatorInset.right = 10
     }
+    
+    //MARK: Button functionality
     
     @objc func addStoryTapped(sender: UIGestureRecognizer) {
         let newVC = GenreViewController()

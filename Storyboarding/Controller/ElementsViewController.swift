@@ -36,6 +36,8 @@ class ElementsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
+        let testDate = Date()
+        print(testDate)
     }
     
     // MARK: UI
