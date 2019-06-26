@@ -22,11 +22,8 @@ class IdeaViewController: UIViewController {
         view.addSubview(ideaTableView)
         setupTableView()
         populateTableView()
-        setupButton()
-        
-        if firstLaunch() == true {
-            howToUseAlert()
-        }
+        setupAddButton()
+        setupInfoButton()
     }
 
     override func viewDidLoad() {
@@ -45,25 +42,7 @@ class IdeaViewController: UIViewController {
     
     //MARK: view setup functionality
     
-    func firstLaunch() -> Bool {
-        let defaults = UserDefaults.standard
-        if let _ = defaults.string(forKey: "launchedOnce") {
-            return false
-        } else {
-            defaults.set(true, forKey: "launchedOnce")
-            return true
-        }
-    }
-    
-    func howToUseAlert() {
-        let alert = UIAlertController(title: "Hit the add button to create a new story!", message: nil, preferredStyle: .alert)
-        alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(action)
-        self.present(alert, animated: true)
-    }
-    
-    func setupButton() {
+    func setupAddButton() {
         
         let buttonRadius = (view.frame.width * 0.15) / 2
         let button = UIButton()
@@ -77,7 +56,20 @@ class IdeaViewController: UIViewController {
         
         view.addSubview(button)
         addStoryConstraints(addStoryButton: button)
+    }
+    
+    func setupInfoButton() {
+        // Create the info button
+        let infoButton = UIButton(type: .infoLight)
         
+        // You will need to configure the target action for the button itself, not the bar button itemr
+        infoButton.addTarget(self, action: #selector(getInfo), for: .touchUpInside)
+        
+        // Create a bar button item using the info button as its custom view
+        let infoBarButtonItem = UIBarButtonItem(customView: infoButton)
+        
+        // Use it as required
+        navigationItem.rightBarButtonItem = infoBarButtonItem
     }
     
     func setupNav() {
@@ -118,6 +110,11 @@ class IdeaViewController: UIViewController {
     @objc func addStoryTapped(sender: UIGestureRecognizer) {
         let newVC = GenreViewController()
         self.navigationController?.pushViewController(newVC, animated: true)
+    }
+    
+    @objc func getInfo() {
+        let newVC = HowToViewController()
+        present(newVC, animated: true)
     }
         
     // MARK: scrollView functionality

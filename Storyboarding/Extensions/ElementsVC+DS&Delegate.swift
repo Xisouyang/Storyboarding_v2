@@ -99,14 +99,24 @@ extension ElementsViewController: UITableViewDataSource {
         return cellID
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             let sectionName = ElementsViewController.elements[indexPath.section]
             let arrayIndex = indexPath.row
             ElementsViewController.parsedStoryDict[sectionName]?.remove(at: arrayIndex)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+        }        
+        return [delete]
     }
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+////        if editingStyle == .delete {
+////            let sectionName = ElementsViewController.elements[indexPath.section]
+////            let arrayIndex = indexPath.row
+////            ElementsViewController.parsedStoryDict[sectionName]?.remove(at: arrayIndex)
+////            tableView.deleteRows(at: [indexPath], with: .fade)
+////        }
+//    }
     
     @objc func addButtonTapped(sender: UIButton) {
         let currSection = sender.tag

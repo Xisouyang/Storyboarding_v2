@@ -73,6 +73,13 @@ extension ElementsViewController {
                 }
             }
             
+            for item in IdeaViewController.storyArr {
+                if unwrappedText == item.title {
+                    self.wrongTitleAlert()
+                    return
+                }
+            }
+            
             // save text title to Core Data
             CoreDataManager.sharedManager.createStoryboard(storyName: unwrappedText)
             

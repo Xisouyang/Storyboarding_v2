@@ -7,6 +7,7 @@
 
 
 import UIKit
+import CoreData
 
 class ElementsViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class ElementsViewController: UIViewController {
     
     static let elements = ["Plot", "Conflict", "Resolution", "Character", "Setting"]
     static var parsedStoryDict: [String: [String]] = [:]
+    static var objectIDs: [String: [NSManagedObjectID]] = [:]
     var cellID: String = "cellID"
     var allStoriesArr = [StoryModel]()
     var returnElements: NSSet?
@@ -36,8 +38,6 @@ class ElementsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNav()
-        let testDate = Date()
-        print(testDate)
     }
     
     // MARK: UI

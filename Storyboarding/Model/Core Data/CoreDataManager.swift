@@ -105,6 +105,8 @@ class CoreDataManager {
         let object = NSManagedObject(entity: unwrappedEntity, insertInto: context)
         object.setValue(storyName, forKey: "title")
         
+//        print(object.objectID)
+        
         // save
         saveContext()
     }
