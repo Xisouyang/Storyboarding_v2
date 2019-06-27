@@ -29,8 +29,8 @@ class ElementsViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        loading()
         setupTableView()
-        fetchStoryElements()
         updateIsNewStory()
         handleKeyboard()
     }

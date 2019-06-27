@@ -114,6 +114,7 @@ class IdeaViewController: UIViewController {
     
     @objc func getInfo() {
         let newVC = HowToViewController()
+        newVC.modalPresentationStyle = .overFullScreen
         present(newVC, animated: true)
     }
         

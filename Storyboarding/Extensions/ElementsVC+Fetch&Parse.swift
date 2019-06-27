@@ -15,6 +15,7 @@ extension ElementsViewController {
     
     func fetchStoryElements() {
         guard let unwrappedBool = ElementsViewController.needToCallAPI else { return }
+        print(unwrappedBool)
         if unwrappedBool {
             fetchFromAPI()
         } else {
@@ -22,6 +23,20 @@ extension ElementsViewController {
             guard let unwrappedData = returnElements else { return }
             parseFromCoreData(elements: unwrappedData)
         }
+    }
+    
+    func loading() {
+        let alert = UIAlertController(title: nil, message: "LOADING", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: {
+            self.fetchStoryElements()
+        })
     }
     
     func fetchFromAPI() {
@@ -89,6 +104,7 @@ extension ElementsViewController {
         DispatchQueue.main.async {
             self.elementsTableView.reloadData()
             self.elementsTableView.isScrollEnabled = true
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
