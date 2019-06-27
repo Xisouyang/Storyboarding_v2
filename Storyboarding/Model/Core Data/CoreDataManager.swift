@@ -104,9 +104,7 @@ class CoreDataManager {
         // create storyboard object using entity
         let object = NSManagedObject(entity: unwrappedEntity, insertInto: context)
         object.setValue(storyName, forKey: "title")
-        
-//        print(object.objectID)
-        
+                
         // save
         saveContext()
     }

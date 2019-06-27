@@ -133,7 +133,8 @@ extension IdeaViewController {
     
     func ideaTableViewConstraints() {
         ideaTableView.translatesAutoresizingMaskIntoConstraints = false
-        ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+//        ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65).isActive = true
         ideaTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         ideaTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         ideaTableView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true

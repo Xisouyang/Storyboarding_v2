@@ -15,7 +15,6 @@ extension ElementsViewController {
     
     func fetchStoryElements() {
         guard let unwrappedBool = ElementsViewController.needToCallAPI else { return }
-        print(unwrappedBool)
         if unwrappedBool {
             fetchFromAPI()
         } else {
@@ -74,27 +73,27 @@ extension ElementsViewController {
                 continue
             } else {
                 if let unwrappedPlot = story.plot {
-                    if plotCount == 5 { continue }
+                    if plotCount == 1 { continue }
                     ElementsViewController.parsedStoryDict["Plot"]?.append(unwrappedPlot)
                     plotCount += 1
                 }
                 if let unwrappedConflicts = story.conflict {
-                    if conflictCount == 5 { continue }
+                    if conflictCount == 1 { continue }
                     ElementsViewController.parsedStoryDict["Conflict"]?.append(unwrappedConflicts)
                     conflictCount += 1
                 }
                 if let unwrappedResolutions = story.resolution {
-                    if resolutionCount == 5 { continue }
+                    if resolutionCount == 1 { continue }
                     ElementsViewController.parsedStoryDict["Resolution"]?.append(unwrappedResolutions)
                     resolutionCount += 1
                 }
                 if let unwrappedChars = story.character {
-                    if characterCount == 5 { continue }
+                    if characterCount == 1 { continue }
                     ElementsViewController.parsedStoryDict["Character"]?.append(unwrappedChars)
                     characterCount += 1
                 }
                 if let unwrappedSettings = story.setting {
-                    if settingCount == 5 { continue }
+                    if settingCount == 1 { continue }
                     ElementsViewController.parsedStoryDict["Setting"]?.append(unwrappedSettings)
                     settingCount += 1
                 }
