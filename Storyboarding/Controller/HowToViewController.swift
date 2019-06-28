@@ -69,6 +69,7 @@ class HowToViewController: UIViewController {
     func createHeader(label: String) -> UILabel {
         let header = UILabel(frame: .zero)
         header.text = label
+        header.textAlignment = .center
         header.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         header.font = UIFont.boldSystemFont(ofSize: 25)
         return header
@@ -99,7 +100,8 @@ class HowToViewController: UIViewController {
         title.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         title.heightAnchor.constraint(equalToConstant: 40).isActive = true
         title.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -40).isActive = true
-        title.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor, multiplier: 20).isActive = true
+//        title.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor, multiplier: 20).isActive = true
+        title.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 }
 
