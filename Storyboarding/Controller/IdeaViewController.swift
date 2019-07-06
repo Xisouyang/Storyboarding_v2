@@ -74,7 +74,7 @@ class IdeaViewController: UIViewController {
     
     func setupNav() {
         navigationItem.title = "Story Snippets"
-        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = textAttributes
@@ -133,7 +133,6 @@ extension IdeaViewController {
     
     func ideaTableViewConstraints() {
         ideaTableView.translatesAutoresizingMaskIntoConstraints = false
-//        ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         ideaTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.65).isActive = true
         ideaTableView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         ideaTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

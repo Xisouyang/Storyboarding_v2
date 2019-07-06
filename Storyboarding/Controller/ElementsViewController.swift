@@ -57,20 +57,7 @@ class ElementsViewController: UIViewController {
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         navigationItem.rightBarButtonItem = saveButton
         navigationItem.title = headerTitle
-//        multiLineTitle()
     }
-    
-//    func multiLineTitle() {
-//        for navItem in (self.navigationController?.navigationBar.subviews)! {
-//            for itemSubView in navItem.subviews {
-//                if let largeLabel = itemSubView as? UILabel {
-//                    largeLabel.text = self.title
-//                    largeLabel.numberOfLines = 0
-//                    largeLabel.lineBreakMode = .byWordWrapping
-//                }
-//            }
-//        }
-//    }
     
     func setupTableView() {
         elementsTableView = UITableView(frame: .zero)
@@ -85,7 +72,6 @@ class ElementsViewController: UIViewController {
         elementsTableView.dataSource = self
         elementsTableView.backgroundColor = .black
         elementsTableView.separatorColor = .clear
-        elementsTableView.isScrollEnabled = false
         view.addSubview(elementsTableView)
         elementsTVConstraints()
     }

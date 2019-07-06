@@ -109,15 +109,6 @@ extension ElementsViewController: UITableViewDataSource {
         return [delete]
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-////        if editingStyle == .delete {
-////            let sectionName = ElementsViewController.elements[indexPath.section]
-////            let arrayIndex = indexPath.row
-////            ElementsViewController.parsedStoryDict[sectionName]?.remove(at: arrayIndex)
-////            tableView.deleteRows(at: [indexPath], with: .fade)
-////        }
-//    }
-    
     @objc func addButtonTapped(sender: UIButton) {
         let currSection = sender.tag
         addCard(section: currSection)

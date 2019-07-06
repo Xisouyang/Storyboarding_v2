@@ -60,6 +60,7 @@ class ServiceLayer {
         
         //create session
         let session = URLSession(configuration: .default)
+    
         //create data task
         let dataTask = session.dataTask(with: urlRequest) { data, response, error in
             
@@ -78,9 +79,13 @@ class ServiceLayer {
             if let responseData = data {
                 do {
                     let responseObj = try JSONDecoder().decode(T.self, from: responseData)
-                    completion(.success(responseObj))
+                    DispatchQueue.main.async {
+                        completion(.success(responseObj))
+                    }
                 } catch {
-                    completion(.failure(.jsonConversionFailure))
+                    DispatchQueue.main.async {
+                        completion(.failure(.jsonConversionFailure))
+                    }
                 }
             } else {
                 completion(.failure(.invalidData))

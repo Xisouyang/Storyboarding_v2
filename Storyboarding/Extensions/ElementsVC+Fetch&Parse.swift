@@ -42,6 +42,7 @@ extension ElementsViewController {
         ServiceLayer.request(router: Router.getAllStories) { (result: Result<[StoryModel]>) in
             switch result {
             case .success(let result):
+                print(result)
                 self.allStoriesArr = result
                 self.allStoriesArr.shuffle()
                 self.parseFromAPI(stories: self.allStoriesArr)
@@ -102,7 +103,6 @@ extension ElementsViewController {
         
         DispatchQueue.main.async {
             self.elementsTableView.reloadData()
-            self.elementsTableView.isScrollEnabled = true
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -116,32 +116,34 @@ extension ElementsViewController {
     }
     
     func parseFromCoreData(elements: NSSet) {
-        ElementsViewController.parsedStoryDict["Plot"] = []
-        ElementsViewController.parsedStoryDict["Conflict"] = []
-        ElementsViewController.parsedStoryDict["Resolution"] = []
-        ElementsViewController.parsedStoryDict["Character"] = []
-        ElementsViewController.parsedStoryDict["Setting"] = []
         
-        for item in elements {
-            let element = item as! Elements
-            guard let unwrappedContent = element.content else { return }
-            guard let unwrappedType = element.type else { return }
+        DispatchQueue.global(qos: .userInitiated).async {
+            ElementsViewController.parsedStoryDict["Plot"] = []
+            ElementsViewController.parsedStoryDict["Conflict"] = []
+            ElementsViewController.parsedStoryDict["Resolution"] = []
+            ElementsViewController.parsedStoryDict["Character"] = []
+            ElementsViewController.parsedStoryDict["Setting"] = []
             
-            switch unwrappedType {
-            case "Plot":
-                ElementsViewController.parsedStoryDict["Plot"]?.append(unwrappedContent)
-            case "Conflict":
-                ElementsViewController.parsedStoryDict["Conflict"]?.append(unwrappedContent)
-            case "Resolution":
-                ElementsViewController.parsedStoryDict["Resolution"]?.append(unwrappedContent)
-            case "Character":
-                ElementsViewController.parsedStoryDict["Character"]?.append(unwrappedContent)
-            case "Setting":
-                ElementsViewController.parsedStoryDict["Setting"]?.append(unwrappedContent)
-            default:
-                print("No more elements to parse")
+            for item in elements {
+                let element = item as! Elements
+                guard let unwrappedContent = element.content else { return }
+                guard let unwrappedType = element.type else { return }
+                
+                switch unwrappedType {
+                case "Plot":
+                    ElementsViewController.parsedStoryDict["Plot"]?.append(unwrappedContent)
+                case "Conflict":
+                    ElementsViewController.parsedStoryDict["Conflict"]?.append(unwrappedContent)
+                case "Resolution":
+                    ElementsViewController.parsedStoryDict["Resolution"]?.append(unwrappedContent)
+                case "Character":
+                    ElementsViewController.parsedStoryDict["Character"]?.append(unwrappedContent)
+                case "Setting":
+                    ElementsViewController.parsedStoryDict["Setting"]?.append(unwrappedContent)
+                default:
+                    print("No more elements to parse")
+                }
             }
         }
-        self.elementsTableView.isScrollEnabled = true
     }
 }

@@ -100,7 +100,6 @@ class HowToViewController: UIViewController {
         title.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
         title.heightAnchor.constraint(equalToConstant: 40).isActive = true
         title.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -40).isActive = true
-//        title.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor, multiplier: 20).isActive = true
         title.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 }
