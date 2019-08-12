@@ -69,5 +69,6 @@ extension IdeaViewController: UITableViewDataSource {
         CoreDataManager.sharedManager.removeItem(objectID: unwrappedID)
         CoreDataManager.sharedManager.saveContext()
         IdeaViewController.storyArr.remove(at: indexPath.row)
+        loadView()
     }
 }

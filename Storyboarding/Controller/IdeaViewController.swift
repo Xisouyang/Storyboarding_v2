@@ -19,9 +19,22 @@ class IdeaViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        view.addSubview(ideaTableView)
-        setupTableView()
-        populateTableView()
+        populateStoryArr()
+        
+        if IdeaViewController.storyArr.count > 0 {
+            view.addSubview(ideaTableView)
+            setupTableView()
+        } else {
+            
+            let blankScreenLabel = noStoriesLabel()
+            view.addSubview(blankScreenLabel)
+            labelConstraint(label: blankScreenLabel)
+            
+            let imgView = noStoriesImage()
+            view.addSubview(imgView)
+            imageConstraint(imgView: imgView)
+        }
+        
         setupAddButton()
         setupInfoButton()
     }
@@ -31,13 +44,36 @@ class IdeaViewController: UIViewController {
         setupNav()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        ideaTableView.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        loadView()
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ElementsViewController.parsedStoryDict = [:]
+    }
+    
+     func noStoriesLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Get started with your first story!"
+        label.textAlignment = .center
+        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.font = UIFont.systemFont(ofSize: 25)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }
+    
+    func noStoriesImage() -> UIImageView {
+        
+        let imgView = UIImageView()
+        let img = UIImage(named: "Big_Logo")
+        imgView.image = img
+        imgView.center = view.center
+        imgView.clipsToBounds = true
+        imgView.layer.borderColor = UIColor.black.cgColor
+        imgView.layer.borderWidth = 1
+        return imgView
     }
     
     //MARK: view setup functionality
@@ -90,7 +126,7 @@ class IdeaViewController: UIViewController {
         tableViewSeperators()
     }
     
-    func populateTableView() {
+    func populateStoryArr() {
         let data = CoreDataManager.sharedManager.fetchStoryboards()
         guard let unwrappedData = data else {
             print("FAILURE: unable to access storyboards: \(String(describing: data))")
@@ -146,5 +182,22 @@ extension IdeaViewController {
         addStoryButton.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.15).isActive = true
         addStoryButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         addStoryButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+    }
+    
+    func labelConstraint(label: UILabel) {
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 60).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        label.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+    }
+    
+    func imageConstraint(imgView: UIImageView) {
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5).isActive = true
+        imgView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25).isActive = true
+        imgView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        imgView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 35).isActive = true
     }
 }

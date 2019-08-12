@@ -21,7 +21,7 @@ class HowToViewController: UIViewController {
     }
     
     func title() {
-        let label = createHeader(label: "INFO")
+        let label = createHeader(label: "HOW TO USE")
         view.addSubview(label)
         headerConstraints(title: label)
     }
